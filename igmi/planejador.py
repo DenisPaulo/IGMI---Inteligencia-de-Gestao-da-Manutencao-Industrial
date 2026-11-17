@@ -185,7 +185,7 @@ def montar(plano, resultados, *, linha, periodo, meses=()):
         for alvo in alvos_mttr:
             r = next((r for r in ordenados if r.get('equipment_id') == alvo), None)
             if r is None or _numero(r.get('mttr_h')) is None:
-                fatos.append(f'MTTR de {alvo} não disponível no recorte consultado; ' 
+                fatos.append(f'MTTR de {alvo} não disponível no recorte consultado; '
                              'não é possível estimar esse indicador.')
                 continue
             eid = evidencia('consultar_equipamentos', [r], alvo)
@@ -202,7 +202,7 @@ def montar(plano, resultados, *, linha, periodo, meses=()):
             for alvo in alvos:
                 destaques = [r for r in rec if _alvo(r, alvo)]
                 if not destaques:
-                    fatos.append(f'{alvo}: nenhuma reincidência identificada nos alertas retornados ' 
+                    fatos.append(f'{alvo}: nenhuma reincidência identificada nos alertas retornados '
                                  '(a consulta limitada não prova inexistência de falhas).')
                     faltantes += 1
                     continue
@@ -264,7 +264,7 @@ def montar(plano, resultados, *, linha, periodo, meses=()):
     if 'melhorias' in plano['intencoes']:
         validas = any(estados.get(k) == 'coberta' for k in ('geral', 'impacto', 'reincidencias', 'mttr', 'pareto'))
         estados['melhorias'] = 'parcial' if validas else 'sem_dados'
-        fatos.append('Melhorias: as medidas acima orientam a investigação; ' 
+        fatos.append('Melhorias: as medidas acima orientam a investigação; '
                      'causas e ações corretivas exigem validação técnica.')
     for chave in plano['intencoes']:
         if estados.get(chave) != 'coberta':
