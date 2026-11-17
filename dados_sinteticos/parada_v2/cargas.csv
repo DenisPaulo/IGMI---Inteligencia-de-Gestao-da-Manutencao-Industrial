@@ -1,0 +1,8 @@
+data_carga,arquivo,tipo,cenario
+2026-10-01,parada_2026-10-01_a_normal.csv,incremental,a) carga normal
+2026-10-02,parada_2026-10-02_b_correcao.csv,incremental,b) correção pelo mesmo id (SINT-L0001 reduz 60->50: alerta; SINT-L0002 aumenta 30->45)
+2026-10-03,parada_2026-10-03_c_exclusao.csv,incremental,c) exclusão por acao=excluir (SINT-L0004) + exclusão de id nunca carregado (SINT-L0099: QCP12)
+2026-10-04,parada_2026-10-04_d_mesmo_dia.csv,incremental,d) 2ª parada da ffff0001 no mesmo dia com outro id (SINT-L0005)
+2026-10-05,parada_2026-10-05_g_alertas.csv,incremental,"QCP08 (SINT-L0003 muda de OS), QCP09 (ffff00aa sem OS), QCP10 (SINT-L0008 no futuro), QCP11 (SINT-L0009 sobrepõe SINT-L0002)"
+2026-10-06,parada_2026-10-06_e_invalido.csv,incremental,e) arquivo inválido (QCP02/03/04/05/06/07): rejeitado inteiro
+2026-10-07,parada_2026-10-07_f_completo.csv,completo,f) export completo sem SINT-L0009: candidato a exclusão (QCP13)

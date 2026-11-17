@@ -1,0 +1,3 @@
+linha_id,planta_id,nome,cost_center,horas_dia,dias_semana
+LT3,PL-DEMO,Linha LT3 (sintética),SINT-CC-LT3,24,6
+LT56,PL-DEMO,Linha LT56 (sintética),SINT-CC-LT56,24,6

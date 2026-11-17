@@ -1,0 +1,44 @@
+equipment_id,nome,nivel,pai_id,linha_id,classe_id,criticidade,especialidade_id
+LT3,Linha LT3,linha,,LT3,,A,
+LT3-RB01,Robô de reagrupagem LT3,equipamento,LT3,LT3,ROBO,A,MEC
+LT3-RB01-EIX,Eixos e redutores do robô LT3,subconjunto,LT3-RB01,LT3,ROBO,A,MEC
+LT3-RB01-FER,Ferramenta/garra do robô LT3,subconjunto,LT3-RB01,LT3,ROBO,A,MEC
+LT3-RB01-CTL,Controlador do robô LT3,subconjunto,LT3-RB01,LT3,ROBO,A,ELE
+LT3-TR01,Transportador de entrada LT3,equipamento,LT3,LT3,TRANSP,B,MEC
+LT3-TR01-COR,Correia do transportador de entrada LT3,subconjunto,LT3-TR01,LT3,TRANSP,B,MEC
+LT3-TR01-SEN,Sensores do transportador de entrada LT3,subconjunto,LT3-TR01,LT3,TRANSP,B,ELE
+LT3-TR02,Transportador de saída LT3,equipamento,LT3,LT3,TRANSP,C,MEC
+LT3-TR02-COR,Correia do transportador de saída LT3,subconjunto,LT3-TR02,LT3,TRANSP,C,MEC
+LT3-DS01,Dispenser de pó LT3,equipamento,LT3,LT3,DOSADOR,B,MEC
+LT3-DS01-BIC,Bico dosador LT3,subconjunto,LT3-DS01,LT3,DOSADOR,B,MEC
+LT3-VI01,Sistema de visão LT3,equipamento,LT3,LT3,VISAO,B,ELE
+LT3-VI01-CAM,Câmera e iluminação LT3,subconjunto,LT3-VI01,LT3,VISAO,B,ELE
+LT3-CL01,CLP da linha LT3,equipamento,LT3,LT3,CLP,A,ELE
+LT3-CL01-IO,Cartões de E/S do CLP LT3,subconjunto,LT3-CL01,LT3,CLP,A,ELE
+LT3-CL01-RED,Rede de campo LT3,subconjunto,LT3-CL01,LT3,CLP,A,ELE
+LT3-MS01,Mesa de ventosas LT3,equipamento,LT3,LT3,MESA,A,MEC
+LT3-MS01-VEN,Ventosas da mesa LT3,subconjunto,LT3-MS01,LT3,MESA,A,MEC
+LT3-MS01-VAC,Gerador de vácuo da mesa LT3,subconjunto,LT3-MS01,LT3,MESA,A,MEC
+LT56,Linha LT56,linha,,LT56,,A,
+LT56-RB01,Robô de reagrupagem LT56,equipamento,LT56,LT56,ROBO,A,MEC
+LT56-RB01-EIX,Eixos e redutores do robô LT56,subconjunto,LT56-RB01,LT56,ROBO,A,MEC
+LT56-RB01-FER,Ferramenta/garra do robô LT56,subconjunto,LT56-RB01,LT56,ROBO,A,MEC
+LT56-RB01-CTL,Controlador do robô LT56,subconjunto,LT56-RB01,LT56,ROBO,A,ELE
+LT56-TR01,Transportador de entrada LT56,equipamento,LT56,LT56,TRANSP,B,MEC
+LT56-TR01-COR,Correia do transportador de entrada LT56,subconjunto,LT56-TR01,LT56,TRANSP,B,MEC
+LT56-TR01-SEN,Sensores do transportador de entrada LT56,subconjunto,LT56-TR01,LT56,TRANSP,B,ELE
+LT56-TR02,Transportador intermediário LT56,equipamento,LT56,LT56,TRANSP,B,MEC
+LT56-TR02-COR,Correia do transportador intermediário LT56,subconjunto,LT56-TR02,LT56,TRANSP,B,MEC
+LT56-TR03,Transportador de saída LT56,equipamento,LT56,LT56,TRANSP,C,MEC
+LT56-TR03-COR,Correia do transportador de saída LT56,subconjunto,LT56-TR03,LT56,TRANSP,C,MEC
+LT56-DS01,Dispenser de pó LT56,equipamento,LT56,LT56,DOSADOR,A,MEC
+LT56-DS01-BIC,Bico dosador LT56,subconjunto,LT56-DS01,LT56,DOSADOR,A,MEC
+LT56-DS01-ROS,Rosca dosadora LT56,subconjunto,LT56-DS01,LT56,DOSADOR,A,MEC
+LT56-VI01,Sistema de visão LT56,equipamento,LT56,LT56,VISAO,B,ELE
+LT56-VI01-CAM,Câmera e iluminação LT56,subconjunto,LT56-VI01,LT56,VISAO,B,ELE
+LT56-CL01,CLP da linha LT56,equipamento,LT56,LT56,CLP,A,ELE
+LT56-CL01-IO,Cartões de E/S do CLP LT56,subconjunto,LT56-CL01,LT56,CLP,A,ELE
+LT56-CL01-RED,Rede de campo LT56,subconjunto,LT56-CL01,LT56,CLP,A,ELE
+LT56-MS01,Mesa de ventosas LT56,equipamento,LT56,LT56,MESA,A,MEC
+LT56-MS01-VEN,Ventosas da mesa LT56,subconjunto,LT56-MS01,LT56,MESA,A,MEC
+LT56-MS01-VAC,Gerador de vácuo da mesa LT56,subconjunto,LT56-MS01,LT56,MESA,A,MEC

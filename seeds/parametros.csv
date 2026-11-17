@@ -1,0 +1,2 @@
+chave,valor,descricao
+tag_quebra,$corrective,"OS de quebra = OS com a tag de sistema $corrective (escopo do MTTR e do Pareto)"

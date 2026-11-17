@@ -1,0 +1,13 @@
+chave,valor,descricao
+periodo_inicio,2026-04-01,primeiro dia do período simulado
+periodo_fim,2026-09-30,último dia do período simulado
+export_em,2026-10-01 06:00:00,last_export_date do conector simulado
+semente,20261021,semente do gerador (dados determinísticos)
+reincidencia_n,3,alerta quando a mesma falha (subconjunto + modo) ocorre N vezes...
+reincidencia_dias,15,...dentro de uma janela de X dias (regra de recorrência estilo caso publicado)
+pareto_medida,parada_min,medida do Pareto: parada_min (minutos de parada) ou os_n (nº de falhas)
+pareto_top,10,nº de modos mostrados antes de agrupar em Outros
+os_envelhecida_dias,30,OS aberta há mais dias que isso conta como envelhecida
+aderencia_min,0.40,faixa saudável da aderência à programação (mínimo)
+aderencia_max,0.90,faixa saudável da aderência à programação (máximo)
+pct_outros_max,0.10,limite de uso do modo Outro/desconhecido (qualidade do dado)

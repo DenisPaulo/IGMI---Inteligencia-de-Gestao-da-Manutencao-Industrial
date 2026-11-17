@@ -1,0 +1,50 @@
+# Dados brutos e exportações (não versionar)
+fontes/
+export/
+
+# Gerados pelo pipeline (recriar com `python run.py all`)
+/raw/
+/warehouse/
+/gold/
+/controle/
+/landing_parada/
+/entrada_csv/
+/entrada_parada/
+/data_quality_report.md
+.pytest_cache/
+
+# Segredos e credenciais
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials*.json
+secrets*
+
+# Python / ambiente
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Banco local
+*.duckdb
+*.duckdb.wal
+
+# Sistema
+.DS_Store
+
+# Dados privados
+private/
+/raw_demo/
+
+# Pacotes de atualizacao
+*.zip
+*.rar
+
+# Configuracoes locais do editor
+.vscode/
+
+# Ambientes virtuais alternativos
+venv/

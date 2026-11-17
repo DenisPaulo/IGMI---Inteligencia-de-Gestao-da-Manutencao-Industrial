@@ -1,0 +1,355 @@
+activity_id,task_id,name,started_at,duration_in_minutes
+DEMO-T0001-A1,DEMO-T0001,Técnico Mec 2 · execução do plano PM-LT3-RB-LUB,2026-04-18 16:31:00,92
+DEMO-T0002-A1,DEMO-T0002,Técnico Mec 1 · execução do plano PM-LT3-RB-LUB,2026-05-21 09:07:00,128
+DEMO-T0003-A1,DEMO-T0003,Técnico Mec 1 · execução do plano PM-LT3-RB-LUB,2026-06-17 08:54:00,96
+DEMO-T0004-A1,DEMO-T0004,Técnico Mec 1 · execução do plano PM-LT3-RB-LUB,2026-07-19 10:42:00,75
+DEMO-T0005-A1,DEMO-T0005,Técnico Mec 1 · execução do plano PM-LT3-RB-LUB,2026-08-17 09:36:00,113
+DEMO-T0006-A1,DEMO-T0006,Técnico Mec 1 · execução do plano PM-LT3-RB-LUB,2026-09-16 12:20:00,105
+DEMO-T0007-A1,DEMO-T0007,Técnico Mec 1 · execução do plano PM-LT3-RB-VIB,2026-04-14 10:38:00,42
+DEMO-T0008-A1,DEMO-T0008,Técnico Mec 1 · execução do plano PM-LT3-RB-VIB,2026-05-14 09:55:00,34
+DEMO-T0009-A1,DEMO-T0009,Técnico Mec 2 · execução do plano PM-LT3-RB-VIB,2026-06-12 15:44:00,43
+DEMO-T0010-A1,DEMO-T0010,Técnico Mec 1 · execução do plano PM-LT3-RB-VIB,2026-07-06 12:15:00,34
+DEMO-T0011-A1,DEMO-T0011,Técnico Mec 1 · execução do plano PM-LT3-RB-VIB,2026-08-05 09:57:00,42
+DEMO-T0012-A1,DEMO-T0012,Técnico Mec 2 · execução do plano PM-LT3-RB-VIB,2026-09-02 16:27:00,50
+DEMO-T0013-A1,DEMO-T0013,Técnico Mec 2 · execução do plano PM-LT3-RB-VIB,2026-09-29 16:48:00,55
+DEMO-T0014-A1,DEMO-T0014,Técnico Mec 2 · execução do plano PM-LT3-TR-COR,2026-04-02 17:01:00,48
+DEMO-T0015-A1,DEMO-T0015,Técnico Mec 2 · execução do plano PM-LT3-TR-COR,2026-05-10 17:37:00,58
+DEMO-T0016-A1,DEMO-T0016,Técnico Mec 2 · execução do plano PM-LT3-TR-COR,2026-05-30 17:59:00,82
+DEMO-T0017-A1,DEMO-T0017,Técnico Mec 2 · execução do plano PM-LT3-TR-COR,2026-06-26 16:56:00,63
+DEMO-T0018-A1,DEMO-T0018,Técnico Mec 1 · execução do plano PM-LT3-TR-COR,2026-07-23 10:13:00,55
+DEMO-T0019-A1,DEMO-T0019,Técnico Mec 1 · execução do plano PM-LT3-TR-COR,2026-08-19 10:01:00,64
+DEMO-T0020-A1,DEMO-T0020,Técnico Mec 1 · execução do plano PM-LT3-TR-COR,2026-09-17 11:27:00,44
+DEMO-T0021-A1,DEMO-T0021,Técnico Mec 1 · execução do plano PM-LT3-DS-BIC,2026-04-06 11:44:00,42
+DEMO-T0022-A1,DEMO-T0022,Técnico Mec 1 · execução do plano PM-LT3-DS-BIC,2026-04-22 10:27:00,38
+DEMO-T0023-A1,DEMO-T0023,Técnico Mec 1 · execução do plano PM-LT3-DS-BIC,2026-05-06 08:16:00,37
+DEMO-T0024-A1,DEMO-T0024,Técnico Mec 2 · execução do plano PM-LT3-DS-BIC,2026-05-20 17:53:00,30
+DEMO-T0025-A1,DEMO-T0025,Técnico Mec 2 · execução do plano PM-LT3-DS-BIC,2026-06-03 17:05:00,28
+DEMO-T0026-A1,DEMO-T0026,Técnico Mec 1 · execução do plano PM-LT3-DS-BIC,2026-06-16 12:03:00,23
+DEMO-T0027-A1,DEMO-T0027,Técnico Mec 1 · execução do plano PM-LT3-DS-BIC,2026-06-29 09:25:00,30
+DEMO-T0031-A1,DEMO-T0031,Técnico Mec 2 · execução do plano PM-LT3-DS-BIC,2026-08-24 16:31:00,23
+DEMO-T0034-A1,DEMO-T0034,Técnico Elet 1 · execução do plano PM-LT3-VI-CAL,2026-04-08 09:17:00,65
+DEMO-T0035-A1,DEMO-T0035,Técnico Elet 1 · execução do plano PM-LT3-VI-CAL,2026-05-09 09:18:00,42
+DEMO-T0036-A1,DEMO-T0036,Técnico Elet 2 · execução do plano PM-LT3-VI-CAL,2026-06-06 16:21:00,65
+DEMO-T0037-A1,DEMO-T0037,Técnico Elet 1 · execução do plano PM-LT3-VI-CAL,2026-07-07 11:39:00,62
+DEMO-T0038-A1,DEMO-T0038,Técnico Elet 2 · execução do plano PM-LT3-VI-CAL,2026-08-08 16:13:00,62
+DEMO-T0039-A1,DEMO-T0039,Técnico Elet 1 · execução do plano PM-LT3-VI-CAL,2026-09-05 11:40:00,73
+DEMO-T0040-A1,DEMO-T0040,Técnico Elet 1 · execução do plano PM-LT3-CL-BKP,2026-04-10 09:11:00,68
+DEMO-T0041-A1,DEMO-T0041,Técnico Elet 1 · execução do plano PM-LT3-CL-BKP,2026-07-10 10:49:00,68
+DEMO-T0042-A1,DEMO-T0042,Técnico Mec 1 · execução do plano PM-LT3-MS-VEN,2026-04-17 11:12:00,159
+DEMO-T0043-A1,DEMO-T0043,Técnico Mec 2 · execução do plano PM-LT3-MS-VEN,2026-05-18 17:41:00,122
+DEMO-T0044-A1,DEMO-T0044,Técnico Mec 1 · execução do plano PM-LT3-MS-VEN,2026-06-20 12:24:00,152
+DEMO-T0045-A1,DEMO-T0045,Técnico Mec 1 · execução do plano PM-LT3-MS-VEN,2026-07-17 11:23:00,125
+DEMO-T0046-A1,DEMO-T0046,Técnico Mec 1 · execução do plano PM-LT3-MS-VEN,2026-08-17 11:58:00,131
+DEMO-T0047-A1,DEMO-T0047,Técnico Mec 1 · execução do plano PM-LT3-MS-VEN,2026-09-18 11:16:00,168
+DEMO-T0048-A1,DEMO-T0048,Técnico Mec 1 · execução do plano PM-LT56-RB-LUB,2026-04-06 10:21:00,124
+DEMO-T0049-A1,DEMO-T0049,Técnico Mec 1 · execução do plano PM-LT56-RB-LUB,2026-05-08 11:33:00,117
+DEMO-T0050-A1,DEMO-T0050,Técnico Mec 2 · execução do plano PM-LT56-RB-LUB,2026-06-07 16:53:00,132
+DEMO-T0051-A1,DEMO-T0051,Técnico Mec 1 · execução do plano PM-LT56-RB-LUB,2026-07-08 09:22:00,115
+DEMO-T0052-A1,DEMO-T0052,Técnico Mec 1 · execução do plano PM-LT56-RB-LUB,2026-08-05 11:17:00,80
+DEMO-T0053-A1,DEMO-T0053,Técnico Mec 2 · execução do plano PM-LT56-RB-LUB,2026-09-08 17:35:00,109
+DEMO-T0054-A1,DEMO-T0054,Técnico Mec 1 · execução do plano PM-LT56-RB-VIB,2026-04-06 08:06:00,66
+DEMO-T0055-A1,DEMO-T0055,Técnico Mec 2 · execução do plano PM-LT56-RB-VIB,2026-05-06 18:21:00,45
+DEMO-T0056-A1,DEMO-T0056,Técnico Mec 1 · execução do plano PM-LT56-RB-VIB,2026-06-03 08:52:00,57
+DEMO-T0057-A1,DEMO-T0057,Técnico Mec 2 · execução do plano PM-LT56-RB-VIB,2026-07-10 15:31:00,59
+DEMO-T0058-A1,DEMO-T0058,Técnico Mec 1 · execução do plano PM-LT56-RB-VIB,2026-07-30 10:52:00,50
+DEMO-T0059-A1,DEMO-T0059,Técnico Mec 2 · execução do plano PM-LT56-RB-VIB,2026-08-25 15:20:00,66
+DEMO-T0060-A1,DEMO-T0060,Técnico Mec 2 · execução do plano PM-LT56-RB-VIB,2026-09-21 16:21:00,67
+DEMO-T0061-A1,DEMO-T0061,Técnico Mec 1 · execução do plano PM-LT56-TR-COR,2026-04-07 10:08:00,60
+DEMO-T0062-A1,DEMO-T0062,Técnico Mec 2 · execução do plano PM-LT56-TR-COR,2026-05-05 15:19:00,80
+DEMO-T0063-A1,DEMO-T0063,Técnico Mec 1 · execução do plano PM-LT56-TR-COR,2026-06-03 08:10:00,81
+DEMO-T0064-A1,DEMO-T0064,Técnico Mec 2 · execução do plano PM-LT56-TR-COR,2026-06-29 16:44:00,48
+DEMO-T0065-A1,DEMO-T0065,Técnico Mec 1 · execução do plano PM-LT56-TR-COR,2026-07-31 10:23:00,71
+DEMO-T0066-A1,DEMO-T0066,Técnico Mec 1 · execução do plano PM-LT56-TR-COR,2026-08-25 09:42:00,85
+DEMO-T0067-A1,DEMO-T0067,Técnico Mec 2 · execução do plano PM-LT56-TR-COR,2026-09-24 16:45:00,77
+DEMO-T0068-A1,DEMO-T0068,Técnico Mec 2 · execução do plano PM-LT56-TR2-COR,2026-04-20 16:22:00,71
+DEMO-T0069-A1,DEMO-T0069,Técnico Mec 2 · execução do plano PM-LT56-TR2-COR,2026-05-18 16:37:00,81
+DEMO-T0070-A1,DEMO-T0070,Técnico Mec 1 · execução do plano PM-LT56-TR2-COR,2026-06-14 11:15:00,68
+DEMO-T0071-A1,DEMO-T0071,Técnico Mec 1 · execução do plano PM-LT56-TR2-COR,2026-07-12 11:07:00,42
+DEMO-T0072-A1,DEMO-T0072,Técnico Mec 2 · execução do plano PM-LT56-TR2-COR,2026-08-11 18:08:00,82
+DEMO-T0073-A1,DEMO-T0073,Técnico Mec 2 · execução do plano PM-LT56-TR2-COR,2026-09-07 17:23:00,66
+DEMO-T0074-A1,DEMO-T0074,Técnico Mec 1 · execução do plano PM-LT56-DS-BIC,2026-04-07 10:14:00,46
+DEMO-T0075-A1,DEMO-T0075,Técnico Mec 1 · execução do plano PM-LT56-DS-BIC,2026-04-21 09:41:00,37
+DEMO-T0076-A1,DEMO-T0076,Técnico Mec 2 · execução do plano PM-LT56-DS-BIC,2026-05-04 16:55:00,38
+DEMO-T0077-A1,DEMO-T0077,Técnico Mec 2 · execução do plano PM-LT56-DS-BIC,2026-05-21 17:37:00,47
+DEMO-T0078-A1,DEMO-T0078,Técnico Mec 2 · execução do plano PM-LT56-DS-BIC,2026-06-01 17:18:00,35
+DEMO-T0079-A1,DEMO-T0079,Técnico Mec 1 · execução do plano PM-LT56-DS-BIC,2026-06-15 09:23:00,43
+DEMO-T0082-A1,DEMO-T0082,Técnico Mec 1 · execução do plano PM-LT56-DS-BIC,2026-07-29 11:57:00,49
+DEMO-T0083-A1,DEMO-T0083,Técnico Mec 1 · execução do plano PM-LT56-DS-BIC,2026-08-10 10:24:00,67
+DEMO-T0084-A1,DEMO-T0084,Técnico Mec 1 · execução do plano PM-LT56-DS-BIC,2026-08-24 10:15:00,58
+DEMO-T0085-A1,DEMO-T0085,Técnico Mec 2 · execução do plano PM-LT56-DS-BIC,2026-09-09 15:53:00,55
+DEMO-T0086-A1,DEMO-T0086,Técnico Mec 2 · execução do plano PM-LT56-DS-BIC,2026-09-21 16:48:00,64
+DEMO-T0087-A1,DEMO-T0087,Técnico Elet 2 · execução do plano PM-LT56-VI-CAL,2026-04-16 16:52:00,70
+DEMO-T0088-A1,DEMO-T0088,Técnico Elet 1 · execução do plano PM-LT56-VI-CAL,2026-05-16 11:30:00,57
+DEMO-T0089-A1,DEMO-T0089,Técnico Elet 2 · execução do plano PM-LT56-VI-CAL,2026-06-15 15:12:00,88
+DEMO-T0090-A1,DEMO-T0090,Técnico Elet 1 · execução do plano PM-LT56-VI-CAL,2026-07-16 11:25:00,50
+DEMO-T0091-A1,DEMO-T0091,Técnico Elet 1 · execução do plano PM-LT56-VI-CAL,2026-08-17 10:23:00,61
+DEMO-T0092-A1,DEMO-T0092,Técnico Elet 1 · execução do plano PM-LT56-VI-CAL,2026-09-15 10:38:00,81
+DEMO-T0093-A1,DEMO-T0093,Técnico Elet 1 · execução do plano PM-LT56-CL-BKP,2026-04-23 11:33:00,49
+DEMO-T0094-A1,DEMO-T0094,Técnico Elet 1 · execução do plano PM-LT56-CL-BKP,2026-07-24 11:46:00,60
+DEMO-T0095-A1,DEMO-T0095,Técnico Mec 2 · execução do plano PM-LT56-MS-VAC,2026-04-14 18:22:00,21
+DEMO-T0096-A1,DEMO-T0096,Técnico Mec 2 · execução do plano PM-LT56-MS-VAC,2026-04-29 16:56:00,26
+DEMO-T0097-A1,DEMO-T0097,Técnico Mec 1 · execução do plano PM-LT56-MS-VAC,2026-05-12 09:31:00,27
+DEMO-T0098-A1,DEMO-T0098,Técnico Mec 2 · execução do plano PM-LT56-MS-VAC,2026-05-25 16:29:00,26
+DEMO-T0099-A1,DEMO-T0099,Técnico Mec 2 · execução do plano PM-LT56-MS-VAC,2026-06-10 16:44:00,34
+DEMO-T0100-A1,DEMO-T0100,Técnico Mec 2 · execução do plano PM-LT56-MS-VAC,2026-06-24 15:34:00,33
+DEMO-T0101-A1,DEMO-T0101,Técnico Mec 1 · execução do plano PM-LT56-MS-VAC,2026-07-07 08:54:00,37
+DEMO-T0102-A1,DEMO-T0102,Técnico Mec 1 · execução do plano PM-LT56-MS-VAC,2026-07-22 12:01:00,41
+DEMO-T0103-A1,DEMO-T0103,Técnico Mec 1 · execução do plano PM-LT56-MS-VAC,2026-08-04 10:13:00,31
+DEMO-T0104-A1,DEMO-T0104,Técnico Mec 2 · execução do plano PM-LT56-MS-VAC,2026-08-17 17:53:00,36
+DEMO-T0105-A1,DEMO-T0105,Técnico Mec 1 · execução do plano PM-LT56-MS-VAC,2026-09-09 11:50:00,22
+DEMO-T0106-A1,DEMO-T0106,Técnico Mec 1 · execução do plano PM-LT56-MS-VAC,2026-09-15 11:37:00,22
+DEMO-T0107-A1,DEMO-T0107,Técnico Mec 1 · execução do plano PM-LT56-MS-VAC,2026-09-29 09:58:00,26
+DEMO-T0108-A1,DEMO-T0108,Técnico Mec 1 · substituição programado(a),2026-04-03 09:00:00,57
+DEMO-T0109-A1,DEMO-T0109,Técnico Mec 2 · diagnóstico no local,2026-04-06 17:49:00,13
+DEMO-T0109-A2,DEMO-T0109,Técnico Mec 2 · substituição,2026-04-06 18:02:00,24
+DEMO-T0110-A1,DEMO-T0110,Técnico Mec 2 · diagnóstico no local,2026-04-11 15:18:00,13
+DEMO-T0110-A2,DEMO-T0110,Técnico Mec 2 · substituição,2026-04-11 15:31:00,24
+DEMO-T0111-A1,DEMO-T0111,Técnico Mec 2 · diagnóstico no local,2026-04-15 20:48:00,15
+DEMO-T0111-A2,DEMO-T0111,Técnico Mec 2 · substituição,2026-04-15 21:03:00,42
+DEMO-T0112-A1,DEMO-T0112,Técnico Mec 2 · diagnóstico no local,2026-04-16 14:33:00,15
+DEMO-T0112-A2,DEMO-T0112,Técnico Mec 2 · ajuste,2026-04-16 14:48:00,35
+DEMO-T0113-A1,DEMO-T0113,Técnico Elet 1 · ajuste programado(a),2026-04-24 09:00:00,17
+DEMO-T0114-A1,DEMO-T0114,Técnico Mec 1 · diagnóstico no local,2026-04-20 13:34:00,15
+DEMO-T0114-A2,DEMO-T0114,Técnico Mec 1 · ajuste,2026-04-20 13:49:00,37
+DEMO-T0115-A1,DEMO-T0115,Técnico Elet 2 · diagnóstico no local,2026-04-21 15:19:00,15
+DEMO-T0115-A2,DEMO-T0115,Técnico Elet 2 · reparo,2026-04-21 15:34:00,41
+DEMO-T0115-A3,DEMO-T0115,Técnico Mec 2 · apoio mecânico,2026-04-21 15:19:00,20
+DEMO-T0116-A1,DEMO-T0116,Técnico Mec 3 · diagnóstico no local,2026-04-28 00:12:00,10
+DEMO-T0116-A2,DEMO-T0116,Técnico Mec 3 · ajuste,2026-04-28 00:22:00,16
+DEMO-T0117-A1,DEMO-T0117,Técnico Mec 2 · diagnóstico no local,2026-04-29 14:21:00,15
+DEMO-T0117-A2,DEMO-T0117,Técnico Mec 2 · limpeza,2026-04-29 14:36:00,75
+DEMO-T0118-A1,DEMO-T0118,Técnico Mec 3 · diagnóstico no local,2026-04-29 22:32:00,15
+DEMO-T0118-A2,DEMO-T0118,Técnico Mec 3 · substituição,2026-04-29 22:47:00,36
+DEMO-T0119-A1,DEMO-T0119,Técnico Elet 3 · diagnóstico no local,2026-05-01 05:28:00,9
+DEMO-T0119-A2,DEMO-T0119,Técnico Elet 3 · rearme e teste,2026-05-01 05:37:00,13
+DEMO-T0120-A1,DEMO-T0120,Técnico Mec 3 · diagnóstico no local,2026-05-05 00:21:00,15
+DEMO-T0120-A2,DEMO-T0120,Técnico Mec 3 · substituição,2026-05-05 00:36:00,39
+DEMO-T0121-A1,DEMO-T0121,Técnico Mec 3 · diagnóstico no local,2026-05-05 02:50:00,15
+DEMO-T0121-A2,DEMO-T0121,Técnico Mec 3 · ajuste,2026-05-05 03:05:00,45
+DEMO-T0122-A1,DEMO-T0122,Técnico Mec 3 · diagnóstico no local,2026-05-11 04:01:00,15
+DEMO-T0122-A2,DEMO-T0122,Técnico Mec 3 · modificação,2026-05-11 04:16:00,69
+DEMO-T0123-A1,DEMO-T0123,Técnico Elet 1 · diagnóstico no local,2026-05-11 06:28:00,15
+DEMO-T0123-A2,DEMO-T0123,Técnico Elet 1 · substituição,2026-05-11 06:43:00,54
+DEMO-T0124-A1,DEMO-T0124,Técnico Mec 1 · diagnóstico no local,2026-05-11 09:14:00,15
+DEMO-T0124-A2,DEMO-T0124,Técnico Mec 1 · limpeza,2026-05-11 09:29:00,34
+DEMO-T0125-A1,DEMO-T0125,Técnico Elet 1 · reparo programado(a),2026-05-24 08:00:00,36
+DEMO-T0126-A1,DEMO-T0126,Técnico Elet 2 · ajuste programado(a),2026-05-31 14:00:00,15
+DEMO-T0127-A1,DEMO-T0127,Técnico Mec 3 · diagnóstico no local,2026-05-18 23:07:00,15
+DEMO-T0127-A2,DEMO-T0127,Técnico Mec 3 · limpeza,2026-05-18 23:22:00,32
+DEMO-T0128-A1,DEMO-T0128,Técnico Mec 3 · diagnóstico no local,2026-05-19 00:20:00,14
+DEMO-T0128-A2,DEMO-T0128,Técnico Mec 3 · ajuste,2026-05-19 00:34:00,28
+DEMO-T0129-A1,DEMO-T0129,Técnico Mec 2 · diagnóstico no local,2026-05-19 17:29:00,15
+DEMO-T0129-A2,DEMO-T0129,Técnico Mec 2 · rearme e teste,2026-05-19 17:44:00,30
+DEMO-T0130-A1,DEMO-T0130,Técnico Mec 1 · diagnóstico no local,2026-05-19 08:39:00,15
+DEMO-T0130-A2,DEMO-T0130,Técnico Mec 1 · limpeza,2026-05-19 08:54:00,55
+DEMO-T0131-A1,DEMO-T0131,Técnico Mec 1 · diagnóstico no local,2026-05-19 10:59:00,14
+DEMO-T0131-A2,DEMO-T0131,Técnico Mec 1 · substituição,2026-05-19 11:13:00,29
+DEMO-T0132-A1,DEMO-T0132,Técnico Mec 1 · diagnóstico no local,2026-05-19 13:40:00,15
+DEMO-T0132-A2,DEMO-T0132,Técnico Mec 1 · ajuste,2026-05-19 13:55:00,37
+DEMO-T0133-A1,DEMO-T0133,Técnico Mec 2 · diagnóstico no local,2026-05-22 20:56:00,15
+DEMO-T0133-A2,DEMO-T0133,Técnico Mec 2 · substituição,2026-05-22 21:11:00,69
+DEMO-T0134-A1,DEMO-T0134,Técnico Mec 3 · diagnóstico no local,2026-05-24 22:43:00,10
+DEMO-T0134-A2,DEMO-T0134,Técnico Mec 3 · limpeza,2026-05-24 22:53:00,16
+DEMO-T0135-A1,DEMO-T0135,Técnico Mec 2 · diagnóstico no local,2026-05-27 16:26:00,15
+DEMO-T0135-A2,DEMO-T0135,Técnico Mec 2 · lubrificação,2026-05-27 16:41:00,111
+DEMO-T0136-A1,DEMO-T0136,Técnico Mec 1 · substituição programado(a),2026-06-03 09:00:00,38
+DEMO-T0137-A1,DEMO-T0137,Técnico Mec 3 · diagnóstico no local,2026-05-30 23:00:00,15
+DEMO-T0137-A2,DEMO-T0137,Técnico Mec 3 · substituição,2026-05-30 23:15:00,39
+DEMO-T0138-A1,DEMO-T0138,Técnico Mec 2 · diagnóstico no local,2026-06-01 16:03:00,15
+DEMO-T0138-A2,DEMO-T0138,Técnico Mec 2 · ajuste,2026-06-01 16:18:00,30
+DEMO-T0139-A1,DEMO-T0139,Técnico Mec 2 · rearme e teste programado(a),2026-06-09 14:00:00,77
+DEMO-T0140-A1,DEMO-T0140,Técnico Elet 3 · diagnóstico no local,2026-06-01 23:23:00,13
+DEMO-T0140-A2,DEMO-T0140,Técnico Elet 3 · substituição,2026-06-01 23:36:00,24
+DEMO-T0141-A1,DEMO-T0141,Técnico Mec 2 · diagnóstico no local,2026-06-02 14:01:00,14
+DEMO-T0141-A2,DEMO-T0141,Técnico Mec 2 · reparo,2026-06-02 14:15:00,28
+DEMO-T0142-A1,DEMO-T0142,Técnico Mec 3 · diagnóstico no local,2026-06-04 05:00:00,14
+DEMO-T0142-A2,DEMO-T0142,Técnico Mec 3 · substituição,2026-06-04 05:14:00,27
+DEMO-T0143-A1,DEMO-T0143,Técnico Mec 3 · diagnóstico no local,2026-06-05 02:00:00,15
+DEMO-T0143-A2,DEMO-T0143,Técnico Mec 3 · substituição,2026-06-05 02:15:00,47
+DEMO-T0144-A1,DEMO-T0144,Técnico Mec 2 · diagnóstico no local,2026-06-06 17:41:00,14
+DEMO-T0144-A2,DEMO-T0144,Técnico Mec 2 · substituição,2026-06-06 17:55:00,27
+DEMO-T0145-A1,DEMO-T0145,Técnico Mec 1 · ajuste programado(a),2026-06-14 08:00:00,90
+DEMO-T0146-A1,DEMO-T0146,Técnico Mec 3 · diagnóstico no local,2026-06-08 01:52:00,15
+DEMO-T0146-A2,DEMO-T0146,Técnico Mec 3 · limpeza,2026-06-08 02:07:00,37
+DEMO-T0147-A1,DEMO-T0147,Técnico Mec 3 · diagnóstico no local,2026-06-09 22:00:00,15
+DEMO-T0147-A2,DEMO-T0147,Técnico Mec 3 · substituição,2026-06-09 22:15:00,30
+DEMO-T0148-A1,DEMO-T0148,Técnico Mec 2 · diagnóstico no local,2026-06-09 16:46:00,15
+DEMO-T0148-A2,DEMO-T0148,Técnico Mec 2 · ajuste,2026-06-09 17:01:00,36
+DEMO-T0149-A1,DEMO-T0149,Técnico Mec 1 · diagnóstico no local,2026-06-10 07:36:00,15
+DEMO-T0149-A2,DEMO-T0149,Técnico Mec 1 · substituição,2026-06-10 07:51:00,31
+DEMO-T0150-A1,DEMO-T0150,Técnico Mec 3 · diagnóstico no local,2026-06-10 00:57:00,15
+DEMO-T0150-A2,DEMO-T0150,Técnico Mec 3 · ajuste,2026-06-10 01:12:00,41
+DEMO-T0151-A1,DEMO-T0151,Técnico Elet 3 · diagnóstico no local,2026-06-12 01:24:00,12
+DEMO-T0151-A2,DEMO-T0151,Técnico Elet 3 · substituição,2026-06-12 01:36:00,23
+DEMO-T0152-A1,DEMO-T0152,Técnico Mec 3 · diagnóstico no local,2026-06-18 04:48:00,14
+DEMO-T0152-A2,DEMO-T0152,Técnico Mec 3 · limpeza,2026-06-18 05:02:00,27
+DEMO-T0153-A1,DEMO-T0153,Técnico Mec 1 · diagnóstico no local,2026-06-18 10:24:00,15
+DEMO-T0153-A2,DEMO-T0153,Técnico Mec 1 · substituição,2026-06-18 10:39:00,38
+DEMO-T0154-A1,DEMO-T0154,Técnico Mec 2 · substituição programado(a),2026-06-24 14:00:00,67
+DEMO-T0155-A1,DEMO-T0155,Técnico Elet 2 · diagnóstico no local,2026-06-22 17:18:00,15
+DEMO-T0155-A2,DEMO-T0155,Técnico Elet 2 · ajuste,2026-06-22 17:33:00,69
+DEMO-T0155-A3,DEMO-T0155,Técnico Mec 2 · apoio mecânico,2026-06-22 17:18:00,34
+DEMO-T0156-A1,DEMO-T0156,Técnico Mec 2 · diagnóstico no local,2026-06-22 20:36:00,15
+DEMO-T0156-A2,DEMO-T0156,Técnico Mec 2 · modificação,2026-06-22 20:51:00,67
+DEMO-T0157-A1,DEMO-T0157,Técnico Mec 3 · diagnóstico no local,2026-06-22 23:20:00,15
+DEMO-T0157-A2,DEMO-T0157,Técnico Mec 3 · ajuste,2026-06-22 23:35:00,35
+DEMO-T0158-A1,DEMO-T0158,Técnico Mec 2 · diagnóstico no local,2026-06-22 16:21:00,15
+DEMO-T0158-A2,DEMO-T0158,Técnico Mec 2 · substituição,2026-06-22 16:36:00,54
+DEMO-T0159-A1,DEMO-T0159,Técnico Elet 3 · diagnóstico no local,2026-06-22 22:38:00,8
+DEMO-T0159-A2,DEMO-T0159,Técnico Elet 3 · substituição,2026-06-22 22:46:00,11
+DEMO-T0160-A1,DEMO-T0160,Técnico Mec 2 · limpeza programado(a),2026-06-27 14:00:00,38
+DEMO-T0161-A1,DEMO-T0161,Técnico Mec 1 · diagnóstico no local,2026-06-23 13:21:00,15
+DEMO-T0161-A2,DEMO-T0161,Técnico Mec 1 · modificação,2026-06-23 13:36:00,57
+DEMO-T0162-A1,DEMO-T0162,Técnico Elet 3 · diagnóstico no local,2026-06-24 01:03:00,15
+DEMO-T0162-A2,DEMO-T0162,Técnico Elet 3 · substituição,2026-06-24 01:18:00,72
+DEMO-T0162-A3,DEMO-T0162,Técnico Mec 3 · apoio mecânico,2026-06-24 01:03:00,36
+DEMO-T0163-A1,DEMO-T0163,Técnico Mec 3 · diagnóstico no local,2026-06-29 23:24:00,15
+DEMO-T0163-A2,DEMO-T0163,Técnico Mec 3 · ajuste,2026-06-29 23:39:00,44
+DEMO-T0164-A1,DEMO-T0164,Técnico Elet 2 · diagnóstico no local,2026-07-03 17:26:00,15
+DEMO-T0164-A2,DEMO-T0164,Técnico Elet 2 · reparo,2026-07-03 17:41:00,58
+DEMO-T0165-A1,DEMO-T0165,Técnico Mec 2 · diagnóstico no local,2026-07-04 14:42:00,15
+DEMO-T0165-A2,DEMO-T0165,Técnico Mec 2 · substituição,2026-07-04 14:57:00,34
+DEMO-T0166-A1,DEMO-T0166,Técnico Mec 1 · diagnóstico no local,2026-07-06 11:47:00,15
+DEMO-T0166-A2,DEMO-T0166,Técnico Mec 1 · substituição,2026-07-06 12:02:00,86
+DEMO-T0167-A1,DEMO-T0167,Técnico Mec 1 · limpeza programado(a),2026-07-19 09:00:00,21
+DEMO-T0168-A1,DEMO-T0168,Técnico Mec 2 · diagnóstico no local,2026-07-07 21:34:00,12
+DEMO-T0168-A2,DEMO-T0168,Técnico Mec 2 · rearme e teste,2026-07-07 21:46:00,22
+DEMO-T0169-A1,DEMO-T0169,Técnico Mec 1 · diagnóstico no local,2026-07-08 06:16:00,15
+DEMO-T0169-A2,DEMO-T0169,Técnico Mec 1 · reparo,2026-07-08 06:31:00,35
+DEMO-T0170-A1,DEMO-T0170,Técnico Mec 1 · substituição programado(a),2026-07-12 08:00:00,40
+DEMO-T0171-A1,DEMO-T0171,Técnico Mec 3 · diagnóstico no local,2026-07-09 22:45:00,14
+DEMO-T0171-A2,DEMO-T0171,Técnico Mec 3 · ajuste,2026-07-09 22:59:00,28
+DEMO-T0171-A3,DEMO-T0171,Técnico Elet 3 · apoio elétrico,2026-07-09 22:45:00,14
+DEMO-T0172-A1,DEMO-T0172,Técnico Mec 2 · diagnóstico no local,2026-07-10 20:35:00,15
+DEMO-T0172-A2,DEMO-T0172,Técnico Mec 2 · substituição,2026-07-10 20:50:00,44
+DEMO-T0173-A1,DEMO-T0173,Técnico Mec 3 · diagnóstico no local,2026-07-10 22:50:00,15
+DEMO-T0173-A2,DEMO-T0173,Técnico Mec 3 · substituição,2026-07-10 23:05:00,47
+DEMO-T0174-A1,DEMO-T0174,Técnico Mec 1 · diagnóstico no local,2026-07-10 11:16:00,15
+DEMO-T0174-A2,DEMO-T0174,Técnico Mec 1 · ajuste,2026-07-10 11:31:00,35
+DEMO-T0175-A1,DEMO-T0175,Técnico Elet 3 · diagnóstico no local,2026-07-11 02:07:00,15
+DEMO-T0175-A2,DEMO-T0175,Técnico Elet 3 · substituição,2026-07-11 02:22:00,81
+DEMO-T0176-A1,DEMO-T0176,Técnico Mec 1 · diagnóstico no local,2026-07-11 06:48:00,9
+DEMO-T0176-A2,DEMO-T0176,Técnico Mec 1 · rearme e teste,2026-07-11 06:57:00,12
+DEMO-T0177-A1,DEMO-T0177,Técnico Elet 1 · diagnóstico no local,2026-07-11 12:38:00,12
+DEMO-T0177-A2,DEMO-T0177,Técnico Elet 1 · limpeza,2026-07-11 12:50:00,21
+DEMO-T0178-A1,DEMO-T0178,Técnico Elet 3 · diagnóstico no local,2026-07-13 23:23:00,15
+DEMO-T0178-A2,DEMO-T0178,Técnico Elet 3 · reparo,2026-07-13 23:38:00,57
+DEMO-T0179-A1,DEMO-T0179,Técnico Mec 1 · diagnóstico no local,2026-07-14 09:05:00,15
+DEMO-T0179-A2,DEMO-T0179,Técnico Mec 1 · modificação,2026-07-14 09:20:00,87
+DEMO-T0180-A1,DEMO-T0180,Técnico Mec 2 · reparo programado(a),2026-07-19 14:00:00,49
+DEMO-T0181-A1,DEMO-T0181,Técnico Mec 1 · ajuste programado(a),2026-07-18 09:00:00,64
+DEMO-T0182-A1,DEMO-T0182,Técnico Mec 1 · diagnóstico no local,2026-07-17 12:45:00,15
+DEMO-T0182-A2,DEMO-T0182,Técnico Mec 1 · modificação,2026-07-17 13:00:00,39
+DEMO-T0183-A1,DEMO-T0183,Técnico Elet 3 · diagnóstico no local,2026-07-17 22:23:00,10
+DEMO-T0183-A2,DEMO-T0183,Técnico Elet 3 · substituição,2026-07-17 22:33:00,17
+DEMO-T0184-A1,DEMO-T0184,Técnico Elet 1 · diagnóstico no local,2026-07-18 08:23:00,14
+DEMO-T0184-A2,DEMO-T0184,Técnico Elet 1 · substituição,2026-07-18 08:37:00,28
+DEMO-T0185-A1,DEMO-T0185,Técnico Elet 3 · diagnóstico no local,2026-07-20 02:43:00,15
+DEMO-T0185-A2,DEMO-T0185,Técnico Elet 3 · substituição,2026-07-20 02:58:00,35
+DEMO-T0186-A1,DEMO-T0186,Técnico Mec 1 · diagnóstico no local,2026-07-20 09:58:00,15
+DEMO-T0186-A2,DEMO-T0186,Técnico Mec 1 · reparo,2026-07-20 10:13:00,85
+DEMO-T0187-A1,DEMO-T0187,Técnico Mec 2 · diagnóstico no local,2026-07-23 14:12:00,15
+DEMO-T0187-A2,DEMO-T0187,Técnico Mec 2 · substituição,2026-07-23 14:27:00,36
+DEMO-T0188-A1,DEMO-T0188,Técnico Mec 1 · rearme e teste programado(a),2026-07-30 08:00:00,75
+DEMO-T0189-A1,DEMO-T0189,Técnico Mec 1 · reparo programado(a),2026-07-31 09:00:00,26
+DEMO-T0190-A1,DEMO-T0190,Técnico Mec 2 · diagnóstico no local,2026-07-27 17:12:00,15
+DEMO-T0190-A2,DEMO-T0190,Técnico Mec 2 · substituição,2026-07-27 17:27:00,55
+DEMO-T0191-A1,DEMO-T0191,Técnico Mec 2 · diagnóstico no local,2026-07-30 21:03:00,15
+DEMO-T0191-A2,DEMO-T0191,Técnico Mec 2 · limpeza,2026-07-30 21:18:00,56
+DEMO-T0192-A1,DEMO-T0192,Técnico Mec 2 · diagnóstico no local,2026-07-31 20:25:00,15
+DEMO-T0192-A2,DEMO-T0192,Técnico Mec 2 · modificação,2026-07-31 20:40:00,44
+DEMO-T0193-A1,DEMO-T0193,Técnico Elet 1 · substituição programado(a),2026-08-04 09:00:00,55
+DEMO-T0194-A1,DEMO-T0194,Técnico Mec 1 · limpeza programado(a),2026-08-07 08:00:00,67
+DEMO-T0195-A1,DEMO-T0195,Técnico Mec 1 · limpeza programado(a),2026-08-06 08:00:00,20
+DEMO-T0196-A1,DEMO-T0196,Técnico Mec 2 · diagnóstico no local,2026-08-03 15:31:00,15
+DEMO-T0196-A2,DEMO-T0196,Técnico Mec 2 · substituição,2026-08-03 15:46:00,57
+DEMO-T0197-A1,DEMO-T0197,Técnico Elet 2 · diagnóstico no local,2026-08-03 17:35:00,15
+DEMO-T0197-A2,DEMO-T0197,Técnico Elet 2 · reparo,2026-08-03 17:50:00,123
+DEMO-T0197-A3,DEMO-T0197,Técnico Mec 2 · apoio mecânico,2026-08-03 17:35:00,61
+DEMO-T0198-A1,DEMO-T0198,Técnico Mec 3 · diagnóstico no local,2026-08-03 23:45:00,15
+DEMO-T0198-A2,DEMO-T0198,Técnico Mec 3 · lubrificação,2026-08-04 00:00:00,97
+DEMO-T0199-A1,DEMO-T0199,Técnico Elet 3 · diagnóstico no local,2026-08-05 04:00:00,12
+DEMO-T0199-A2,DEMO-T0199,Técnico Elet 3 · substituição,2026-08-05 04:12:00,22
+DEMO-T0200-A1,DEMO-T0200,"Técnico Mec 1 · início do serviço, aguardando peça",2026-08-06 09:00:00,30
+DEMO-T0201-A1,DEMO-T0201,Técnico Mec 2 · diagnóstico no local,2026-08-07 21:34:00,15
+DEMO-T0201-A2,DEMO-T0201,Técnico Mec 2 · substituição,2026-08-07 21:49:00,37
+DEMO-T0202-A1,DEMO-T0202,Técnico Mec 3 · diagnóstico no local,2026-08-08 05:56:00,15
+DEMO-T0202-A2,DEMO-T0202,Técnico Mec 3 · substituição,2026-08-08 06:11:00,66
+DEMO-T0204-A1,DEMO-T0204,Técnico Elet 1 · rearme e teste programado(a),2026-08-19 09:00:00,21
+DEMO-T0205-A1,DEMO-T0205,Técnico Elet 2 · substituição programado(a),2026-08-14 14:00:00,48
+DEMO-T0206-A1,DEMO-T0206,Técnico Mec 3 · diagnóstico no local,2026-08-11 04:33:00,15
+DEMO-T0206-A2,DEMO-T0206,Técnico Mec 3 · ajuste,2026-08-11 04:48:00,94
+DEMO-T0207-A1,DEMO-T0207,"Técnico Elet 2 · início do serviço, aguardando peça",2026-08-15 14:00:00,30
+DEMO-T0208-A1,DEMO-T0208,Técnico Elet 2 · diagnóstico no local,2026-08-11 19:20:00,12
+DEMO-T0208-A2,DEMO-T0208,Técnico Elet 2 · reparo,2026-08-11 19:32:00,21
+DEMO-T0208-A3,DEMO-T0208,Técnico Mec 2 · apoio mecânico,2026-08-11 19:20:00,10
+DEMO-T0209-A1,DEMO-T0209,Técnico Mec 2 · diagnóstico no local,2026-08-12 19:40:00,15
+DEMO-T0209-A2,DEMO-T0209,Técnico Mec 2 · substituição,2026-08-12 19:55:00,123
+DEMO-T0210-A1,DEMO-T0210,Técnico Elet 3 · diagnóstico no local,2026-08-13 00:13:00,8
+DEMO-T0210-A2,DEMO-T0210,Técnico Elet 3 · ajuste,2026-08-13 00:21:00,10
+DEMO-T0211-A1,DEMO-T0211,Técnico Elet 2 · diagnóstico no local,2026-08-13 17:04:00,10
+DEMO-T0211-A2,DEMO-T0211,Técnico Elet 2 · rearme e teste,2026-08-13 17:14:00,17
+DEMO-T0212-A1,DEMO-T0212,"Técnico Mec 2 · início do serviço, aguardando peça",2026-08-17 14:00:00,30
+DEMO-T0213-A1,DEMO-T0213,Técnico Elet 1 · diagnóstico no local,2026-08-18 08:24:00,15
+DEMO-T0213-A2,DEMO-T0213,Técnico Elet 1 · ajuste,2026-08-18 08:39:00,46
+DEMO-T0213-A3,DEMO-T0213,Técnico Mec 1 · apoio mecânico,2026-08-18 08:24:00,23
+DEMO-T0214-A1,DEMO-T0214,Técnico Mec 3 · diagnóstico no local,2026-08-20 22:29:00,15
+DEMO-T0214-A2,DEMO-T0214,Técnico Mec 3 · lubrificação,2026-08-20 22:44:00,143
+DEMO-T0215-A1,DEMO-T0215,Técnico Mec 1 · diagnóstico no local,2026-08-21 09:17:00,15
+DEMO-T0215-A2,DEMO-T0215,Técnico Mec 1 · substituição,2026-08-21 09:32:00,48
+DEMO-T0216-A1,DEMO-T0216,Técnico Mec 1 · diagnóstico no local,2026-08-22 08:56:00,9
+DEMO-T0216-A2,DEMO-T0216,Técnico Mec 1 · reparo,2026-08-22 09:05:00,14
+DEMO-T0217-A1,DEMO-T0217,Técnico Mec 1 · diagnóstico no local,2026-08-24 08:25:00,15
+DEMO-T0217-A2,DEMO-T0217,Técnico Mec 1 · substituição,2026-08-24 08:40:00,63
+DEMO-T0218-A1,DEMO-T0218,Técnico Mec 1 · diagnóstico no local,2026-08-27 12:22:00,15
+DEMO-T0218-A2,DEMO-T0218,Técnico Mec 1 · rearme e teste,2026-08-27 12:37:00,51
+DEMO-T0220-A1,DEMO-T0220,Técnico Mec 3 · diagnóstico no local,2026-09-01 02:50:00,15
+DEMO-T0220-A2,DEMO-T0220,Técnico Mec 3 · substituição,2026-09-01 03:05:00,38
+DEMO-T0221-A1,DEMO-T0221,Técnico Mec 3 · diagnóstico no local,2026-09-02 23:16:00,12
+DEMO-T0221-A2,DEMO-T0221,Técnico Mec 3 · substituição,2026-09-02 23:28:00,23
+DEMO-T0222-A1,DEMO-T0222,Técnico Elet 1 · diagnóstico no local,2026-09-03 07:07:00,15
+DEMO-T0222-A2,DEMO-T0222,Técnico Elet 1 · reparo,2026-09-03 07:22:00,35
+DEMO-T0223-A1,DEMO-T0223,Técnico Mec 1 · reparo programado(a),2026-09-09 09:00:00,23
+DEMO-T0224-A1,DEMO-T0224,Técnico Mec 3 · diagnóstico no local,2026-09-07 02:21:00,8
+DEMO-T0224-A2,DEMO-T0224,Técnico Mec 3 · limpeza,2026-09-07 02:29:00,11
+DEMO-T0225-A1,DEMO-T0225,Técnico Mec 3 · diagnóstico no local,2026-09-08 04:31:00,15
+DEMO-T0225-A2,DEMO-T0225,Técnico Mec 3 · reparo,2026-09-08 04:46:00,57
+DEMO-T0226-A1,DEMO-T0226,Técnico Elet 1 · diagnóstico no local,2026-09-09 07:04:00,13
+DEMO-T0226-A2,DEMO-T0226,Técnico Elet 1 · rearme e teste,2026-09-09 07:17:00,26
+DEMO-T0227-A1,DEMO-T0227,"Técnico Mec 1 · início do serviço, aguardando peça",2026-09-14 09:00:00,30
+DEMO-T0228-A1,DEMO-T0228,Técnico Mec 1 · diagnóstico no local,2026-09-12 11:31:00,13
+DEMO-T0228-A2,DEMO-T0228,Técnico Mec 1 · substituição,2026-09-12 11:44:00,24
+DEMO-T0229-A1,DEMO-T0229,Técnico Mec 1 · rearme e teste programado(a),2026-09-26 08:00:00,124
+DEMO-T0230-A1,DEMO-T0230,Técnico Mec 3 · diagnóstico no local,2026-09-14 02:53:00,15
+DEMO-T0230-A2,DEMO-T0230,Técnico Mec 3 · limpeza,2026-09-14 03:08:00,37
+DEMO-T0231-A1,DEMO-T0231,Técnico Elet 3 · diagnóstico no local,2026-09-15 05:10:00,15
+DEMO-T0231-A2,DEMO-T0231,Técnico Elet 3 · substituição,2026-09-15 05:25:00,47
+DEMO-T0233-A1,DEMO-T0233,Técnico Mec 1 · diagnóstico no local,2026-09-18 08:30:00,15
+DEMO-T0233-A2,DEMO-T0233,Técnico Mec 1 · ajuste,2026-09-18 08:45:00,42
+DEMO-T0234-A1,DEMO-T0234,Técnico Mec 1 · diagnóstico no local,2026-09-19 13:33:00,15
+DEMO-T0234-A2,DEMO-T0234,Técnico Mec 1 · reparo,2026-09-19 13:48:00,38
+DEMO-T0235-A1,DEMO-T0235,Técnico Elet 2 · diagnóstico no local,2026-09-19 18:23:00,13
+DEMO-T0235-A2,DEMO-T0235,Técnico Elet 2 · limpeza,2026-09-19 18:36:00,25
+DEMO-T0236-A1,DEMO-T0236,Técnico Elet 2 · diagnóstico no local,2026-09-19 19:58:00,15
+DEMO-T0236-A2,DEMO-T0236,Técnico Elet 2 · substituição,2026-09-19 20:13:00,58
+DEMO-T0237-A1,DEMO-T0237,Técnico Mec 2 · diagnóstico no local,2026-09-19 20:32:00,15
+DEMO-T0237-A2,DEMO-T0237,Técnico Mec 2 · ajuste,2026-09-19 20:47:00,30
+DEMO-T0238-A1,DEMO-T0238,Técnico Elet 1 · diagnóstico no local,2026-09-23 10:58:00,14
+DEMO-T0238-A2,DEMO-T0238,Técnico Elet 1 · ajuste,2026-09-23 11:12:00,29
+DEMO-T0238-A3,DEMO-T0238,Técnico Mec 1 · apoio mecânico,2026-09-23 10:58:00,14
+DEMO-T0240-A1,DEMO-T0240,Técnico Elet 1 · diagnóstico no local,2026-09-25 10:47:00,9
+DEMO-T0240-A2,DEMO-T0240,Técnico Elet 1 · substituição,2026-09-25 10:56:00,14
+DEMO-T0241-A1,DEMO-T0241,Técnico Mec 1 · reparo programado(a),2026-09-28 09:00:00,45
+DEMO-T0242-A1,DEMO-T0242,Técnico Mec 2 · diagnóstico no local,2026-09-29 17:22:00,14
+DEMO-T0242-A2,DEMO-T0242,Técnico Mec 2 · ajuste,2026-09-29 17:36:00,29
+DEMO-T0243-A1,DEMO-T0243,Técnico Elet 1 · diagnóstico no local,2026-09-30 06:59:00,8
+DEMO-T0243-A2,DEMO-T0243,Técnico Elet 1 · ajuste,2026-09-30 07:07:00,11
+DEMO-T0245-A1,DEMO-T0245,Técnico Mec 1 · execução da melhoria,2026-05-10 10:00:00,720
+DEMO-T0246-A1,DEMO-T0246,Técnico Mec 1 · execução da melhoria,2026-05-14 10:00:00,540
+DEMO-T0248-A1,DEMO-T0248,Técnico Mec 1 · execução da melhoria,2026-06-25 10:00:00,840
+DEMO-T0249-A1,DEMO-T0249,Técnico Elet 1 · execução da melhoria,2026-07-06 10:00:00,600
+DEMO-T0250-A1,DEMO-T0250,Técnico Mec 1 · levantamento e compra de material,2026-07-02 10:00:00,90
+DEMO-T0251-A1,DEMO-T0251,Técnico Elet 1 · execução da melhoria,2026-07-22 10:00:00,240
+DEMO-T0252-A1,DEMO-T0252,Técnico Elet 1 · execução da melhoria,2026-08-15 10:00:00,960
+DEMO-T0254-A1,DEMO-T0254,Técnico Elet 1 · execução da melhoria,2026-09-07 10:00:00,660
+DEMO-T0256-A1,DEMO-T0256,Técnico Elet 1 · levantamento e compra de material,2026-09-24 10:00:00,90

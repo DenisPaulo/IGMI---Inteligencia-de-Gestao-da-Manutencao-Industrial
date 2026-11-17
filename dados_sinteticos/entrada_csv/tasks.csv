@@ -1,0 +1,7 @@
+task_id,task_short_id,task_legacy_id,equipment_id,status,description,scheduled_from,scheduled_to,done_date,is_part_of_maintenance_plan,cumulated_duration_in_minutes,estimated_stop_time
+SINT-T0001,ffff0001,ffff0001,SINT-E0001,completed,[SINTÉTICO] OS corretiva de teste 1,2026-10-01 08:00:00,2026-10-01 10:00:00,2026-10-01 10:30:00,false,120,60
+SINT-T0002,ffff0002,ffff0002,SINT-E0001,completed,[SINTÉTICO] OS preventiva de teste 2,2026-10-02 08:00:00,2026-10-02 09:00:00,2026-10-02 09:00:00,true,60,
+SINT-T0003,ffff0003,ffff0003,SINT-E0001,in_progress,[SINTÉTICO] OS corretiva de teste 3 (pendente),2026-10-05 08:00:00,2026-10-05 09:00:00,,false,0,
+SINT-T0004,ffff0004,ffff0004,SINT-E0002,canceled,[SINTÉTICO] OS corretiva de teste 4 (cancelada),2026-10-06 08:00:00,2026-10-06 09:00:00,,false,0,
+SINT-T0005,ffff0005,ffff0005,SINT-E0002,completed,[SINTÉTICO] OS corretiva de teste 5,2026-10-07 08:00:00,2026-10-07 09:00:00,2026-10-07 09:00:00,false,45,30
+SINT-T0006,ffff0006,ffff0006,SINT-E0002,completed,[SINTÉTICO] OS sem tag de teste 6,2026-10-08 08:00:00,2026-10-08 09:00:00,2026-10-08 09:00:00,false,30,

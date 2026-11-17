@@ -1,0 +1,12 @@
+{
+  "versao": "v0",
+  "nota": "Colunas por tabela, na ordem do fallback CSV. Nomes conforme o Plano (rev. 13/10); confirmar contra o datamodel na 1a carga real. Coluna faltando ou renomeada bloqueia a carga (QC13, ex-QD13); coluna nova no fim e ignorada com alerta.",
+  "chaves": {"tasks": ["task_id"], "activities": ["activity_id"], "equipments": ["equipment_id"], "tasks_tags": ["task_id", "tag_id"], "tags": ["tag_id"]},
+  "tabelas": {
+    "tasks": ["task_id", "task_short_id", "task_legacy_id", "equipment_id", "status", "description", "scheduled_from", "scheduled_to", "done_date", "is_part_of_maintenance_plan", "cumulated_duration_in_minutes", "estimated_stop_time"],
+    "activities": ["activity_id", "task_id", "name", "started_at", "duration_in_minutes"],
+    "equipments": ["equipment_id", "name", "cost_center"],
+    "tasks_tags": ["task_id", "tag_id"],
+    "tags": ["tag_id", "tag_code", "name"]
+  }
+}

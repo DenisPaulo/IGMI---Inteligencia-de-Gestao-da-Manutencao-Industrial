@@ -1,0 +1,7 @@
+funcao_id,funcao,especialidade_id,turno
+TMEC1,Técnico Mec 1,MEC,A
+TMEC2,Técnico Mec 2,MEC,B
+TMEC3,Técnico Mec 3,MEC,C
+TELE1,Técnico Elet 1,ELE,A
+TELE2,Técnico Elet 2,ELE,B
+TELE3,Técnico Elet 3,ELE,C

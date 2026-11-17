@@ -1,0 +1,41 @@
+{
+  "status": "validação atual, lida por pmb/parada.py; a v2 (contrato/parada_v2.schema.json) é a proposta seguinte",
+  "versao": "v0",
+  "colunas": [
+    {
+      "nome": "os_ref",
+      "tipo": "texto",
+      "obrigatoria": true,
+      "regex": "^[0-9a-f]{8}$",
+      "nota": "lido como texto (all_varchar): 11112222 continua 11112222"
+    },
+    {
+      "nome": "hora_lancada",
+      "tipo": "decimal(6,2)",
+      "unidade": "horas decimais",
+      "obrigatoria": true,
+      "regra": "> 0; separador decimal ponto"
+    },
+    {
+      "nome": "data_parada",
+      "tipo": "date",
+      "obrigatoria": false,
+      "formato": "AAAA-MM-DD",
+      "nota": "só calendário, fora do join"
+    }
+  ],
+  "gerados": [
+    "_arquivo",
+    "_linha",
+    "_sha256",
+    "_loaded_at",
+    "data_carga"
+  ],
+  "carga": {
+    "modo": "cada arquivo substitui o anterior na silver",
+    "particao": "landing_parada/data_carga=AAAA-MM-DD/ (imutável, fora do repo)",
+    "mesmo_sha256": "não faz nada",
+    "arquivo_menor_que_anterior": "bloqueia"
+  },
+  "hora_parada_min": "nula na fato_os até o contrato ser confirmado pela produção"
+}

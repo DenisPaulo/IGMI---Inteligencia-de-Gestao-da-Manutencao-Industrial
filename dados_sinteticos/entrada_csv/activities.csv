@@ -1,0 +1,6 @@
+activity_id,task_id,name,started_at,duration_in_minutes
+SINT-A0001,SINT-T0001,[SINTÉTICO] execução de teste 1a,2026-10-01 08:10:00,90
+SINT-A0002,SINT-T0001,[SINTÉTICO] execução de teste 1b,2026-10-01 09:45:00,30
+SINT-A0003,SINT-T0002,[SINTÉTICO] execução de teste 2,2026-10-02 08:00:00,60
+SINT-A0005,SINT-T0005,[SINTÉTICO] execução de teste 5,2026-10-07 08:05:00,45
+SINT-A0006,SINT-T0006,[SINTÉTICO] execução de teste 6,2026-10-08 08:05:00,30

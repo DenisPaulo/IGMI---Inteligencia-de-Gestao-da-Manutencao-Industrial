@@ -1,0 +1,2 @@
+# Dados sintéticos versionados: comparados byte a byte com a saída do simulador (LF) em tests/test_demo.py; sem conversão para CRLF no Windows
+dados_sinteticos/** text eol=lf

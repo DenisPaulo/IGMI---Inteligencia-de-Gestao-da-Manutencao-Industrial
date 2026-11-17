@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Monitor de OS e tarefas — demo (dados sintéticos)</title>
+<style>
+:root{
+  --blue:#00548E; --blue-d:#003B66; --teal:#007C89; --teal-l:#E0F1F3; --blue-l:#E6F0F7;
+  --bg:#F3F6F9; --card:#FFFFFF; --line:#D5DDE5; --txt:#1B2A38; --muted:#4F6071;
+  --warn-bg:#FFF4D6; --warn-bd:#E0A800; --warn-tx:#6B4A00; --ok:#1E7B46; --ok-bg:#E4F4EA; --bad:#B3261E; --bad-bg:#FBE9E7;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--txt);font:14px/1.45 "Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;overflow-wrap:anywhere}
+:focus-visible{outline:3px solid #FFB000;outline-offset:2px;border-radius:3px}
+.skip{position:absolute;left:-999px;top:0;background:#fff;padding:8px 12px;z-index:100;border:2px solid var(--blue)}
+.skip:focus{left:8px;top:8px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px}
+.sint{background:var(--warn-bg);border-bottom:2px solid var(--warn-bd);color:var(--warn-tx);font-weight:800;font-size:13px;text-align:center;padding:7px 12px;letter-spacing:.2px}
+header.top{background:#fff;border-top:6px solid var(--blue);border-bottom:1px solid var(--line)}
+.hd{display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center;justify-content:space-between;padding:12px 0}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.logo{flex:none;width:42px;height:42px;border-radius:8px;background:linear-gradient(135deg,var(--blue),var(--teal));color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center}
+h1{font-size:clamp(17px,2.2vw,21px);margin:0;color:var(--blue-d);line-height:1.2}
+.sub{color:var(--muted);font-size:12.5px;margin-top:2px}
+.meta{font-size:12px;color:var(--muted)}
+nav.sec{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+nav.sec ul{list-style:none;margin:0;padding:0;display:flex;gap:2px;overflow-x:auto;scrollbar-width:thin}
+nav.sec a{display:block;padding:9px 12px;text-decoration:none;color:var(--txt);font-size:13px;font-weight:600;border-bottom:3px solid transparent;white-space:nowrap}
+nav.sec a:hover,nav.sec a:focus-visible,nav.sec a.on{border-bottom-color:var(--teal);background:var(--teal-l)}
+main{padding:18px 0 30px}
+section{margin:0 0 26px;scroll-margin-top:50px}
+body.so section{display:none} body.so section.on{display:block}
+h2{font-size:18px;margin:0 0 4px;color:var(--blue-d)}
+h2 .n{display:inline-block;background:var(--teal);color:#fff;border-radius:50%;width:24px;height:24px;line-height:24px;text-align:center;font-size:13px;margin-right:8px}
+h3{margin:0 0 6px;font-size:14.5px;color:var(--blue-d)}
+.lead{margin:0 0 10px;color:var(--muted);font-size:13.5px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;box-shadow:0 1px 2px rgba(0,40,70,.05);min-width:0}
+.grid{display:grid;gap:14px} .grid>*{min-width:0} .mt{margin-top:14px}
+.kpis{grid-template-columns:repeat(5,minmax(0,1fr))}
+.kpis[data-k4]{grid-template-columns:repeat(4,minmax(0,1fr))}
+.kpi{border-top:4px solid var(--blue);padding:12px 14px;display:flex;flex-direction:column;gap:2px}
+.kpi.t2{border-top-color:var(--teal)} .kpi.vil{border-top-color:#E8730C} .kpi.bad{border-top-color:var(--bad)} .kpi.ok{border-top-color:var(--ok)}
+.kpi .lb{font-size:11px;text-transform:uppercase;letter-spacing:.4px;color:var(--muted);font-weight:700}
+.kpi .v{font-size:clamp(20px,2vw,25px);font-weight:800;color:var(--blue-d);line-height:1.15}
+.kpi .v small{font-size:.55em;font-weight:600;color:var(--muted)}
+.kpi .nt{font-size:12px;color:var(--muted)}
+.pill{display:inline-block;padding:1px 8px;border-radius:999px;font-size:11px;font-weight:700;border:1px solid transparent;white-space:nowrap}
+.pill.ok{background:var(--ok-bg);color:var(--ok);border-color:#A9D7BA}
+.pill.val{background:var(--warn-bg);color:var(--warn-tx);border-color:var(--warn-bd)}
+.pill.bad{background:var(--bad-bg);color:var(--bad);border-color:#EBB5AE}
+.pill.gray{background:#EEF2F5;color:#3A4A59;border-color:var(--line)}
+.pill.rel{background:var(--blue-l);color:var(--blue-d);border-color:#A9C6DE}
+.two{grid-template-columns:minmax(0,2fr) minmax(0,1fr)} .two-eq{grid-template-columns:repeat(2,minmax(0,1fr))}
+.chart{width:100%;height:380px} .chart.sm{height:290px} .chart.tl{height:430px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;margin:8px 0 0} .legend span{white-space:nowrap}
+.dot{display:inline-block;width:11px;height:11px;border-radius:3px;vertical-align:-1px;margin-right:5px}
+.seg{display:inline-flex;border:1.5px solid var(--blue);border-radius:8px;overflow:hidden;background:#fff}
+.seg button{border:0;background:#fff;padding:6px 12px;font:inherit;font-size:13px;color:var(--blue-d);cursor:pointer;font-weight:600}
+.seg button+button{border-left:1.5px solid var(--blue)}
+.seg button[aria-pressed=true]{background:var(--blue);color:#fff}
+.tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 10px}
+select{font:inherit;font-size:13px;padding:6px 9px;border:1.5px solid #8EA3B5;border-radius:6px;background:#fff;color:var(--txt);max-width:100%}
+.mono{font-family:Consolas,"DejaVu Sans Mono",monospace;font-size:12px;white-space:nowrap}
+table{border-collapse:collapse;width:100%;font-size:12.5px;table-layout:fixed}
+th,td{padding:4px 7px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;overflow-wrap:anywhere;line-height:1.35}
+thead th{background:var(--blue-l);color:var(--blue-d);font-size:11.5px;font-weight:700}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tw{width:100%;overflow:hidden;border:1px solid var(--line);border-radius:8px;background:#fff} .tw table{margin:0} .tw tbody tr:last-child td{border-bottom:0}
+.c-os{width:86px}.c-dt{width:96px}.c-n{width:64px}.c-h{width:76px}.c-b{width:96px}.c-ln{width:56px}.c-tp{width:82px}.c-md{width:200px}
+.callout{border-left:5px solid var(--warn-bd);background:var(--warn-bg);color:var(--warn-tx);padding:9px 13px;border-radius:6px;font-size:13px;margin:0 0 10px}
+.callout.info{border-left-color:var(--teal);background:var(--teal-l);color:#073C42}
+footer{color:var(--muted);font-size:12px;padding:6px 0 28px}
+@media (max-width:1200px){.kpis{grid-template-columns:repeat(3,minmax(0,1fr))}.kpis[data-k4]{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:980px){.two,.two-eq{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:720px){
+  .wrap{padding:0 12px} .kpis,.kpis[data-k4]{grid-template-columns:repeat(2,minmax(0,1fr))} .kpi .v{font-size:19px}
+  .chart{height:320px} .chart.tl{height:460px} .chart.sm{height:270px}
+  table.rt,table.rt tbody,table.rt tr,table.rt td{display:block;width:100%}
+  table.rt thead,table.rt colgroup{display:none}
+  table.rt tr{padding:6px 8px;border-bottom:1px solid var(--line)}
+  table.rt td{border:0;padding:1px 0;display:flex;gap:8px;text-align:left}
+  table.rt td::before{content:attr(data-l);flex:0 0 86px;color:var(--muted);font-size:11px;font-weight:700;text-transform:uppercase;padding-top:1px}
+  table.rt td.num{white-space:normal}
+}
+@media print{
+  @page{size:A4 landscape;margin:7mm}
+  body{font-size:10px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  nav.sec,.skip,.tools,.seg{display:none!important}
+  .card{box-shadow:none;break-inside:avoid;padding:7px 9px}
+  .chart{height:230px}.chart.sm{height:190px}.chart.tl{height:300px}
+  section{break-before:page}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<div class="sint" id="faixa">%%FAIXA%%</div>
+<header class="top"><div class="wrap hd">
+  <div class="brand"><div class="logo" aria-hidden="true">OS</div>
+    <div><h1>Monitor de OS e tarefas — Planta Demo</h1>
+    <div class="sub" id="hd-sub"></div></div></div>
+  <div class="meta">Exportação do conector: <span id="gerado"></span></div>
+</div></header>
+<nav class="sec" aria-label="Seções do dashboard"><div class="wrap"><ul>%%NAV%%</ul></div></nav>
+
+<main id="conteudo" class="wrap">
+
+<section id="geral" aria-labelledby="h-geral">
+  <h2 id="h-geral"><span class="n">1</span>Visão geral da planta</h2>
+  <p class="lead" id="geral-lead"></p>
+  <div class="grid kpis" id="kpi-geral"></div>
+  <div class="grid two-eq mt">
+    <div class="card"><h3>Falhas por mês e linha</h3><div id="ch-mes-falhas" class="chart sm" role="img" aria-label="Falhas por mês e linha"></div></div>
+    <div class="card"><h3>Horas de parada por mês e linha</h3><div id="ch-mes-parada" class="chart sm" role="img" aria-label="Horas de parada por mês"></div></div>
+  </div>
+  <div class="card mt"><h3>Qualidade do dado</h3><div class="tw"><table id="tb-qual" class="rt"></table></div>
+  <p class="sub" style="margin:6px 0 0">Referências de mercado (indicativas): % reativa &lt; 20 %, PM compliance &gt; 90 %, backlog 2–4 semanas, aderência 40–90 %. Fórmulas e fontes em docs/demo/dicionario_kpis.md.</p></div>
+</section>
+
+<section id="linha" aria-labelledby="h-linha">
+  <h2 id="h-linha"><span class="n">2</span>Linha: LT3 × LT56</h2>
+  <p class="lead">Mesmas fórmulas nas duas linhas; a planta é a soma das linhas (check QD19).</p>
+  <div class="grid two">
+    <div class="card"><div class="tw"><table id="tb-linhas" class="rt"></table></div></div>
+    <div class="card"><h3>% reativa por mês</h3><div id="ch-reativa" class="chart sm" role="img" aria-label="Percentual reativo por mês"></div></div>
+  </div>
+  <div class="card mt"><h3>Disponibilidade mensal</h3><div id="ch-disp" class="chart sm" role="img" aria-label="Disponibilidade mensal por linha"></div></div>
+</section>
+
+<section id="timeline" aria-labelledby="h-tl">
+  <h2 id="h-tl"><span class="n">3</span>Linha do tempo das OS</h2>
+  <p class="lead">Cada ponto é uma OS, na faixa do seu equipamento. Corretivas são círculos (tamanho = minutos de parada); preventivas e preditivas são triângulos; melhorias são losangos. Linhas vermelhas = alertas de reincidência.</p>
+  <div class="tools"><span class="sub">Linha:</span><span class="seg" role="group" aria-label="Linha" id="seg-tl-linha"></span>
+    <span class="sub">Cor por:</span><span class="seg" role="group" aria-label="Cor" id="seg-tl-cor"></span></div>
+  <div class="card"><div id="ch-tl" class="chart tl" role="img" aria-label="Linha do tempo das OS por equipamento"></div><div class="legend" id="leg-tl"></div></div>
+</section>
+
+<section id="equipamento" aria-labelledby="h-eq">
+  <h2 id="h-eq"><span class="n">4</span>Equipamento</h2>
+  <p class="lead">Falhas de subconjuntos sobem para o equipamento pai. MTBF = (tempo programado − parada) ÷ falhas; MTTR = parada ÷ falhas com parada.</p>
+  <div class="grid two-eq">
+    <div class="card"><h3>Falhas por equipamento (cor = criticidade)</h3><div id="ch-eq-falhas" class="chart" role="img" aria-label="Falhas por equipamento"></div></div>
+    <div class="card"><h3>MTBF × MTTR</h3><div id="ch-eq-mtbf" class="chart" role="img" aria-label="Dispersão MTBF por MTTR"></div><p class="sub" style="margin:4px 0 0">Melhor = à direita (MTBF alto) e embaixo (MTTR baixo).</p></div>
+  </div>
+  <div class="card mt"><div class="tools"><h3 style="margin:0">Últimas OS do equipamento</h3><select id="sel-eq" aria-label="Equipamento"></select></div><div class="tw"><table id="tb-eq-os" class="rt"></table></div></div>
+  <div class="card mt"><h3>Todos os equipamentos</h3><div class="tw"><table id="tb-equip" class="rt"></table></div></div>
+</section>
+
+<section id="backlog" aria-labelledby="h-bk">
+  <h2 id="h-bk"><span class="n">5</span>Backlog &amp; preventivas</h2>
+  <p class="lead" id="bk-lead"></p>
+  <div class="grid kpis" data-k4 id="kpi-bk"></div>
+  <div class="grid two-eq mt">
+    <div class="card"><h3>PM compliance por mês</h3><div id="ch-pm" class="chart sm" role="img" aria-label="PM compliance por mês"></div></div>
+    <div class="card"><h3>Aderência semanal à programação (planta)</h3><div id="ch-ader" class="chart sm" role="img" aria-label="Aderência semanal"></div></div>
+  </div>
+  <div class="card mt"><h3>OS abertas (mais antigas primeiro)</h3><div class="tw"><table id="tb-backlog" class="rt"></table></div></div>
+</section>
+
+<section id="alertas" aria-labelledby="h-al">
+  <h2 id="h-al"><span class="n">6</span>Alertas de reincidência</h2>
+  <div class="callout info" id="al-regra"></div>
+  <div class="card"><div class="tw"><table id="tb-alertas" class="rt"></table></div></div>
+</section>
+
+<section id="pareto" aria-labelledby="h-par">
+  <h2 id="h-par"><span class="n">7</span>Pareto por modo de falha</h2>
+  <div class="tools"><span class="sub">Escopo:</span><span class="seg" role="group" aria-label="Escopo do Pareto" id="seg-par"></span></div>
+  <div class="card"><div id="ch-pareto" class="chart" role="img" aria-label="Pareto por modo de falha"></div><p class="sub" id="par-nota" style="margin:4px 0 0"></p></div>
+  <div class="card mt"><div class="tw"><table id="tb-pareto" class="rt"></table></div></div>
+</section>
+</main>
+<footer class="wrap" id="rodape"></footer>
+<script id="dados" type="application/json">%%DADOS%%</script>
+<script>%%ECHARTS%%</script>
+<script>
+(function(){
+'use strict';
+const D = JSON.parse(document.getElementById('dados').textContent);
+const P = D.param;
+const nf2 = new Intl.NumberFormat('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+const nf1 = new Intl.NumberFormat('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1});
+const nf0 = new Intl.NumberFormat('pt-BR',{maximumFractionDigits:0});
+const fp = (v,c) => v==null?'—':(c===2?nf2:nf1).format(v*100)+' %';
+const fr = v => v==null?'—':'R$ '+nf2.format(v);
+const dmy = s => s? s.slice(0,10).split('-').reverse().join('/') : '—';
+const esc = s => String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const $ = id => document.getElementById(id);
+const LC = {LT3:'#00548E', LT56:'#E8730C'};
+const TC = {'CORR-EMG':'#B3261E','CORR-PLN':'#E8730C','PREV':'#007C89','PRED':'#2E9E5B','MELH':'#7E57A8'};
+const TN = {'CORR-EMG':'Corretiva emergencial','CORR-PLN':'Corretiva planejada','PREV':'Preventiva','PRED':'Preditiva/inspeção','MELH':'Melhoria'};
+const MPAL = ['#E8730C','#2E9E5B','#1E88C8','#7E57A8','#C79A12','#00838F','#C0392B','#6C7A89','#A0522D','#3F51B5','#8BC34A','#D81B60'];
+const L = Object.fromEntries(D.linha.map(r=>[r.escopo,r]));
+const st = {tl:'LT3', cor:'tipo', par:'PLANTA'};
+const charts = {};
+function chart(id){ if(!charts[id]){ charts[id]=echarts.init($(id),null,{renderer:'canvas'}); } return charts[id]; }
+const narrow = id => $(id).clientWidth < 560;
+const dotc = c => '<span class="dot" style="background:'+c+'"></span>';
+function tbl(id, heads, rows){
+  $(id).innerHTML='<colgroup>'+heads.map(h=>'<col'+(h[1]?' class="'+h[1]+'"':'')+'>').join('')+'</colgroup><thead><tr>'+heads.map(h=>'<th'+(h[2]?' class="'+h[2]+'"':'')+'>'+h[0]+'</th>').join('')+'</tr></thead><tbody>'+
+    rows.map(r=>'<tr>'+r.map((c,i)=>'<td data-l="'+esc(heads[i][0])+'"'+(heads[i][2]?' class="'+heads[i][2]+'"':'')+'>'+c+'</td>').join('')+'</tr>').join('')+'</tbody>';
+}
+const kpiHtml = k => k.map(x=>'<div class="card kpi '+(x[3]||'')+'"><div class="lb">'+x[0]+'</div><div class="v">'+x[1]+'</div><div class="nt">'+x[2]+'</div></div>').join('');
+const meses = [...new Set(D.mensal.map(r=>r.mes))];
+const mesLab = m => m.slice(5)+'/'+m.slice(2,4);
+const serie = (campo, mult, tipo) => ['LT3','LT56'].map(l=>({name:l,type:tipo||'line',barMaxWidth:28,smooth:tipo?false:.3,symbolSize:7,itemStyle:{color:LC[l]},lineStyle:{width:2.5},
+  data:meses.map(m=>{const r=D.mensal.find(x=>x.mes===m&&x.linha_id===l); return r&&r[campo]!=null?+(r[campo]*mult).toFixed(2):null;})}));
+const base = id => ({aria:{enabled:true},animation:false,tooltip:{trigger:'axis',confine:true},legend:{top:0,right:0,textStyle:{fontSize:11}},
+  grid:narrow(id)?{left:38,right:12,top:30,bottom:28}:{left:50,right:20,top:32,bottom:30}});
+const eixoMes = {type:'category',data:meses.map(mesLab),axisLabel:{color:'#1B2A38',fontSize:11}};
+const metaLine = (v,t) => ({silent:true,symbol:'none',lineStyle:{type:'dashed',color:'#1E7B46'},label:{formatter:t,position:'insideEndTop',color:'#1E7B46',fontWeight:700,fontSize:11},data:[{yAxis:v}]});
+
+/* ---------- 1. Visão geral ---------- */
+function geral(){
+  const p=L.PLANTA;
+  $('geral-lead').textContent=p.os_total+' OS (sem canceladas) de '+dmy(P.periodo_inicio)+' a '+dmy(P.periodo_fim)+' em 2 linhas · '+p.falhas+' falhas · '+D.alertas.length+' alertas de reincidência.';
+  $('kpi-geral').innerHTML=kpiHtml([
+    ['Disponibilidade',fp(p.disponibilidade,2),nf1.format(p.parada_h)+' h de parada em '+nf0.format(p.tempo_programado_h)+' h','ok'],
+    ['MTBF',nf1.format(p.mtbf_h)+'&nbsp;<small>h</small>',p.falhas+' falhas no período',''],
+    ['MTTR',nf2.format(p.mttr_h)+'&nbsp;<small>h</small>',p.falhas_com_parada+' falhas com parada',''],
+    ['Custo de parada',fr(p.custo_parada),'parada × custo/h fictício','vil'],
+    ['OS abertas',p.os_abertas,p.os_envelhecidas+' há mais de '+P.os_envelhecida_dias+' dias','t2'],
+    ['% planejada',fp(p.pct_planejada),'horas de técnico · ref. ≥ 85 %',p.pct_planejada>=.85?'ok':'bad'],
+    ['% reativa',fp(p.pct_reativa),'ref. < 20 %',p.pct_reativa<.2?'ok':'bad'],
+    ['PM compliance',fp(p.pm_compliance),'no prazo ÷ vencidas · ref. > 90 %',p.pm_compliance>.9?'ok':'bad'],
+    ['Aderência',fp(p.aderencia),'programado × feito na semana · 40–90 %',p.aderencia>=.4&&p.aderencia<=.9?'ok':'bad'],
+    ['Backlog',D.backlog_esp.map(b=>b.especialidade_id+'&nbsp;'+nf1.format(b.backlog_semanas)).join(' · ')+'&nbsp;<small>sem</small>','horas abertas ÷ capacidade semanal','t2']]);
+  chart('ch-mes-falhas').setOption(Object.assign(base('ch-mes-falhas'),{xAxis:eixoMes,yAxis:{type:'value',minInterval:1},series:serie('falhas',1,'bar')}),true);
+  chart('ch-mes-parada').setOption(Object.assign(base('ch-mes-parada'),{xAxis:eixoMes,yAxis:{type:'value',name:'h'},series:serie('parada_h',1)}),true);
+  tbl('tb-qual',[['Indicador',''],['Ocorrências','c-n','num'],['Base','c-n','num'],['%','c-n','num']],
+    D.qualidade.map(q=>[esc(q.indicador),q.n,q.base,fp(q.base?q.n/q.base:0)]));
+}
+
+/* ---------- 2. Linha ---------- */
+function linha(){
+  const ks=[['os_total','OS no período',v=>v],['falhas','Falhas',v=>v],['parada_h','Parada (h)',v=>nf1.format(v)],['disponibilidade','Disponibilidade',v=>fp(v,2)],
+    ['mtbf_h','MTBF (h)',v=>nf1.format(v)],['mttr_h','MTTR (h)',v=>nf2.format(v)],['pct_planejada','% planejada',fp],['pct_reativa','% reativa',fp],
+    ['pm_compliance','PM compliance',fp],['aderencia','Aderência',fp],['custo_parada','Custo de parada',fr],['os_abertas','OS abertas',v=>v],['os_envelhecidas','OS envelhecidas',v=>v]];
+  tbl('tb-linhas',[['Indicador',''],['LT3','c-b','num'],['LT56','c-b','num'],['Planta','c-b','num']],ks.map(([k,t,f])=>[t,f(L.LT3[k]),f(L.LT56[k]),f(L.PLANTA[k])]));
+  const r=Object.assign(base('ch-reativa'),{xAxis:eixoMes,yAxis:{type:'value',max:100,axisLabel:{formatter:'{value}%'}},series:serie('pct_reativa',100)});
+  r.series[0].markLine=metaLine(20,'ref. 20 %'); chart('ch-reativa').setOption(r,true);
+  chart('ch-disp').setOption(Object.assign(base('ch-disp'),{xAxis:eixoMes,yAxis:{type:'value',min:96,max:100,axisLabel:{formatter:'{value}%'}},series:serie('disponibilidade',100)}),true);
+}
+
+/* ---------- 3. Linha do tempo ---------- */
+function timeline(){
+  const nw=narrow('ch-tl'), lanes=D.equip.filter(e=>e.linha_id===st.tl);
+  const ids=lanes.map(e=>e.equipment_id), T=s=>Date.parse(s.slice(0,10)+'T12:00:00Z');
+  const x0=T(P.periodo_inicio)-3*864e5, x1=T(P.periodo_fim)+3*864e5;
+  const ticks=meses.map(m=>T(m+'-01'));
+  const modos=[...new Set(D.os.filter(o=>o.modo_id&&o.linha_id===st.tl).map(o=>o.modo_id))].sort();
+  const MCOR=Object.fromEntries(modos.map((m,i)=>[m,MPAL[i%MPAL.length]]));
+  const cor=o=>st.cor==='tipo'?TC[o.tipo_id]:(o.modo_id?MCOR[o.modo_id]:'#A7B0B9');
+  const sym={'CORR-EMG':'circle','CORR-PLN':'circle','PREV':'triangle','PRED':'triangle','MELH':'diamond'};
+  const data=D.os.filter(o=>o.linha_id===st.tl&&ids.includes(o.equipamento_n2)).map(o=>({value:[T(o.aberta_em),ids.indexOf(o.equipamento_n2)],o,
+    symbol:sym[o.tipo_id],symbolSize:o.tipo_id==='CORR-EMG'?8+5*Math.sqrt(o.parada_min/10):(o.tipo_id==='MELH'?12:9),
+    itemStyle:{color:cor(o),opacity:o.tipo_id==='PREV'||o.tipo_id==='PRED'?.75:.92,borderColor:'#fff',borderWidth:1}}));
+  const al=D.alertas.filter(a=>a.linha_id===st.tl);
+  const curto=e=>e.equipment_id.split('-')[1];
+  chart('ch-tl').setOption({aria:{enabled:true},animation:false,grid:{left:nw?44:200,right:18,top:30,bottom:34},
+    tooltip:{trigger:'item',confine:true,formatter:p=>{if(p.componentType==='markLine') return esc(p.name); const o=p.data.o;
+      return '<b class="mono">'+o.task_short_id+'</b> · '+dmy(o.aberta_em)+'<br>'+dotc(TC[o.tipo_id])+TN[o.tipo_id]+(o.modo_id?' · '+esc(o.modo_id):'')+'<br>'+esc(o.descricao)+(o.parada_min?'<br>parada: '+o.parada_min+' min':'')+'<br>status: '+o.status;}},
+    xAxis:{type:'value',min:x0,max:x1,axisLine:{lineStyle:{color:'#8EA3B5'}},axisTick:{customValues:ticks},splitLine:{show:true,customValues:ticks,lineStyle:{color:'#D5DDE5'}},
+      axisLabel:{customValues:ticks,color:'#1B2A38',fontSize:11,formatter:v=>{const d=new Date(v);return '01/'+String(d.getUTCMonth()+1).padStart(2,'0');}}},
+    yAxis:{type:'category',inverse:true,data:lanes.map(e=>nw?curto(e):e.nome+' ('+e.criticidade+')'),axisTick:{show:false},axisLine:{show:false},splitLine:{show:true,lineStyle:{color:'#EEF2F5'}},
+      axisLabel:{width:nw?40:190,overflow:nw?'truncate':'break',fontSize:11.5,color:'#1B2A38'}},
+    series:[{type:'scatter',data,z:3,
+      markArea:{silent:true,data:meses.filter((m,i)=>i%2===0).map(m=>{const a=T(m+'-01'),d=new Date(a);d.setUTCMonth(d.getUTCMonth()+1);return [{xAxis:a,itemStyle:{color:'rgba(0,84,142,.05)'}},{xAxis:d.getTime()}];})},
+      markLine:{silent:false,symbol:'none',data:al.map((a,i)=>({name:'Alerta de reincidência '+dmy(a.disparado_em)+': '+a.equipamento_nome+' · '+a.modo_nome+' ('+a.ocorrencias+'× em '+a.janela_dias+' dias)',xAxis:T(a.disparado_em),
+        lineStyle:{type:'dashed',color:'#B3261E',width:1.5},label:{formatter:'⚠ '+a.modo_id,position:i%2?'end':'start',color:'#B3261E',fontWeight:700,fontSize:10.5,backgroundColor:'#fff',padding:[1,3]}}))}}]},true);
+  const n=data.length, leg=st.cor==='tipo'?Object.keys(TC).map(k=>'<span>'+dotc(TC[k])+TN[k]+' · '+data.filter(d=>d.o.tipo_id===k).length+'</span>').join('')
+    : modos.map(m=>'<span>'+dotc(MCOR[m])+m+'</span>').join('')+'<span>'+dotc('#A7B0B9')+'sem modo (preventiva/melhoria)</span>';
+  $('leg-tl').innerHTML=leg+'<span>● corretiva (tamanho = parada)</span><span>▲ preventiva/preditiva</span><span>◆ melhoria</span><span style="color:#B3261E">┆ alerta de reincidência ('+al.length+')</span>';
+  $('ch-tl').setAttribute('aria-label','Linha do tempo de '+n+' OS da linha '+st.tl+' por equipamento, com '+al.length+' alertas de reincidência');
+}
+
+/* ---------- 4. Equipamento ---------- */
+function equipamento(){
+  const eq=D.equip, nw=narrow('ch-eq-falhas'), CR={A:'#B3261E',B:'#E0A800',C:'#8A97A4'};
+  const nome=e=>nw?e.equipment_id:e.nome.replace('Transportador','Transp.').replace('Robô de reagrupagem','Robô');
+  chart('ch-eq-falhas').setOption({aria:{enabled:true},animation:false,tooltip:{trigger:'axis',axisPointer:{type:'shadow'},confine:true},grid:{left:nw?86:150,right:30,top:10,bottom:24},
+    xAxis:{type:'value',minInterval:1},yAxis:{type:'category',inverse:true,data:eq.map(nome),axisLabel:{fontSize:nw?9.5:11,color:'#1B2A38'}},
+    series:[{type:'bar',barMaxWidth:16,data:eq.map(e=>({value:e.falhas,itemStyle:{color:CR[e.criticidade]}})),label:{show:true,position:'right',fontSize:10.5}}]},true);
+  chart('ch-eq-mtbf').setOption({aria:{enabled:true},animation:false,legend:{top:0,right:0},grid:{left:48,right:24,top:30,bottom:36},
+    tooltip:{trigger:'item',confine:true,formatter:p=>esc(p.data[2])+'<br>MTBF '+nf1.format(p.data[0])+' h · MTTR '+nf2.format(p.data[1])+' h'},
+    xAxis:{type:'log',name:'MTBF h (log)',nameLocation:'middle',nameGap:24},yAxis:{type:'value',name:'MTTR h'},
+    series:['LT3','LT56'].map(l=>({name:l,type:'scatter',symbolSize:13,itemStyle:{color:LC[l],borderColor:'#fff',borderWidth:1},data:eq.filter(e=>e.linha_id===l&&e.mtbf_h!=null).map(e=>[e.mtbf_h,e.mttr_h,e.nome])}))},true);
+  tbl('tb-equip',[['Equipamento',''],['Linha','c-ln'],['Crit.','c-ln'],['Falhas','c-n','num'],['Parada (h)','c-n','num'],['MTBF (h)','c-h','num'],['MTTR (h)','c-n','num'],['Disponib.','c-h','num'],['Custo','c-b','num']],
+    eq.map(e=>[esc(e.nome),e.linha_id,'<span class="pill '+(e.criticidade==='A'?'bad':e.criticidade==='B'?'val':'gray')+'">'+e.criticidade+'</span>',e.falhas,nf1.format(e.parada_h),e.mtbf_h==null?'—':nf1.format(e.mtbf_h),e.mttr_h==null?'—':nf2.format(e.mttr_h),fp(e.disponibilidade,2),fr(e.custo_parada)]));
+  eqOS();
+}
+function eqOS(){
+  const os=D.os.filter(o=>o.equipamento_n2===$('sel-eq').value).slice(-12).reverse();
+  tbl('tb-eq-os',[['OS','c-os'],['Aberta em','c-dt'],['Tipo','c-tp'],['Modo','c-tp'],['Status','c-tp'],['Parada','c-n','num'],['Descrição','']],
+    os.map(o=>['<span class="mono">'+o.task_short_id+'</span>',dmy(o.aberta_em),'<span class="dot" style="background:'+TC[o.tipo_id]+'"></span>'+o.tipo_id,o.modo_id||'—',o.status,o.parada_min?o.parada_min+' min':'—',esc(o.descricao)]));
+}
+
+/* ---------- 5. Backlog & preventivas ---------- */
+function backlog(){
+  const p=L.PLANTA;
+  $('bk-lead').textContent=p.os_abertas+' OS abertas na exportação; backlog = horas estimadas restantes ÷ horas por semana disponíveis para backlog em cada especialidade.';
+  $('kpi-bk').innerHTML=kpiHtml(D.backlog_esp.map(b=>['Backlog '+b.nome,nf1.format(b.backlog_semanas)+'&nbsp;<small>semanas</small>',nf1.format(b.horas_backlog)+' h ÷ '+b.capacidade_semana_h+' h/semana · '+b.os_abertas+' OS',b.backlog_semanas>4?'bad':'t2'])
+    .concat([['PM compliance',fp(p.pm_compliance),'ref. > 90 %',p.pm_compliance>.9?'ok':'bad'],['Aderência',fp(p.aderencia),'faixa saudável 40–90 %','ok']]));
+  const pmMes=[...new Set(D.pm.map(r=>r.mes))];
+  const pm=Object.assign(base('ch-pm'),{xAxis:{type:'category',data:pmMes.map(mesLab)},yAxis:{type:'value',max:100,axisLabel:{formatter:'{value}%'}},
+    series:['LT3','LT56'].map(l=>({name:l,type:'bar',barMaxWidth:24,itemStyle:{color:LC[l]},data:pmMes.map(m=>{const r=D.pm.find(x=>x.mes===m&&x.escopo===l);return r&&r.pm_compliance!=null?+(r.pm_compliance*100).toFixed(1):null;})}))});
+  pm.series[0].markLine=metaLine(90,'ref. 90 %'); chart('ch-pm').setOption(pm,true);
+  const ad=D.aderencia.filter(a=>a.escopo==='PLANTA');
+  chart('ch-ader').setOption(Object.assign(base('ch-ader'),{legend:{show:false},xAxis:{type:'category',data:ad.map(a=>dmy(a.semana).slice(0,5)),axisLabel:{fontSize:10}},yAxis:{type:'value',max:100,axisLabel:{formatter:'{value}%'}},
+    series:[{type:'bar',data:ad.map(a=>({value:+(a.aderencia*100).toFixed(1),itemStyle:{color:a.faixa==='saudável'?'#007C89':'#E0A800'}})),
+      markArea:{silent:true,itemStyle:{color:'rgba(30,123,70,.08)'},data:[[{yAxis:+P.aderencia_min*100},{yAxis:+P.aderencia_max*100}]]}}]}),true);
+  tbl('tb-backlog',[['OS','c-os'],['Linha','c-ln'],['Equipamento','c-b'],['Esp.','c-ln'],['Tipo','c-tp'],['Status','c-tp'],['Aberta em','c-dt'],['Idade','c-n','num'],['Horas','c-n','num'],['Descrição','']],
+    D.backlog.map(b=>['<span class="mono">'+b.task_short_id+'</span>',b.linha_id,esc(b.equipamento_n2_nome),b.especialidade_id,b.tipo_id,b.status,dmy(b.aberta_em),
+      (b.envelhecida?'<span class="pill bad">':'<span class="pill gray">')+b.idade_dias+' d</span>',nf1.format(b.horas_restantes),esc(b.descricao)]));
+}
+
+/* ---------- 6. Alertas ---------- */
+function alertas(){
+  $('al-regra').innerHTML='Regra (configurável em <span class="mono">seeds/demo/parametros_demo.csv</span>): a <b>mesma falha</b> (subconjunto + modo de falha) <b>'+P.reincidencia_n+' vezes em '+P.reincidencia_dias+' dias</b> gera alerta; rearma '+P.reincidencia_dias+' dias depois. Ação sugerida: OS de melhoria / análise de causa, com prioridade alta em criticidade A. <b>'+D.alertas.length+' alertas</b> no período.';
+  tbl('tb-alertas',[['Disparado em','c-dt'],['Linha','c-ln'],['Subconjunto',''],['Modo de falha',''],['Prioridade','c-tp'],['N','c-ln','num'],['OS do episódio','']],
+    D.alertas.map(a=>[dmy(a.disparado_em),a.linha_id,esc(a.equipamento_nome),'<b>'+a.modo_id+'</b> · '+esc(a.modo_nome),'<span class="pill '+(a.prioridade==='alta'?'bad':'val')+'">'+a.prioridade+'</span>',a.ocorrencias,'<span class="mono">'+esc(a.os_lista)+'</span>']));
+}
+
+/* ---------- 7. Pareto ---------- */
+function pareto(){
+  const rows=D.pareto.filter(p=>p.escopo===st.par), nw=narrow('ch-pareto'), un=rows.length&&rows[0].medida==='os_n'?'Falhas':'Min de parada';
+  const cor=r=>r.modo_id==='OUTROS'?'#A7B0B9':MPAL[(r.ordem-1)%MPAL.length];
+  chart('ch-pareto').setOption({aria:{enabled:true},animation:false,grid:nw?{left:40,right:40,top:40,bottom:30}:{left:58,right:54,top:34,bottom:74},
+    tooltip:{trigger:'axis',axisPointer:{type:'shadow'},confine:true,formatter:ps=>{const r=rows[ps[0].dataIndex];return '<b>'+esc(r.modo_id)+' — '+esc(r.modo_nome)+'</b><br>'+un+': '+nf0.format(r.valor)+' · falhas: '+r.os_n+'<br>'+nf1.format(r.pct)+' % · acumulado '+nf1.format(r.pct_acumulado)+' %';}},
+    xAxis:{type:'category',data:rows.map(r=>nw?r.modo_id.replace('OUTROS','Out.'):r.modo_nome),axisLabel:nw?{interval:0,rotate:60,fontSize:9,color:'#1B2A38'}:{interval:0,width:84,overflow:'break',fontSize:10.5,color:'#1B2A38'}},
+    yAxis:[{type:'value',name:un,nameTextStyle:{color:'#1B2A38'}},{type:'value',name:'% acum.',min:0,max:100,axisLabel:{formatter:'{value}%'},splitLine:{show:false}}],
+    series:[{type:'bar',barMaxWidth:60,data:rows.map(r=>({value:r.valor,itemStyle:{color:cor(r)}})),label:{show:!nw,position:'insideTop',color:'#fff',fontWeight:700,fontSize:11}},
+      {type:'line',yAxisIndex:1,data:rows.map(r=>r.pct_acumulado),symbol:'circle',symbolSize:7,lineStyle:{color:'#003B66',width:2.5},itemStyle:{color:'#003B66'},
+        label:{show:!nw,formatter:p=>nf0.format(p.value)+'%',position:'top',color:'#003B66',fontSize:11,fontWeight:700,textBorderColor:'#fff',textBorderWidth:2.5},
+        markLine:{silent:true,symbol:'none',lineStyle:{type:'dashed',color:'#B3261E'},label:{formatter:'80 %',position:'insideEndTop',color:'#B3261E',fontWeight:700},data:[{yAxis:80}]}}]},true);
+  const i80=rows.findIndex(r=>r.pct_acumulado>=80);
+  $('par-nota').textContent='Medida: '+un.toLowerCase()+' (parâmetro pareto_medida) · top '+P.pareto_top+' modos + Outros por último.'+(i80>=0?' 80 % é atingido com '+(i80+1)+' de '+rows.length+' grupos.':'');
+  tbl('tb-pareto',[['#','c-ln'],['Modo',''],['Classe','c-tp'],[un,'c-h','num'],['Falhas','c-n','num'],['%','c-n','num'],['% acum.','c-n','num']],
+    rows.map(r=>[r.ordem,dotc(cor(r))+'<b>'+r.modo_id+'</b> · '+esc(r.modo_nome),r.classe_id,nf0.format(r.valor),r.os_n,nf1.format(r.pct),nf1.format(r.pct_acumulado)]));
+}
+
+function seg(id, opts, key, fn){
+  const s=$(id); s.innerHTML=opts.map(o=>'<button type="button" data-k="'+o[0]+'" aria-pressed="'+(st[key]===o[0])+'">'+o[1]+'</button>').join('');
+  s.addEventListener('click',ev=>{const b=ev.target.closest('button'); if(!b) return; st[key]=b.dataset.k; s.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b)); fn();});
+}
+function init(){
+  $('gerado').textContent=dmy(D.data_carga);
+  $('hd-sub').textContent='Linhas LT3 e LT56 · '+D.os.length+' OS · '+dmy(P.periodo_inicio)+'–'+dmy(P.periodo_fim)+' · taxonomia ISO 14224 · KPIs SMRP';
+  D.equip.forEach(e=>$('sel-eq').insertAdjacentHTML('beforeend','<option value="'+e.equipment_id+'">'+esc(e.nome)+'</option>'));
+  $('sel-eq').addEventListener('change',eqOS);
+  seg('seg-tl-linha',[['LT3','LT3'],['LT56','LT56']],'tl',timeline);
+  seg('seg-tl-cor',[['tipo','Tipo de OS'],['modo','Modo de falha']],'cor',timeline);
+  seg('seg-par',[['PLANTA','Planta'],['LT3','LT3'],['LT56','LT56']],'par',pareto);
+  /* modo "uma seção" (prints e TV): #so-<seção>[-LT56] mostra só aquela seção */
+  const h=location.hash.slice(1), m=h.match(/^so-([a-z]+)(?:-(LT3|LT56))?$/);
+  if(m){ document.body.classList.add('so'); const s=$(m[1]); if(s) s.classList.add('on'); if(m[2]) st.tl=m[2];
+    document.querySelectorAll('nav.sec a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+m[1]));
+    document.querySelectorAll('#seg-tl-linha button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.k===st.tl)); }
+  geral(); linha(); timeline(); equipamento(); backlog(); alertas(); pareto();
+  $('rodape').textContent=D.checks_ok+'/'+D.checks_total+' checks QD ok · gerado só da gold (DuckDB demo) · funciona offline · dados 100% sintéticos (simulador com semente fixa).';
+  let w=window.innerWidth;
+  window.addEventListener('resize',()=>{ Object.values(charts).forEach(c=>c.resize()); if((w<560)!==(window.innerWidth<560)){ w=window.innerWidth; timeline(); equipamento(); pareto(); geral(); linha(); backlog(); } });
+  window.__dashReady=true;
+}
+init();
+})();
+</script>
+</body>
+</html>

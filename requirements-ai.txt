@@ -1,0 +1,3 @@
+# Instalar APENAS para usar IGMI com API generativa; o modo offline não requer.
+-r requirements.txt
+openai>=2.0,<4.0

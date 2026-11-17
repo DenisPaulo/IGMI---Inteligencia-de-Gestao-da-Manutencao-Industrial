@@ -1,0 +1,3 @@
+# Python 3.11 (CI) a 3.13
+duckdb==1.5.6
+pytest==9.1.1

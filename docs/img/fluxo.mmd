@@ -1,0 +1,41 @@
+flowchart LR
+    subgraph FONTES["Fontes"]
+        MC["Mobility Data Connector<br/>MySQL - futuro"]
+        CSV["CSV no mesmo schema<br/>hoje: sintético"]
+        PAR["CSV de parada da produção<br/>contrato v2 - hoje: sintético"]
+    end
+
+    subgraph RAW["raw - fora do Git"]
+        RC["conector<br/>partição data_carga"]
+        RP["parada_v2<br/>partição data_carga imutável"]
+    end
+
+    subgraph SILVER["silver"]
+        ST["tasks, activities,<br/>equipments, tags"]
+        SP["parada vigente por id<br/>+ auditoria"]
+    end
+
+    subgraph GOLD["gold"]
+        FO["fato_os<br/>multi-linha, multi-equipamento"]
+        KPI["KPIs<br/>kpi_mttr_tecnico, resumo por linha"]
+        FILAS["filas e alertas<br/>sem OS, candidatos a exclusão"]
+    end
+
+    QC{{"Checks de qualidade<br/>18 QC bloqueantes"}}
+    PBI["Power BI<br/>próxima etapa"]
+    PREV["Prévia HTML estática<br/>run.py preview"]
+
+    MC -.-> RC
+    CSV --> RC
+    PAR -->|QCP01-07 validam| RP
+    RC --> ST
+    RP --> SP
+    ST --> FO
+    SP --> FO
+    SP --> FILAS
+    FO --> KPI
+    FO --> QC
+    KPI --> QC
+    FILAS --> QC
+    QC -->|tudo verde| PBI
+    QC -->|tudo verde| PREV

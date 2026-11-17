@@ -1,0 +1,23 @@
+modo_id,classe_id,nome
+RB-COL,ROBO,Parada por colisão
+RB-POS,ROBO,Perda de referência/posicionamento
+RB-SRV,ROBO,Alarme de servo/sobrecorrente
+RB-VIB,ROBO,Ruído ou vibração anormal
+RB-FER,ROBO,Ferramenta não pega a peça
+TR-TRV,TRANSP,Travamento/parada do transportador
+TR-DES,TRANSP,Desalinhamento de correia
+TR-SEN,TRANSP,Sensor de presença sem sinal
+TR-VIB,TRANSP,Ruído ou vibração anormal
+DS-ENT,DOSADOR,Entupimento
+DS-VAZ,DOSADOR,Vazão fora do especificado
+DS-VEX,DOSADOR,Vazamento externo de pó
+VI-LEI,VISAO,Falha de leitura/reprovação falsa
+VI-COM,VISAO,Perda de comunicação
+VI-ILU,VISAO,Iluminação degradada
+CL-COM,CLP,Falha de comunicação de rede
+CL-IO,CLP,Falha em cartão de E/S
+CL-PRG,CLP,Falha de programa/configuração
+MS-VAC,MESA,Perda de vácuo
+MS-VEN,MESA,Ventosa danificada
+MS-VAR,MESA,Vazamento de ar
+XX-OUT,*,Outro/desconhecido (uso monitorado)

@@ -1,0 +1,44 @@
+{
+  "versao": "v2",
+  "status": "proposta de 15/10/2026; NÃO vigente. vale a v0 até a amostra real da produção confirmar nomes e formatos",
+  "arquivo": {
+    "encoding": "a confirmar com a amostra (proposta: UTF-8 sem BOM)",
+    "separador": "a confirmar com a amostra (proposta: ,)",
+    "cabecalho_proposto": ["id_lancamento", "os_ref", "hora_inicio", "duracao_min", "acao"],
+    "leitura": "all_varchar (tudo como texto antes da validação)"
+  },
+  "colunas": [
+    {"nome": "id_lancamento", "tipo": "texto", "obrigatoria": true, "regra": "não vazio; chave do lançamento; nunca convertido para número", "confirmar": "nome e formato com a amostra"},
+    {"nome": "os_ref", "tipo": "texto", "obrigatoria": true, "regex": "^[0-9a-f]{8}$", "nota": "igual à v0; 11112222 continua texto"},
+    {"nome": "hora_inicio", "tipo": "timestamp local", "obrigatoria": true, "regex": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}$", "formato_proposto": "AAAA-MM-DDTHH:MM no fuso da rede (_parameters.network.timezone), sem offset", "confirmar": "formato real com a amostra"},
+    {"nome": "duracao_min", "tipo": "integer", "obrigatoria": true, "regex": "^[0-9]{1,5}$", "regra": "> 0; minutos inteiros (formato original da produção)", "provisorio": "nome e formato só confirmados com amostra real"},
+    {"nome": "acao", "tipo": "texto", "obrigatoria": false, "dominio": ["incluir", "excluir"], "nota": "só se o export tiver status/ação; senão a coluna não existe e vale a opção de exclusão recomendada"}
+  ],
+  "derivados": {"data_parada": "date(hora_inicio)", "hora_parada_min": "duracao_min da última versão de cada id_lancamento, somada por OS"},
+  "gerados": ["_arquivo", "_linha", "_sha256", "_loaded_at", "data_carga"],
+  "carga": {
+    "modo": "incremental (append) por partição datada imutável landing_parada/data_carga=AAAA-MM-DD/ (fora do repo)",
+    "mesmo_sha256": "não faz nada",
+    "chave": ["id_lancamento"],
+    "correcao": {"regra": "o mesmo id_lancamento substitui a versão anterior", "ordem_versao": ["data_carga", "_arquivo", "_linha"],
+                 "auditoria": "silver.parada_auditoria: id_lancamento, versao, campo, valor_anterior, valor_novo, _arquivo, _sha256, _loaded_at",
+                 "alertas": "correção que reduz duração ou chega > N dias após hora_inicio (N a definir pelo líder do projeto): marca e segue"},
+    "exclusao": "ver docs/contrato_parada_v2.md (opções a/b/c; recomendação sem decisão)"
+  },
+  "qc": {
+    "QCP01": "cabeçalho igual ao contrato e encoding confirmado; senão rejeita o arquivo",
+    "QCP02": "id_lancamento vazio = 0; senão rejeita o arquivo",
+    "QCP03": "id_lancamento duplicado dentro do mesmo arquivo = 0; senão rejeita o arquivo",
+    "QCP04": "os_ref fora de ^[0-9a-f]{8}$ = 0; senão rejeita o arquivo",
+    "QCP05": "hora_inicio fora do regex ou data/hora inexistente = 0; senão rejeita o arquivo",
+    "QCP06": "duracao_min não inteiro (fora de ^[0-9]{1,5}$) ou <= 0 = 0; rejeita 0,33 / 1.5 / 00:20 / vazio; senão rejeita o arquivo",
+    "QCP07": "acao fora de {incluir, excluir} (quando a coluna existir) = 0; senão rejeita o arquivo",
+    "QCP08": "mesmo id_lancamento com os_ref diferente da versão anterior: alerta (marca e segue, vai para revisão)",
+    "QCP09": "os_ref sem OS no Mobility: fila_parada_sem_os, sem custo (marca e segue)",
+    "QCP10": "hora_inicio depois de last_export_date (futuro): alerta",
+    "QCP11": "lançamentos do mesmo os_ref com intervalos [hora_inicio, hora_inicio + duracao_min) sobrepostos: alerta",
+    "QCP12": "exclusão (por qualquer via) de id_lancamento que nunca foi carregado: alerta",
+    "QCP13": "id que sumiu num export completo (opção c): candidato a exclusão na fila; nunca apagado sozinho"
+  },
+  "pedido_producao": "ver docs/contrato_parada_v2.md, seção Pedido à produção"
+}

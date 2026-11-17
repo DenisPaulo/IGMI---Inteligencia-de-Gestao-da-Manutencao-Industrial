@@ -1,0 +1,6 @@
+tipo_id,nome,planejada,reativa,conta_como_falha,tag_sistema,descricao
+CORR-EMG,Corretiva emergencial,false,true,true,$corrective,quebra que exige atendimento imediato (normalmente para a linha)
+CORR-PLN,Corretiva planejada,true,false,true,$corrective,falha ou defeito tratado com planejamento (não exige atendimento imediato)
+PREV,Preventiva,true,false,false,$preventive,tarefa de plano por tempo/uso (EN 13306: manutenção preventiva sistemática)
+PRED,Preditiva/inspeção,true,false,false,$preventive,"inspeção por condição (vibração, temperatura, vácuo); intervalo menor que o P-F"
+MELH,Melhoria,true,false,false,$improvement,modificação para eliminar causa de falha ou facilitar manutenção

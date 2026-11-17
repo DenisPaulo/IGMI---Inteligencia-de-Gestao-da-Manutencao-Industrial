@@ -1,0 +1,8 @@
+causa_id,nome,categoria_iso14224
+C-PRJ,Projeto inadequado,relacionada ao projeto
+C-INS,Fabricação ou instalação,relacionada à fabricação/instalação
+C-OPE,Erro de operação,relacionada à operação/manutenção
+C-MAN,Manutenção inadequada,relacionada à operação/manutenção
+C-GES,Procedimento ou peça (gestão),relacionada à gestão
+C-DES,Desgaste natural/fim de vida,diversos
+C-DIV,Não identificada,diversos

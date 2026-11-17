@@ -1,0 +1,5 @@
+id_lancamento,os_ref,hora_inicio,duracao_min,acao
+SINT-L0001,ffff0001,2026-10-01T08:10,60,incluir
+SINT-L0002,ffff0005,2026-10-01T13:05,30,incluir
+SINT-L0003,ffff0002,2026-10-01T11:00,45,incluir
+SINT-L0004,ffff0006,2026-10-01T15:00,20,incluir

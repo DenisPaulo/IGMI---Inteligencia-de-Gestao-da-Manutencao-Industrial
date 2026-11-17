@@ -1,0 +1,7 @@
+classe_id,nome,referencia_iso14224
+ROBO,Robô industrial,classe de equipamento: robô (unidade mecânica + controlador)
+TRANSP,Transportador,classe de equipamento: transportador/esteira
+DOSADOR,Dosador (dispenser de pó),classe de equipamento: dosador/alimentador
+VISAO,Sistema de visão,classe de equipamento: instrumento/sensor de inspeção
+CLP,CLP e rede de campo,classe de equipamento: sistema de controle
+MESA,Mesa de vácuo com ventosas,classe de equipamento: manipulador por vácuo

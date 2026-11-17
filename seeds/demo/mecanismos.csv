@@ -1,0 +1,10 @@
+mecanismo_id,nome,grupo_iso14224
+M-DES,Desgaste,mecânico
+M-FAD,Fadiga,mecânico
+M-AFR,Afrouxamento,mecânico
+M-SOB,Sobrecarga/colisão,mecânico
+M-CON,Contaminação/sujeira,material
+M-COR,Corrosão,material
+M-ELE,Falha elétrica (curto/conector/cabo),elétrico
+M-SOFT,Software/configuração,instrumentação
+M-DESC,Desconhecido,diversos
