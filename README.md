@@ -33,6 +33,9 @@ flowchart LR
     end
     QC{{"Checks bloqueantes<br/>18 QC + 27 QD"}}
     DASH["Dashboard HTML<br/>7 seções, offline, mobile"]
+    IGMI["IGMI<br/>consultas somente leitura"]
+    PLAN["Planejador local<br/>múltiplas intenções"]
+    COP["Copiloto Git Bash<br/>offline ou IA opcional"]
     PBI["Power BI<br/>próxima etapa"]
 
     MC -.-> RC
@@ -49,6 +52,9 @@ flowchart LR
     KPI --> QC
     REL --> QC
     QC -->|tudo verde| DASH
+    QC -->|tudo verde| IGMI
+    IGMI --> PLAN
+    PLAN --> COP
     QC -->|tudo verde| PBI
 ```
 
@@ -104,7 +110,9 @@ python run.py test      # pytest
 | `dados_sinteticos/demo/` | saída do simulador: conector (tasks, activities, equipments, tags) + paradas |
 | `sql/demo/` | gold da demo: fato_os_demo, KPIs, PM, backlog, aderência, Pareto, reincidência, qualidade do dado |
 | `tests/` | testes de contrato, ingestão, injeção de falhas, simulador, KPIs e dashboards |
-| `docs/` | contratos de parada e pedido de export à produção |
+| `igmi/` | consultas validadas e somente leitura, planejador multi-intenção, copiloto e camada de IA opcional |
+| `tests_igmi/` | testes do copiloto, validador de respostas e planejamento (sem consumo de API) |
+| `docs/` | contratos de parada, documentação das versões IGMI e guias de execução |
 
 ## Regras principais
 
@@ -116,6 +124,7 @@ python run.py test      # pytest
 ## Segurança
 
 Sem credenciais no repositório. `fontes/`, `export/`, `raw/`, `.env*` e o warehouse ficam fora do Git (`.gitignore`).
+O copiloto não executa SQL criado pela IA nem altera ordens de serviço. A API é opcional, requer `OPENAI_API_KEY` e confirmação **`AUTORIZAR`** por turno; o consumo é cobrado separadamente da assinatura ChatGPT. Não publique segredos, arquivos de produção ou dados reais; mantenha limites de gastos e recarga automática conforme sua preferência.
 
 ## Roadmap
 
@@ -128,48 +137,107 @@ Sem credenciais no repositório. `fontes/`, `export/`, `raw/`, `.env*` e o wareh
 | 4 | Estados e alarmes do CLP/robô (OPC UA) para OEE e microparadas | futuro |
 | 5 | Reincidência por similaridade de texto; sugestão de modo/causa a partir do texto da OS (o técnico confirma); ajuste dos planos com MTBF real | futuro |
 
-## IGMI: primeira camada de inteligência analítica
+## IGMI — Analista e Copiloto de Confiabilidade (0.3.2.1)
 
-A camada `igmi/` é independente do pipeline anterior. O projeto público chama-se
-**IGMI — Inteligência de Gestão da Manutenção Industrial**. O pacote técnico legado
-`pmb/` foi mantido para compatibilidade; a eventual migração de nomes internos
-será tratada de forma separada e testada.
+O IGMI acrescenta à GOLD da demonstração uma camada de **consultas auditáveis, planejamento local de perguntas e IA opcional**, sem alterar os pipelines de dados. A identidade pública é **IGMI — Inteligência de Gestão da Manutenção Industrial**. O pacote interno legado `pmb/` é preservado por compatibilidade; não o renomeie sem testes e migração planejada.
 
-Primeira entrega: **Analista de Confiabilidade determinístico** em modo somente
-leitura, sobre a GOLD sintética, bloqueado pelos 27 checks QD existentes.
-Ainda **não** há chamada a modelo de linguagem ou interface conversacional.
+### Funcionalidades já implementadas
 
-```powershell
-py -m pip install -r requirements.txt
-py run.py simular demo demo-preview
-py run.py igmi --linha LT3 --formato markdown --saida export/igmi_relatorio_LT3.md
-py run.py igmi --linha LT56 --formato json --saida export/igmi_LT56.json
-py run.py test
-```
+- **Analista determinístico:** relatório de KPIs, backlog, equipamentos, Pareto e reincidências, sem uso de IA.
+- **IA econômica:** interpretação qualitativa sobre fatos numéricos calculados por Python, com evidências e bloqueio de respostas inválidas.
+- **Copiloto Git Bash:** comandos `/pergunta`, `/fim`, `/cancelar`, `/linha`, `/periodo`, `/resumo`, `/exportar` e `/sair`. No modo multilinha, `/fim` deve ser digitado sozinho.
+- **Planejamento multi-intenção:** a mesma pergunta pode consultar KPIs, disponibilidade, MTTR, equipamentos e reincidências, deduplicando consultas locais.
+- **Resposta com cobertura e rastreabilidade:** fatos exibem fontes `E1`, `E2` etc.; `coberta`, `parcial` e `sem_dados` indicam se havia dados suficientes para cada assunto.
+- **Refinamento 0.3.2.1:** disponibilidade explicitamente solicitada é incluída, alertas de mesmo equipamento/modo são agrupados **sem somar ocorrências potencialmente sobrepostas**, e o fluxo planejado admite até três hipóteses curtas. Se o usuário pedir três ações, a interpretação deve apresentar três recomendações ou será bloqueada.
 
-O relatório cobre o período sintético fechado de **01/04 a 30/09/2026**, não os
-últimos seis meses a partir de hoje. Consulte
-[Entrega e próximos passos](docs/igmi/PROXIMOS_PASSOS.md) e
-[Prompt Mestre](docs/igmi/PROMPT_MESTRE.md).
+**Limites:** o dataset é sintético, de **01/04/2026 a 30/09/2026**, não representa a planta real. O roteamento ainda é feito por regras/padrões, não por compreensão semântica universal. Recortes limitados não provam inexistência de falhas; `IA: validada` não significa aprovação técnica da engenharia nem confirmação de causa-raiz. A interface é de terminal; **não há interface web conversacional nesta versão**. Power BI e integração com fontes reais permanecem etapas futuras.
 
-## IGMI 0.2.0 — Analista de Confiabilidade com IA (opcional)
+### Instalação e execução no Windows com Git Bash
 
-A 0.2.0 adiciona uma CLI de inteligência artificial sem alterar os relatórios determinísticos.
-Os dados passam pelas mesmas verificações de qualidade (27 QD) e as consultas seguem
-**somente leitura**. É necessária uma chave pessoal e autorização explícita por comando;
-**nenhuma chamada real à API é feita durante os testes.**
+Requer Python 3.11+ e ambiente virtual. Na raiz do repositório:
 
 ```bash
+py -m venv .venv
+source .venv/Scripts/activate
 python -m pip install -r requirements-ai.txt
+export PYTHONUTF8=1
+export PYTHONIOENCODING=utf-8
+
+# Recria a demonstração sintética e executa os checks:
 python run.py simular demo demo-preview
+
+# Testes sem API paga:
+python -m pytest -q tests_igmi
 python run.py test
 
-# Configure OPENAI_API_KEY e IGMI_OPENAI_MODEL em variáveis de ambiente (não no Git).
-python run.py igmi-ia --linha LT3 \
-  --pergunta 'Analise a LT3 de abril a setembro de 2026.' \
-  --modelo "$IGMI_OPENAI_MODEL" --autorizar-api \
-  --saida export/igmi_ia_LT3.md
+# Relatório determinístico, sem IA:
+python run.py igmi --linha LT3 --formato markdown --saida export/igmi_LT3.md
+
+# Copiloto offline, sem tokens:
+python run.py igmi-chat --linha LT3
 ```
 
-Consulte [o guia de instalação, segurança e execução no Git Bash](docs/IGMI_0.2.0.md).
-Para continuar **sem API**, use o comando anterior `python run.py igmi ...`.
+**IA opcional (usa créditos):** crie a chave no projeto da API, configure-a apenas no ambiente local e verifique saldo e limites. No Git Bash, sem exibir a chave:
+
+```bash
+read -rs -p 'OPENAI_API_KEY: ' OPENAI_API_KEY; echo
+export OPENAI_API_KEY
+export IGMI_OPENAI_MODEL='gpt-4.1-mini'
+
+python run.py igmi-chat --linha LT3 --modelo "$IGMI_OPENAI_MODEL" \
+  --autorizar-api --max-chamadas 1
+```
+
+Exemplo de pergunta composta (cada comando em sua própria linha no copiloto):
+
+```text
+/pergunta
+Quero priorizar melhorias na confiabilidade da LT3.
+Quais equipamentos mais impactaram as horas de parada?
+Quais reincidências merecem investigação prioritária?
+Como estão o MTTR e a disponibilidade da linha?
+Proponha três ações práticas, justificadas por evidências.
+Separe fatos, hipóteses e recomendações.
+/fim
+```
+
+O copiloto apresenta as ferramentas planejadas e só usa a API depois de você digitar **`AUTORIZAR`**. Perguntas objetivas podem ser respondidas offline. Para gravar o histórico **antes de encerrar**:
+
+```text
+/exportar export/igmi_chat_LT3_0321.md
+/sair
+```
+
+A exportação não é automática: ao sair sem exportar, o histórico da sessão é descartado. O custo depende do modelo e da quantidade de tokens efetivamente consumidos; o teto `--max-chamadas` limita chamadas nesta sessão, não o custo financeiro global.
+
+### Arquitetura e documentação
+
+```text
+Dados sintéticos -> RAW/SILVER/GOLD -> 27 verificações QD
+                                      |
+                                      +-> Dashboards HTML / BI futuro
+                                      +-> IGMI (DuckDB somente leitura)
+                                            -> Planejador local (0 tokens)
+                                            -> Consultas permitidas (SQL fixo)
+                                            -> Fatos formatados por Python
+                                            -> IA opcional (1 chamada autorizada/turno)
+                                            -> Validação, cobertura e evidências
+                                            -> Terminal / Markdown
+```
+
+Os arquivos `docs/IGMI_0.2.0.md`, `docs/IGMI_0.2.1.md`, `docs/IGMI_0.3.0.md`, `docs/IGMI_0.3.1.md`, `docs/IGMI_0.3.2.md` e **[IGMI 0.3.2.1](docs/IGMI_0.3.2.1.md)** documentam as entregas incrementais. `docs/igmi/PROMPT_MESTRE.md` registra a visão original do projeto.
+
+### Evolução e colaboração
+
+| Versão | Marco | Situação |
+|---|---|---|
+| 0.1.0 | Indicadores e relatório determinístico | Validado com dados sintéticos |
+| 0.2.0 | Integração inicial com IA | Executada |
+| 0.2.1 | Formatação segura e baixo consumo de tokens | Validada em uso local |
+| 0.3.0 | Copiloto CLI offline/IA opcional | Validado em uso local |
+| 0.3.1 | Entrada multilinha e múltiplos equipamentos | Validada em uso local |
+| 0.3.2 | Planejamento de consultas e matriz de cobertura | Validada parcialmente; bloqueio da IA observado |
+| **0.3.2.1** | Disponibilidade, hipóteses, reincidências e README | **Patch preparado; validar no Windows antes de integrar à `main`** |
+| Futuro | Interface web e outros agentes | Planejado |
+
+Desenvolva em branches `feature/…`, execute os testes e revise `git diff` antes de abrir Pull Request para `main`. Consulte o [CHANGELOG](CHANGELOG.md) para as alterações por versão.

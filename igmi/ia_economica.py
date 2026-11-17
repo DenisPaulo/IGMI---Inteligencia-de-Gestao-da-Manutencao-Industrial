@@ -147,7 +147,13 @@ _NUMERO = re.compile(
 )
 
 
-def validar_interpretacao(texto, evidencias):
+def validar_interpretacao(texto, evidencias, *, max_hipoteses=2):
+    """Valida conteúdo factual. O chat planejado pode admitir 3 hipóteses curtas.
+
+    O limite tradicional (2) permanece como padrão para os outros comandos.
+    """
+    if type(max_hipoteses) is not int or not 0 <= max_hipoteses <= 3:
+        raise ValueError("Limite de hipóteses não autorizado.")
     try:
         dados = json.loads(texto)
     except (ValueError, TypeError) as exc:
@@ -156,7 +162,7 @@ def validar_interpretacao(texto, evidencias):
         raise RespostaInvalida('Estrutura da interpretação inválida.')
     if not isinstance(dados['resumo'], str) or not dados['resumo'].strip() or len(dados['resumo']) > 450:
         raise RespostaInvalida('Resumo ausente ou excessivo.')
-    limites = {'hipoteses': 2, 'recomendacoes': 3, 'limitacoes': 1}
+    limites = {'hipoteses': max_hipoteses, 'recomendacoes': 3, 'limitacoes': 1}
     for chave, maximo in limites.items():
         valor = dados[chave]
         if not isinstance(valor, list) or len(valor) > maximo or any(
