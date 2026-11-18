@@ -41,22 +41,22 @@ export IGMI_OPENAI_MODEL="gpt-4.1-mini"
 # Se necessário, configure OPENAI_API_KEY novamente por entrada silenciosa.
 mkdir -p export
 python run.py igmi-ia \
-  --linha LT3 \
-  --pergunta "Analise a confiabilidade da LT3 de abril a setembro de 2026. Identifique equipamentos prioritarios e reincidencias." \
+  --linha LR-01 \
+  --pergunta "Analise a confiabilidade da LR-01 de abril a setembro de 2026. Identifique equipamentos prioritarios e reincidencias." \
   --modelo "$IGMI_OPENAI_MODEL" \
   --autorizar-api \
-  --saida export/igmi_ia_LT3_021.md
-code export/igmi_ia_LT3_021.md
+  --saida export/igmi_ia_LR-01_021.md
+code export/igmi_ia_LR-01_021.md
 ```
 
 O relatório informa `IA: VALIDADA` ou `IA: BLOQUEADA`, as consultas selecionadas, **uma chamada à API** e os tokens usados, conforme dados retornados pelo provedor. Para ver todas as evidências em JSON:
 
 ```bash
 python run.py igmi-ia \
-  --linha LT3 \
-  --pergunta "Analise a confiabilidade da LT3 de abril a setembro de 2026." \
+  --linha LR-01 \
+  --pergunta "Analise a confiabilidade da LR-01 de abril a setembro de 2026." \
   --modelo "$IGMI_OPENAI_MODEL" --autorizar-api \
-  --formato json --saida export/igmi_ia_LT3_021.json
+  --formato json --saida export/igmi_ia_LR-01_021.json
 ```
 
 **ATENÇÃO:** o segundo comando é **outra chamada paga**. Para economizar, rode uma vez em `--formato json` e, se precisar, consulte-o em vez de chamar a API novamente.

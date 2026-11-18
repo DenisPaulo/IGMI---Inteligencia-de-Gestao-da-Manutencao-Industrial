@@ -4,7 +4,7 @@ Patch incremental sobre **IGMI 0.3.2**. Trabalhe na branch `feature/igmi-0.3.2`,
 
 ## Problema reproduzido
 
-O teste com dados sintéticos da LT3 enviou uma pergunta composta sobre ranking de paradas, reincidências, disponibilidade, MTTR e três ações práticas. A API foi chamada uma vez, mas a interpretação foi bloqueada: `Campo hipoteses fora do limite enxuto.` O relatório manteve os fatos, porém omitiu disponibilidade e repetiu o mesmo modo de reincidência em alertas distintos. O README principal também estava desatualizado.
+O teste com dados sintéticos da LR-01 enviou uma pergunta composta sobre ranking de paradas, reincidências, disponibilidade, MTTR e três ações práticas. A API foi chamada uma vez, mas a interpretação foi bloqueada: `Campo hipoteses fora do limite enxuto.` O relatório manteve os fatos, porém omitiu disponibilidade e repetiu o mesmo modo de reincidência em alertas distintos. O README principal também estava desatualizado.
 
 ## Correções
 
@@ -44,15 +44,15 @@ Confirme que todos os testes antigos continuam aprovados. Os novos testes cobrem
 
 ```bash
 python run.py simular demo demo-preview
-python run.py igmi-chat --linha LT3
+python run.py igmi-chat --linha LR-01
 ```
 
-Pergunta factual offline de exemplo: `Como estão a disponibilidade e o MTTR da LT3?` Deve exibir ambos os indicadores com zero tokens.
+Pergunta factual offline de exemplo: `Como estão a disponibilidade e o MTTR da LR-01?` Deve exibir ambos os indicadores com zero tokens.
 
 Teste pago **somente se houver saldo e autorização**:
 
 ```bash
-python run.py igmi-chat --linha LT3 --modelo "$IGMI_OPENAI_MODEL" \
+python run.py igmi-chat --linha LR-01 --modelo "$IGMI_OPENAI_MODEL" \
   --autorizar-api --max-chamadas 1
 ```
 
@@ -60,7 +60,7 @@ No chat:
 
 ```text
 /pergunta
-Quero priorizar melhorias na confiabilidade da LT3.
+Quero priorizar melhorias na confiabilidade da LR-01.
 Quais equipamentos mais impactaram as horas de parada?
 Quais reincidências merecem investigação prioritária?
 Como estão o MTTR e a disponibilidade da linha?
@@ -74,7 +74,7 @@ Antes da API, o planejador deve apresentar ao menos `consultar_kpis`, `consultar
 Exportação (antes de encerrar a sessão):
 
 ```text
-/exportar export/igmi_chat_LT3_0321.md
+/exportar export/igmi_chat_LR-01_0321.md
 /sair
 ```
 
@@ -102,4 +102,4 @@ rm -i docs/IGMI_0.3.2.1.md
 
 ## Definição de pronto
 
-Suíte local e de integração aprovadas, relatório LT3 com disponibilidade, MTTR, ranking, reincidências sem repetição desnecessária, recomendações no número solicitado e consulta auditável. **Validação técnica por engenharia permanece obrigatória**, inclusive quando aparecer `IGMI [validada]`.
+Suíte local e de integração aprovadas, relatório LR-01 com disponibilidade, MTTR, ranking, reincidências sem repetição desnecessária, recomendações no número solicitado e consulta auditável. **Validação técnica por engenharia permanece obrigatória**, inclusive quando aparecer `IGMI [validada]`.

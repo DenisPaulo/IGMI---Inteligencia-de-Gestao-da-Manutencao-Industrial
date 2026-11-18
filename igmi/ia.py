@@ -112,7 +112,7 @@ def validar_periodo(consultas, linha: str, pergunta: str, inicio: str | None = N
     if re.search(r'\b(?:[úu]ltimos?|[úu]ltimas?|hoje|agora|atualmente|m[eê]s passado|este m[eê]s)\b',
                  pergunta, re.IGNORECASE):
         raise EscopoInvalido('O dataset é histórico e fechado; use o período explícito, não uma janela relativa.')
-    citadas = set(re.findall(r'\bLT\d+\b', pergunta.upper()))
+    citadas = set(re.findall(r'\bLR-\d{2}\b', pergunta.upper()))
     if citadas and citadas != {linha}:
         raise EscopoInvalido('A pergunta cita outra linha. Escolha a mesma linha em --linha e na pergunta.')
     c = consultas.contexto

@@ -30,9 +30,9 @@ class BancoFalso:
                 ('periodo_inicio', '2026-04-01'), ('periodo_fim', '2026-09-30'),
                 ('pareto_medida', 'parada_min')])
         if 'FROM gold.dim_linha' in sql:
-            return Relacao(['linha_id'], [('LT3',), ('LT56',)])
+            return Relacao(['linha_id'], [('LR-01',), ('LR-02',)])
         if 'FROM gold.kpi_linha' in sql:
-            return Relacao(['escopo', 'os_total'], [('LT3', 10)])
+            return Relacao(['escopo', 'os_total'], [('LR-01', 10)])
         return Relacao(['teste'], [])
 
 
@@ -47,10 +47,10 @@ class ConsultasTest(unittest.TestCase):
 
     def test_consulta_kpi_com_parametro_vinculado(self):
         consultas, banco = self._abrir()
-        self.assertEqual(consultas.consultar_kpis('LT3')['os_total'], 10)
+        self.assertEqual(consultas.consultar_kpis('LR-01')['os_total'], 10)
         sql, params = banco.executados[-1]
         self.assertIn('WHERE escopo = ?', sql)
-        self.assertEqual(params, ['LT3'])
+        self.assertEqual(params, ['LR-01'])
         self.assertEqual(consultas.contexto['checks_ok'], 27)
 
     def test_bloqueio_com_qualquer_check_reprovado(self):
@@ -67,7 +67,7 @@ class ConsultasTest(unittest.TestCase):
     def test_injecao_de_linha_nao_executa_sql(self):
         consultas, banco = self._abrir()
         with self.assertRaises(EscopoInvalido):
-            consultas.consultar_kpis("LT3' OR 1=1 --")
+            consultas.consultar_kpis("LR-01' OR 1=1 --")
         self.assertFalse(any('OR 1=1' in sql for sql, _ in banco.executados))
 
     def test_limites(self):
@@ -103,7 +103,7 @@ class FakeAnalise:
                     os_abertas=1, os_envelhecidas=1, pm_compliance=0.9, aderencia=0.8)
 
     def consultar_equipamentos(self, linha):
-        return [dict(equipment_id='LT3-ABC', criticidade='A', falhas=1, parada_h=2)]
+        return [dict(equipment_id='LR-01-ABC', criticidade='A', falhas=1, parada_h=2)]
 
     def consultar_pareto(self, linha):
         return [dict(modo_id='XX-1', modo_nome='Teste', valor=120, pct_acumulado=100)]
@@ -112,7 +112,7 @@ class FakeAnalise:
         return []
 
     def consultar_os(self, linha):
-        return [dict(task_short_id='dd000001', equipment_id='LT3-ABC', modo_id='XX-1', parada_min=120)]
+        return [dict(task_short_id='dd000001', equipment_id='LR-01-ABC', modo_id='XX-1', parada_min=120)]
 
     def consultar_tendencia(self, linha):
         return [dict(mes='2026-04', falhas=1, parada_h=2, disponibilidade=0.99)]
@@ -126,14 +126,14 @@ class FakeAnalise:
 
 class AnalistaTest(unittest.TestCase):
     def test_relatorio_com_evidencias_e_limites(self):
-        r = analisar_confiabilidade(FakeAnalise(), 'LT3')
+        r = analisar_confiabilidade(FakeAnalise(), 'LR-01')
         saida = markdown(r)
         self.assertIn('dd000001', saida)
         self.assertIn('2026-04-01 a 2026-09-30', saida)
         self.assertIn('27/27 checks OK', saida)
         self.assertIn('não comprovadas', saida)
         self.assertIn('sem IA generativa', saida)
-        self.assertIn('LT3-ABC', saida)
+        self.assertIn('LR-01-ABC', saida)
         self.assertEqual(r['tipo'], 'analise_deterministica_sem_llm')
 
 

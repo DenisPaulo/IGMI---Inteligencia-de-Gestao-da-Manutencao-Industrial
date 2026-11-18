@@ -38,7 +38,7 @@ def test_volume_periodo_linhas_e_tipos():
     assert 230 <= len(t) <= 280
     datas = [t_["scheduled_from"][:10] for t_ in t if t_["status"] == "completed"]
     assert min(datas) >= "2026-04-01" and max(datas) <= "2026-09-30"
-    assert {x["equipment_id"].split("-")[0] for x in t} == {"LT3", "LT56"}
+    assert {"-".join(x["equipment_id"].split("-")[:2]) for x in t} == {"LR-01", "LR-02"}
     assert {"completed", "scheduled", "in_progress", "canceled"} == {x["status"] for x in t}
     tags = {g["tag_id"]: g["tag_code"] for g in _csv("tags")}
     tipos = Counter(tags[r["tag_id"]] for r in _csv("tasks_tags") if tags[r["tag_id"]].startswith("tipo:"))
@@ -83,13 +83,13 @@ DEFEITOS = {
     "parada_em_preventiva": ("INSERT INTO silver.parada_demo SELECT 'DEMO-L9998', task_short_id, TIMESTAMP '2026-04-02 03:00:00', 5, 'incluir' FROM gold.fato_os_demo WHERE tipo_id = 'PREV' LIMIT 1", "QD16"),
     "custo_com_taxa_errada": ("UPDATE gold.fato_os_demo SET custo_parada = custo_parada + 1 WHERE parada_min > 0 AND task_id = (SELECT min(task_id) FROM gold.fato_os_demo WHERE parada_min > 0)", "QD22"),
     "planta_diferente_da_soma": ("UPDATE gold.kpi_linha SET falhas = falhas + 1 WHERE escopo = 'PLANTA'", "QD19"),
-    "mttr_de_outro_conjunto": ("UPDATE gold.kpi_equipamento SET mttr_h = mttr_h + 0.5 WHERE equipment_id = 'LT3-RB01'", "QD20"),
+    "mttr_de_outro_conjunto": ("UPDATE gold.kpi_equipamento SET mttr_h = mttr_h + 0.5 WHERE equipment_id = 'LR-01-RB01'", "QD20"),
     "backlog_semanas_errado": ("UPDATE gold.backlog_especialidade SET backlog_semanas = backlog_semanas * 2", "QD23"),
-    "alerta_apagado": ("DELETE FROM gold.alertas_reincidencia WHERE equipment_id = 'LT56-MS01-VEN'", "QD27"),
-    "alerta_falso": ("INSERT INTO gold.alertas_reincidencia SELECT * REPLACE ('LT3-TR02-COR' AS equipment_id) FROM gold.alertas_reincidencia LIMIT 1", "QD26"),
-    "pareto_sem_100": ("UPDATE gold.pareto_modo SET pct_acumulado = 99 WHERE modo_id = 'OUTROS' AND escopo = 'LT3'", "QD25"),
-    "disponibilidade_maior_que_1": ("UPDATE gold.kpi_linha SET disponibilidade = 1.2 WHERE escopo = 'LT3'", "QD18"),
-    "hierarquia_quebrada": ("UPDATE cat.equipamentos SET pai_id = 'LT56-RB01' WHERE equipment_id = 'LT3-RB01-FER'", "QD05"),
+    "alerta_apagado": ("DELETE FROM gold.alertas_reincidencia WHERE equipment_id = 'LR-02-MS01-VEN'", "QD27"),
+    "alerta_falso": ("INSERT INTO gold.alertas_reincidencia SELECT * REPLACE ('LR-01-TR02-COR' AS equipment_id) FROM gold.alertas_reincidencia LIMIT 1", "QD26"),
+    "pareto_sem_100": ("UPDATE gold.pareto_modo SET pct_acumulado = 99 WHERE modo_id = 'OUTROS' AND escopo = 'LR-01'", "QD25"),
+    "disponibilidade_maior_que_1": ("UPDATE gold.kpi_linha SET disponibilidade = 1.2 WHERE escopo = 'LR-01'", "QD18"),
+    "hierarquia_quebrada": ("UPDATE cat.equipamentos SET pai_id = 'LR-02-RB01' WHERE equipment_id = 'LR-01-RB01-FER'", "QD05"),
     "fechamento_antes_da_abertura": ("UPDATE gold.fato_os_demo SET fechada_em = aberta_em - INTERVAL 1 DAY WHERE task_id = 'DEMO-T0001'", "QD12"),
 }
 
@@ -125,14 +125,14 @@ def test_kpis_da_planta(con):
 
 def test_disponibilidade_e_mttr_recalculados_direto_do_csv(con):
     """Recalcula fora do SQL, a partir dos arquivos: paradas (min) por linha -> disponibilidade e MTTR."""
-    linha = {t["task_short_id"]: t["equipment_id"].split("-")[0] for t in _csv("tasks")}
+    linha = {t["task_short_id"]: "-".join(t["equipment_id"].split("-")[:2]) for t in _csv("tasks")}
     par = Counter()
     n = Counter()
     for p in _csv("paradas_demo", "paradas"):
         par[linha[p["os_ref"]]] += int(p["duracao_min"])
         n[linha[p["os_ref"]]] += 1
     horas_prog = 183 * 24 * 6 / 7
-    for l in ("LT3", "LT56"):
+    for l in ("LR-01", "LR-02"):
         disp, mttr = con.sql(f"SELECT disponibilidade, mttr_h FROM gold.kpi_linha WHERE escopo = '{l}'").fetchone()
         assert disp == round(1 - par[l] / 60 / horas_prog, 4)
         assert mttr == round(par[l] / 60 / n[l], 2)
@@ -161,15 +161,15 @@ def _alertas(c):
     return [(e, m, d) for e, m, d in c.sql("SELECT equipment_id, modo_id, disparado_em FROM gold.alertas_reincidencia").fetchall()]
 
 
-@pytest.mark.parametrize("eq,modo,ini,fim", [("LT3-RB01-FER", "RB-FER", "2026-07-06", "2026-07-17"),
-                                             ("LT56-MS01-VEN", "MS-VEN", "2026-08-03", "2026-08-12"),
-                                             ("LT56-DS01-BIC", "DS-ENT", "2026-05-11", "2026-05-24")])
+@pytest.mark.parametrize("eq,modo,ini,fim", [("LR-01-RB01-FER", "RB-FER", "2026-07-06", "2026-07-17"),
+                                             ("LR-02-MS01-VEN", "MS-VEN", "2026-08-03", "2026-08-12"),
+                                             ("LR-02-DS01-BIC", "DS-ENT", "2026-05-11", "2026-05-24")])
 def test_reincidencias_injetadas_disparam_alerta(con, eq, modo, ini, fim):
     assert any(e == eq and m == modo and ini <= d.strftime("%Y-%m-%d") <= fim for e, m, d in _alertas(con))
 
 
 def test_3_vezes_em_21_dias_nao_dispara(con):
-    assert not any(e == "LT56-VI01-CAM" and m == "VI-ILU" for e, m, _ in _alertas(con))
+    assert not any(e == "LR-02-VI01-CAM" and m == "VI-ILU" for e, m, _ in _alertas(con))
 
 
 def test_regra_configuravel(tmp_path):

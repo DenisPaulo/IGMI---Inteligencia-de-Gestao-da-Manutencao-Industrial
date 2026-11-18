@@ -1,16 +1,16 @@
 plano_id,equipment_id,tipo_id,descricao,estrategia,periodicidade_dias,horas_estimadas,especialidade_id,tolerancia_dias
-PM-LT3-RB-LUB,LT3-RB01-EIX,PREV,Lubrificação dos redutores do robô,tempo,30,1.5,MEC,3
-PM-LT3-RB-VIB,LT3-RB01-EIX,PRED,Inspeção de vibração e temperatura dos eixos do robô,condição,28,0.75,MEC,3
-PM-LT3-TR-COR,LT3-TR01-COR,PREV,Inspeção e tensionamento da correia de entrada,tempo,28,1.0,MEC,3
-PM-LT3-DS-BIC,LT3-DS01-BIC,PREV,Limpeza do bico dosador,tempo,14,0.5,MEC,2
-PM-LT3-VI-CAL,LT3-VI01-CAM,PRED,Limpeza de lente e calibração do sistema de visão,condição,30,1.0,ELE,3
-PM-LT3-CL-BKP,LT3-CL01,PREV,Backup do programa do CLP e do robô,tempo,90,1.0,ELE,7
-PM-LT3-MS-VEN,LT3-MS01-VEN,PREV,Troca preventiva das ventosas da mesa,tempo,30,2.0,MEC,3
-PM-LT56-RB-LUB,LT56-RB01-EIX,PREV,Lubrificação dos redutores do robô,tempo,30,1.5,MEC,3
-PM-LT56-RB-VIB,LT56-RB01-EIX,PRED,Inspeção de vibração e temperatura dos eixos do robô,condição,28,0.75,MEC,3
-PM-LT56-TR-COR,LT56-TR01-COR,PREV,Inspeção e tensionamento da correia de entrada,tempo,28,1.0,MEC,3
-PM-LT56-TR2-COR,LT56-TR02-COR,PREV,Inspeção e tensionamento da correia intermediária,tempo,28,1.0,MEC,3
-PM-LT56-DS-BIC,LT56-DS01-BIC,PREV,Limpeza do bico e da rosca dosadora,tempo,14,0.75,MEC,2
-PM-LT56-VI-CAL,LT56-VI01-CAM,PRED,Limpeza de lente e calibração do sistema de visão,condição,30,1.0,ELE,3
-PM-LT56-CL-BKP,LT56-CL01,PREV,Backup do programa do CLP e do robô,tempo,90,1.0,ELE,7
-PM-LT56-MS-VAC,LT56-MS01-VAC,PRED,Medição do nível de vácuo da mesa,condição,14,0.5,MEC,2
+PM-LR-01-RB-LUB,LR-01-RB01-EIX,PREV,Lubrificação dos redutores do robô,tempo,30,1.5,MEC,3
+PM-LR-01-RB-VIB,LR-01-RB01-EIX,PRED,Inspeção de vibração e temperatura dos eixos do robô,condição,28,0.75,MEC,3
+PM-LR-01-TR-COR,LR-01-TR01-COR,PREV,Inspeção e tensionamento da correia de entrada,tempo,28,1.0,MEC,3
+PM-LR-01-DS-BIC,LR-01-DS01-BIC,PREV,Limpeza do bico dosador,tempo,14,0.5,MEC,2
+PM-LR-01-VI-CAL,LR-01-VI01-CAM,PRED,Limpeza de lente e calibração do sistema de visão,condição,30,1.0,ELE,3
+PM-LR-01-CL-BKP,LR-01-CL01,PREV,Backup do programa do CLP e do robô,tempo,90,1.0,ELE,7
+PM-LR-01-MS-VEN,LR-01-MS01-VEN,PREV,Troca preventiva das ventosas da mesa,tempo,30,2.0,MEC,3
+PM-LR-02-RB-LUB,LR-02-RB01-EIX,PREV,Lubrificação dos redutores do robô,tempo,30,1.5,MEC,3
+PM-LR-02-RB-VIB,LR-02-RB01-EIX,PRED,Inspeção de vibração e temperatura dos eixos do robô,condição,28,0.75,MEC,3
+PM-LR-02-TR-COR,LR-02-TR01-COR,PREV,Inspeção e tensionamento da correia de entrada,tempo,28,1.0,MEC,3
+PM-LR-02-TR2-COR,LR-02-TR02-COR,PREV,Inspeção e tensionamento da correia intermediária,tempo,28,1.0,MEC,3
+PM-LR-02-DS-BIC,LR-02-DS01-BIC,PREV,Limpeza do bico e da rosca dosadora,tempo,14,0.75,MEC,2
+PM-LR-02-VI-CAL,LR-02-VI01-CAM,PRED,Limpeza de lente e calibração do sistema de visão,condição,30,1.0,ELE,3
+PM-LR-02-CL-BKP,LR-02-CL01,PREV,Backup do programa do CLP e do robô,tempo,90,1.0,ELE,7
+PM-LR-02-MS-VAC,LR-02-MS01-VAC,PRED,Medição do nível de vácuo da mesa,condição,14,0.5,MEC,2

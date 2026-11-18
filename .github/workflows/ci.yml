@@ -40,7 +40,7 @@ jobs:
         run: python run.py demo demo-preview
 
       - name: IGMI — relatório de confiabilidade (dados sintéticos)
-        run: python run.py igmi --linha LT3 --formato markdown --saida export/igmi_relatorio_LT3.md
+        run: python run.py igmi --linha LR-01 --formato markdown --saida export/igmi_relatorio_LR-01.md
 
       - name: Testes
         run: python run.py test

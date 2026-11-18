@@ -10,7 +10,7 @@ from igmi.exceptions import IGMIError
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description='IGMI — Analista de Confiabilidade (demo sintética)')
-    parser.add_argument('--linha', required=True, help='Ex.: LT3 ou LT56')
+    parser.add_argument('--linha', required=True, help='Ex.: LR-01 ou LR-02')
     parser.add_argument('--formato', choices=('markdown', 'json'), default='markdown')
     parser.add_argument('--saida', type=Path, help='Caminho do arquivo; omitir para imprimir no terminal')
     args = parser.parse_args(argv)

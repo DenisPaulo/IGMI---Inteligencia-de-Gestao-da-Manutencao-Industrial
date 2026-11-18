@@ -12,7 +12,7 @@ from igmi.ia_economica import conversar_economico, markdown_economico
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description='IGMI 0.2.1 — analista econômico com IA (usa API paga)')
-    parser.add_argument('--linha', required=True, help='Linha cadastrada, ex.: LT3 ou LT56')
+    parser.add_argument('--linha', required=True, help='Linha cadastrada, ex.: LR-01 ou LR-02')
     parser.add_argument('--pergunta', required=True, help='Pergunta sobre o período fechado da demo')
     parser.add_argument('--inicio', help='AAAA-MM-DD; apenas período completo')
     parser.add_argument('--fim', help='AAAA-MM-DD; apenas período completo')
@@ -27,7 +27,7 @@ def main(argv=None):
     args = parser.parse_args(argv)
     if not args.autorizar_api:
         parser.error('Para consultar a API paga, informe --autorizar-api. '
-                     'Modo offline: python run.py igmi --linha LT3')
+                     'Modo offline: python run.py igmi --linha LR-01')
     if not 1 <= args.limite_ferramentas <= 8:
         parser.error('--limite-ferramentas deve estar entre 1 e 8 (legado).')
     if args.limite_ferramentas != 4:

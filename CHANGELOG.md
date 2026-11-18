@@ -1,3 +1,13 @@
+## 0.3.3 — Nomenclatura fictícia e portfólio (2026-11-17)
+
+- Identificadores técnicos migrados para `LR-01` e `LR-02`; nomes públicos `Linha Robotizada_1` e `Linha Robotizada_2`.
+- Hierarquias de equipamentos, planos preventivos, centros de custo, dados sintéticos e simulação preservados com novos prefixos.
+- Copiloto, seletores, dashboard, testes, CI e documentos atualizados; IDs explícitos reconhecem `LR-01-RB01` etc.
+- Ajustada a sintaxe JavaScript para chaves com hífen (`L['LR-01']`), preservando gráficos e nomes amigáveis na interface.
+- CLI multilinha e fixture de testes do pacote-base restaurados para preservar a confirmação `AUTORIZAR`.
+- Imagens antigas do dashboard devem ser removidas e recriadas após regenerar a demo; consulte `docs/IGMI_0.3.3.md`.
+- Nenhuma alteração em regras de KPIs, Quality Checks, custos ou consulta somente leitura.
+
 ## 0.3.2.1 — Estabilização das respostas e README (2026-11-17)
 
 - Corrigida a seleção de KPIs quando o usuário solicita explicitamente disponibilidade em pergunta composta.

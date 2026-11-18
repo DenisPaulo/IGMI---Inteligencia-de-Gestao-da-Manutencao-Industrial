@@ -63,8 +63,8 @@ def identificar_alvos(pergunta, linha):
     """
     t = simplificar(pergunta)
     alvos = []
-    for ident in re.findall(r'\bLT\d+-[A-Z]{2}\d{2}(?:-[A-Z0-9]+)?\b', pergunta.upper()):
-        pai = '-'.join(ident.split('-')[:2])
+    for ident in re.findall(r'\bLR-\d{2}-[A-Z]{2}\d{2}(?:-[A-Z0-9]+)?\b', pergunta.upper()):
+        pai = '-'.join(ident.split('-')[:3])
         if pai not in alvos:
             alvos.append(pai)
     if re.search(r'\b(?:robo\w*|garra\w*|ferramenta\w*\s+d[oa]\s+robo)\b', t):
@@ -171,7 +171,7 @@ def validar_escopo(consultas, linha, pergunta):
     if re.search(r'\b(?:drop\s+table|delete\s+from|truncate\s+table|update\s+\w+\s+set|'
                  r'ignore\s+(?:as\s+)?regras|api.key|credenciais|senha secreta)\b', texto):
         raise EscopoInvalido('Comando operacional ou solicitação de segredo fora do escopo.')
-    citadas = set(re.findall(r'\bLT\d+\b', pergunta.upper()))
+    citadas = set(re.findall(r'\bLR-\d{2}\b', pergunta.upper()))
     if citadas and citadas != {linha}:
         raise EscopoInvalido('A pergunta cita outra linha; utilize /linha para alterar o escopo.')
     c = consultas.contexto
@@ -199,7 +199,7 @@ def intencao(pergunta, meses, equipamento_em_contexto=None):
     if re.search(r'\b(?:reincid\w*|recorr\w*|repetit\w*|ventosas?|garra\w*|ferramenta do robo)\b', t):
         return 'consultar_reincidencias', interpretacao
     if re.search(r'\bcompar\w*\b', t) and re.search(
-            r'\b(?:robo\w*|garra\w*|ventosas?|mesa\w*|LT\d+-[a-z0-9-]+)\b', t):
+            r'\b(?:robo\w*|garra\w*|ventosas?|mesa\w*|lr-\d{2}-[a-z0-9-]+)\b', t):
         return 'consultar_equipamentos', interpretacao
     if re.search(r'\bcompar\w*\b', t):
         return 'consultar_tendencia', interpretacao
@@ -220,8 +220,8 @@ def intencao(pergunta, meses, equipamento_em_contexto=None):
 
 def _selecionar_equipamento(registros, pergunta, ultimo):
     """Filtrar apenas resultados já consultados; nunca construir SQL do texto."""
-    ids = re.findall(r'\bLT\d+-[A-Z0-9-]+\b', pergunta.upper())
-    # IDs podem ser LT3-RB01 ou LT3-RB01-FER, sem aceitar fragmentos arbitrários.
+    ids = re.findall(r'\bLR-\d{2}-[A-Z0-9-]+\b', pergunta.upper())
+    # IDs podem ser LR-01-RB01 ou LR-01-RB01-FER, sem aceitar fragmentos arbitrários.
     t = simplificar(pergunta)
     referencias = bool(re.search(r'\b(?:ess[ea]s?|dessa?s?|justific|relacionad|daquele)\b', t))
     alvo = ids[0] if ids else (ultimo if referencias else None)
@@ -492,7 +492,7 @@ class SessaoCopiloto:
                 ', '.join(self.ultimos_alvos) + '. Informe um ou ambos explicitamente.'],
                 [], 'esclarecer')
         if referencia_singular and not alvos and len(self.ultimos_alvos) != 1:
-            return self._salvar(pergunta, ['Qual equipamento? Informe o ID (ex.: LT3-RB01).'], [], 'esclarecer')
+            return self._salvar(pergunta, ['Qual equipamento? Informe o ID (ex.: LR-01-RB01).'], [], 'esclarecer')
         if referencia_singular and not alvos and len(self.ultimos_alvos) == 1:
             alvos = self.ultimos_alvos
         plano = planejar(pergunta, meses, alvos)
