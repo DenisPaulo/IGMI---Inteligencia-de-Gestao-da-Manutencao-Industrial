@@ -1,6 +1,6 @@
 """Simulador DETERMINÍSTICO de OS de manutenção (dados 100% SINTÉTICOS) no schema do Mobility Data Connector.
 
-Gera ~250 OS em ~6 meses para as linhas LT3 e LT56 (seeds/demo/): corretivas emergenciais e planejadas,
+Gera ~250 OS em ~6 meses para as linhas LR-01 e LR-02 (seeds/demo/): corretivas emergenciais e planejadas,
 preventivas e preditivas por plano (no prazo, atrasadas, vencidas), melhorias, backlog aberto e reincidências
 (algumas falhas repetem de propósito para disparar o alerta "N vezes em X dias").
 Classificação ISO 14224 (tipo, modo, causa, mecanismo, ação, plano) vai em tags, como num CMMS real.
@@ -21,39 +21,39 @@ SAIDA = config.ROOT / "dados_sinteticos" / "demo"
 
 # Perfil sintético de falhas: subconjunto -> (falhas esperadas no período, {modo: peso}).
 PERFIL = {
-    "LT3-RB01-FER": (11, {"RB-FER": 8, "RB-COL": 2}),
-    "LT3-RB01-EIX": (3, {"RB-VIB": 2, "RB-POS": 1}),
-    "LT3-RB01-CTL": (5, {"RB-SRV": 3, "RB-POS": 2}),
-    "LT3-TR01-COR": (5, {"TR-DES": 3, "TR-TRV": 2}),
-    "LT3-TR01-SEN": (3, {"TR-SEN": 1}),
-    "LT3-TR02-COR": (2, {"TR-TRV": 2, "TR-VIB": 1}),
-    "LT3-DS01-BIC": (7, {"DS-ENT": 5, "DS-VAZ": 1, "DS-VEX": 1}),
-    "LT3-VI01-CAM": (5, {"VI-LEI": 4, "VI-ILU": 1}),
-    "LT3-CL01-IO": (2, {"CL-IO": 1}),
-    "LT3-CL01-RED": (4, {"CL-COM": 3, "CL-PRG": 1}),
-    "LT3-MS01-VEN": (9, {"MS-VEN": 1}),
-    "LT3-MS01-VAC": (3, {"MS-VAC": 3, "MS-VAR": 1}),
-    "LT56-RB01-FER": (5, {"RB-FER": 3, "RB-COL": 2}),
-    "LT56-RB01-EIX": (3, {"RB-VIB": 2, "RB-POS": 1}),
-    "LT56-RB01-CTL": (3, {"RB-SRV": 2, "RB-POS": 1}),
-    "LT56-TR01-COR": (4, {"TR-DES": 2, "TR-TRV": 2}),
-    "LT56-TR01-SEN": (3, {"TR-SEN": 1}),
-    "LT56-TR02-COR": (5, {"TR-DES": 3, "TR-VIB": 2}),
-    "LT56-TR03-COR": (2, {"TR-TRV": 1}),
-    "LT56-DS01-BIC": (11, {"DS-ENT": 8, "DS-VAZ": 1}),
-    "LT56-DS01-ROS": (4, {"DS-VAZ": 2, "DS-VEX": 1}),
-    "LT56-VI01-CAM": (4, {"VI-LEI": 3, "VI-COM": 1}),
-    "LT56-CL01-IO": (2, {"CL-IO": 2, "CL-PRG": 1}),
-    "LT56-CL01-RED": (2, {"CL-COM": 1}),
-    "LT56-MS01-VEN": (9, {"MS-VEN": 1}),
-    "LT56-MS01-VAC": (4, {"MS-VAC": 2, "MS-VAR": 1}),
+    "LR-01-RB01-FER": (11, {"RB-FER": 8, "RB-COL": 2}),
+    "LR-01-RB01-EIX": (3, {"RB-VIB": 2, "RB-POS": 1}),
+    "LR-01-RB01-CTL": (5, {"RB-SRV": 3, "RB-POS": 2}),
+    "LR-01-TR01-COR": (5, {"TR-DES": 3, "TR-TRV": 2}),
+    "LR-01-TR01-SEN": (3, {"TR-SEN": 1}),
+    "LR-01-TR02-COR": (2, {"TR-TRV": 2, "TR-VIB": 1}),
+    "LR-01-DS01-BIC": (7, {"DS-ENT": 5, "DS-VAZ": 1, "DS-VEX": 1}),
+    "LR-01-VI01-CAM": (5, {"VI-LEI": 4, "VI-ILU": 1}),
+    "LR-01-CL01-IO": (2, {"CL-IO": 1}),
+    "LR-01-CL01-RED": (4, {"CL-COM": 3, "CL-PRG": 1}),
+    "LR-01-MS01-VEN": (9, {"MS-VEN": 1}),
+    "LR-01-MS01-VAC": (3, {"MS-VAC": 3, "MS-VAR": 1}),
+    "LR-02-RB01-FER": (5, {"RB-FER": 3, "RB-COL": 2}),
+    "LR-02-RB01-EIX": (3, {"RB-VIB": 2, "RB-POS": 1}),
+    "LR-02-RB01-CTL": (3, {"RB-SRV": 2, "RB-POS": 1}),
+    "LR-02-TR01-COR": (4, {"TR-DES": 2, "TR-TRV": 2}),
+    "LR-02-TR01-SEN": (3, {"TR-SEN": 1}),
+    "LR-02-TR02-COR": (5, {"TR-DES": 3, "TR-VIB": 2}),
+    "LR-02-TR03-COR": (2, {"TR-TRV": 1}),
+    "LR-02-DS01-BIC": (11, {"DS-ENT": 8, "DS-VAZ": 1}),
+    "LR-02-DS01-ROS": (4, {"DS-VAZ": 2, "DS-VEX": 1}),
+    "LR-02-VI01-CAM": (4, {"VI-LEI": 3, "VI-COM": 1}),
+    "LR-02-CL01-IO": (2, {"CL-IO": 2, "CL-PRG": 1}),
+    "LR-02-CL01-RED": (2, {"CL-COM": 1}),
+    "LR-02-MS01-VEN": (9, {"MS-VEN": 1}),
+    "LR-02-MS01-VAC": (4, {"MS-VAC": 2, "MS-VAR": 1}),
 }
 # Reincidências injetadas (subconjunto, modo, datas). As 3 primeiras disparam o alerta 3x/15 dias; a última NÃO (21 dias).
 REINCIDENCIAS = [
-    ("LT3-RB01-FER", "RB-FER", ["2026-07-06", "2026-07-10", "2026-07-14", "2026-07-17"]),
-    ("LT56-MS01-VEN", "MS-VEN", ["2026-08-03", "2026-08-08", "2026-08-12"]),
-    ("LT56-DS01-BIC", "DS-ENT", ["2026-05-11", "2026-05-19", "2026-05-24"]),
-    ("LT56-VI01-CAM", "VI-ILU", ["2026-06-01", "2026-06-12", "2026-06-22"]),
+    ("LR-01-RB01-FER", "RB-FER", ["2026-07-06", "2026-07-10", "2026-07-14", "2026-07-17"]),
+    ("LR-02-MS01-VEN", "MS-VEN", ["2026-08-03", "2026-08-08", "2026-08-12"]),
+    ("LR-02-DS01-BIC", "DS-ENT", ["2026-05-11", "2026-05-19", "2026-05-24"]),
+    ("LR-02-VI01-CAM", "VI-ILU", ["2026-06-01", "2026-06-12", "2026-06-22"]),
 ]
 # Reparo típico (min) por modo, e (causa, mecanismo, ação) plausíveis.
 REPARO = {"RB-COL": 50, "RB-POS": 40, "RB-SRV": 70, "RB-VIB": 120, "RB-FER": 45, "TR-TRV": 40, "TR-DES": 30, "TR-SEN": 20,
@@ -98,18 +98,18 @@ TEXTO = {  # descrições no estilo de quem abre a OS no celular
 }
 ACAO_TXT = {"A-SUB": "substituição", "A-REP": "reparo", "A-AJU": "ajuste", "A-LIM": "limpeza", "A-REI": "rearme e teste",
             "A-LUB": "lubrificação", "A-MOD": "modificação", "A-INS": "inspeção"}
-MELHORIAS = [("LT3-RB01-FER", "Melhoria: trocar material das ventosas da garra (reincidência)"),
-             ("LT56-MS01-VEN", "Melhoria: novo suporte das ventosas da mesa (reincidência)"),
-             ("LT56-DS01-BIC", "Melhoria: instalar vibrador no silo do dispenser (entupimento recorrente)"),
-             ("LT3-DS01-BIC", "Melhoria: proteção contra umidade no bico dosador"),
-             ("LT3-TR01-SEN", "Melhoria: suporte com regulagem para sensor de presença"),
-             ("LT56-TR02-COR", "Melhoria: guia lateral na correia intermediária"),
-             ("LT3-VI01-CAM", "Melhoria: cúpula anti-reflexo na iluminação da visão"),
-             ("LT56-CL01-RED", "Melhoria: refazer conectores da rede de campo"),
-             ("LT3-CL01", "Melhoria: alarme no supervisório para queda de rede"),
-             ("LT56-RB01-CTL", "Melhoria: ventilação forçada no painel do controlador do robô"),
-             ("LT3-MS01-VAC", "Melhoria: vacuostato com indicação local"),
-             ("LT56-VI01-CAM", "Melhoria: rotina de limpeza automática da lente")]
+MELHORIAS = [("LR-01-RB01-FER", "Melhoria: trocar material das ventosas da garra (reincidência)"),
+             ("LR-02-MS01-VEN", "Melhoria: novo suporte das ventosas da mesa (reincidência)"),
+             ("LR-02-DS01-BIC", "Melhoria: instalar vibrador no silo do dispenser (entupimento recorrente)"),
+             ("LR-01-DS01-BIC", "Melhoria: proteção contra umidade no bico dosador"),
+             ("LR-01-TR01-SEN", "Melhoria: suporte com regulagem para sensor de presença"),
+             ("LR-02-TR02-COR", "Melhoria: guia lateral na correia intermediária"),
+             ("LR-01-VI01-CAM", "Melhoria: cúpula anti-reflexo na iluminação da visão"),
+             ("LR-02-CL01-RED", "Melhoria: refazer conectores da rede de campo"),
+             ("LR-01-CL01", "Melhoria: alarme no supervisório para queda de rede"),
+             ("LR-02-RB01-CTL", "Melhoria: ventilação forçada no painel do controlador do robô"),
+             ("LR-01-MS01-VAC", "Melhoria: vacuostato com indicação local"),
+             ("LR-02-VI01-CAM", "Melhoria: rotina de limpeza automática da lente")]
 
 
 def _seed(nome):

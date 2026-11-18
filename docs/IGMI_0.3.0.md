@@ -76,7 +76,7 @@ A primeira execução verifica somente o módulo IGMI; a segunda executa a suít
 ## 4. Conversar sem custo de API
 
 ```bash
-python run.py igmi-chat --linha LT3
+python run.py igmi-chat --linha LR-01
 ```
 
 Exemplo:
@@ -88,8 +88,8 @@ Exemplo:
 > Quais OS justificam essa conclusao?
 > Como esta o backlog?
 > /resumo
-> /exportar export/igmi_chat_LT3.md
-> /linha LT56
+> /exportar export/igmi_chat_LR-01.md
+> /linha LR-02
 > /sair
 ```
 
@@ -102,7 +102,7 @@ A chave deve estar na variável de ambiente `OPENAI_API_KEY`, **nunca em arquivo
 ```bash
 export IGMI_OPENAI_MODEL="gpt-4.1-mini"
 # OPENAI_API_KEY deve estar previamente configurada no Git Bash com segurança.
-python run.py igmi-chat --linha LT3 --modelo "$IGMI_OPENAI_MODEL" --autorizar-api --max-chamadas 3
+python run.py igmi-chat --linha LR-01 --modelo "$IGMI_OPENAI_MODEL" --autorizar-api --max-chamadas 3
 ```
 
 Exemplo:
@@ -110,7 +110,7 @@ Exemplo:
 ```text
 > O que podemos investigar primeiro?
 Autorizar UMA chamada paga à API neste turno? [s/N] s
-IGMI [validada; LT3; 1 API]: ...
+IGMI [validada; LR-01; 1 API]: ...
 ```
 
 - O parâmetro `--autorizar-api` **não dispara API sozinho**; há uma segunda confirmação por pergunta interpretativa.
@@ -142,10 +142,10 @@ A versão 0.2.1 consumiu **929 tokens** em uma análise específica, com três f
 
 ## 7. Checklist de aceite no Windows
 
-1. `python run.py igmi-chat --linha LT3` abre e identifica período/qualidade.
+1. `python run.py igmi-chat --linha LR-01` abre e identifica período/qualidade.
 2. A pergunta “Qual equipamento mais parou?” retorna resultados **offline** e referencia E1.
 3. “Compare as falhas de junho e julho de 2026” utiliza `consultar_tendencia`.
-4. `/linha LT56` troca o escopo e invalida referência anterior.
+4. `/linha LR-02` troca o escopo e invalida referência anterior.
 5. `/resumo` exibe **zero** chamadas para perguntas diretas.
 6. `/exportar` gera Markdown em UTF-8 no destino indicado.
 7. `python run.py test` não apresenta regressões.

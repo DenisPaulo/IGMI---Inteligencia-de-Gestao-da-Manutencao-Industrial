@@ -45,7 +45,7 @@ export PYTHONIOENCODING=utf-8
 
 # Gere o warehouse sintético e valide o relatório offline ANTES de habilitar API:
 python run.py simular demo demo-preview
-python run.py igmi --linha LT3 --formato markdown --saida export/igmi_relatorio_LT3.md
+python run.py igmi --linha LR-01 --formato markdown --saida export/igmi_relatorio_LR-01.md
 python run.py test
 ```
 
@@ -64,18 +64,18 @@ O modelo acima é **um exemplo configurável**, não garantia de acesso ou preç
 ```bash
 mkdir -p export
 python run.py igmi-ia \
-  --linha LT3 \
-  --pergunta 'Analise a confiabilidade da LT3 de abril a setembro de 2026. Quais equipamentos merecem investigação e quais falhas reincidiram?' \
+  --linha LR-01 \
+  --pergunta 'Analise a confiabilidade da LR-01 de abril a setembro de 2026. Quais equipamentos merecem investigação e quais falhas reincidiram?' \
   --modelo "$IGMI_OPENAI_MODEL" \
   --limite-ferramentas 6 \
   --autorizar-api \
   --formato markdown \
-  --saida export/igmi_ia_LT3.md
+  --saida export/igmi_ia_LR-01.md
 
-code export/igmi_ia_LT3.md
+code export/igmi_ia_LR-01.md
 ```
 
-Para usar JSON, altere `--formato json --saida export/igmi_ia_LT3.json`. Use `python run.py igmi-ia --help` para ver os parâmetros.
+Para usar JSON, altere `--formato json --saida export/igmi_ia_LR-01.json`. Use `python run.py igmi-ia --help` para ver os parâmetros.
 
 ### Desativar o segredo da sessão
 
@@ -85,12 +85,12 @@ unset OPENAI_API_KEY
 
 ## Regras de acesso e filtros
 
-- `--linha LT3` ou `LT56`: precisa corresponder a uma linha existente.
+- `--linha LR-01` ou `LR-02`: precisa corresponder a uma linha existente.
 - `--inicio` e `--fim` podem ser omitidos; se informados, **ambos devem coincidir com o período fechado do dataset**, de 2026-04-01 a 2026-09-30.
 - Consultas por mês isolado, subconjunto do período, data atual, ou “últimos seis meses” são rejeitadas **em vez de usar KPIs agregados como se fossem KPIs filtrados**. Essa capacidade poderá evoluir com cálculo específico por período.
 - Referências a outra linha na pergunta também são rejeitadas.
 - O modelo só pode chamar `consultar_kpis`, `consultar_equipamentos`, `consultar_pareto`, `consultar_reincidencias`, `consultar_os`, `consultar_tendencia`, `consultar_backlog` e `consultar_qualidade`.
-- Resultados de qualidade de `gold.qualidade_dado` são **globais da demonstração**, e não indicadores específicos da LT3 ou LT56. O escopo é explícito no registro da ferramenta.
+- Resultados de qualidade de `gold.qualidade_dado` são **globais da demonstração**, e não indicadores específicos da LR-01 ou LR-02. O escopo é explícito no registro da ferramenta.
 - Nenhum resultado é fornecido ao modelo antes de `ConsultasDemo` confirmar os **27 checks QD**, a carga `OK` e a existência da linha. As consultas são `read_only`.
 - Limite padrão: **6 ferramentas diferentes por pergunta**, configurable de 1 a 8. O agente não pode repetir ferramentas, mesmo que tente. Cada ferramenta tem limite de até 30 registros determinado pela aplicação.
 - `max_output_tokens=1600` por requisição, timeout de 35s e zero tentativas automáticas (`max_retries=0`). **Não é um limite monetário**; configure restrições de uso e orçamento também no projeto da API.

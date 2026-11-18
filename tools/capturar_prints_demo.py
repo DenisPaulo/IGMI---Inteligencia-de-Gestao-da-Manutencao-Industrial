@@ -9,7 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 HTML = ROOT / "export" / "demo_dashboard.html"
 # seção -> (altura desktop, altura celular)
-SECOES = {"geral": (1250, 2500), "linha": (1050, 2300), "timeline": (760, 1050), "timeline-LT56": (760, 1050),
+SECOES = {"geral": (1250, 2500), "linha": (1050, 2300), "timeline": (760, 1050), "timeline-LR-02": (760, 1050),
           "equipamento": (1900, 4600), "backlog": (1750, 5200), "alertas": (700, 1900), "pareto": (1150, 2300)}
 
 

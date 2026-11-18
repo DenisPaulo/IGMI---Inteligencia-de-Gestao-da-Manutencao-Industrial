@@ -16,7 +16,7 @@ class DadosFalsos:
                 'data_carga': '2026-10-01', 'checks_ok': 27, 'checks_total': 27}
 
     def validar_linha(self, linha):
-        if linha != 'LT3':
+        if linha != 'LR-01':
             raise EscopoInvalido('Linha não cadastrada')
 
     def consultar_kpis(self, linha):
@@ -25,12 +25,12 @@ class DadosFalsos:
                 'mtbf_h': 56.2, 'custo_parada': 17325, 'informacao_privada': 'NAO_ENVIAR'}
 
     def consultar_equipamentos(self, linha, limite):
-        return [{'equipment_id': 'LT3-RB01', 'nome': 'Robô de reagrupagem LT3',
+        return [{'equipment_id': 'LR-01-RB01', 'nome': 'Robô de reagrupagem LR-01',
                  'criticidade': 'A', 'falhas': 25, 'parada_min': 1568, 'mttr_h': 1.31,
                  'campo_extra': 'NAO_ENVIAR'}]
 
     def consultar_reincidencias(self, linha, limite):
-        return [{'equipment_id': 'LT3-MS01-VEN', 'modo_nome': 'Ventosa danificada',
+        return [{'equipment_id': 'LR-01-MS01-VEN', 'modo_nome': 'Ventosa danificada',
                  'ocorrencias': 3, 'janela_dias': 15, 'os_lista': 'dd000090, dd000095, dd000099'}]
 
     def consultar_pareto(self, linha, limite):
@@ -43,7 +43,7 @@ class DadosFalsos:
         return {'os_abertas': 8, 'os_envelhecidas': 5, 'horas_restantes': 13.52}
 
     def consultar_os(self, linha, limite):
-        return [{'task_short_id': 'dd0000d6', 'equipment_id': 'LT3-RB01-EIX',
+        return [{'task_short_id': 'dd0000d6', 'equipment_id': 'LR-01-RB01-EIX',
                  'modo_id': 'RB-VIB', 'parada_min': 171}]
 
 
@@ -81,7 +81,7 @@ class TesteFormato(TestCase):
             duracao_min(-12)
 
     def test_fatos_exatos_nao_dependem_do_modelo(self):
-        r = conversar_economico(DadosFalsos(), linha='LT3', pergunta='Analise LT3 abril a setembro 2026',
+        r = conversar_economico(DadosFalsos(), linha='LR-01', pergunta='Analise LR-01 abril a setembro 2026',
                                 modelo='modelo-mock', cliente=ClienteFalso())
         fatos = ' '.join(f['descricao'] for f in r['analise']['fatos'])
         for trecho in ('57 h 45 min', '98,47%', '26 h 08 min', '1 h 19 min',
@@ -95,8 +95,8 @@ class TesteEconomiaESeguranca(TestCase):
     def setUp(self):
         self.dados = DadosFalsos()
         self.cliente = ClienteFalso()
-        self.kw = {'consultas': self.dados, 'linha': 'LT3',
-                   'pergunta': 'Analise a confiabilidade da LT3 de abril a setembro de 2026.',
+        self.kw = {'consultas': self.dados, 'linha': 'LR-01',
+                   'pergunta': 'Analise a confiabilidade da LR-01 de abril a setembro de 2026.',
                    'modelo': 'modelo-mock'}
 
     def test_uma_chamada_api_com_amostra_enxuta(self):
@@ -117,13 +117,13 @@ class TesteEconomiaESeguranca(TestCase):
         self.assertNotIn('```json', markdown_economico(r))
 
     def test_selecao_controlada_de_consultas(self):
-        self.assertEqual(ferramentas('Analise LT3'),
+        self.assertEqual(ferramentas('Analise LR-01'),
                          ['consultar_kpis', 'consultar_equipamentos', 'consultar_reincidencias'])
-        self.assertIn('consultar_pareto', ferramentas('Pareto LT3'))
-        self.assertIn('consultar_tendencia', ferramentas('Tendência LT3'))
-        self.assertIn('consultar_backlog', ferramentas('Backlog LT3'))
-        self.assertIn('consultar_os', ferramentas('Relacione as OS LT3'))
-        self.assertLessEqual(len(ferramentas('Analise LT3')), 4)
+        self.assertIn('consultar_pareto', ferramentas('Pareto LR-01'))
+        self.assertIn('consultar_tendencia', ferramentas('Tendência LR-01'))
+        self.assertIn('consultar_backlog', ferramentas('Backlog LR-01'))
+        self.assertIn('consultar_os', ferramentas('Relacione as OS LR-01'))
+        self.assertLessEqual(len(ferramentas('Analise LR-01')), 4)
 
     def test_numero_inventado_e_por_extenso_sao_bloqueados_sem_retry(self):
         for trecho in ('A linha teve 149 falhas.', 'A linha teve cento e quarenta paradas.',
@@ -150,7 +150,7 @@ class TesteEconomiaESeguranca(TestCase):
         with self.assertRaises(EscopoInvalido):
             conversar_economico(**{**self.kw, 'pergunta': 'Analise hoje'}, cliente=self.cliente)
         with self.assertRaises(EscopoInvalido):
-            conversar_economico(**{**self.kw, 'linha': 'LT56'}, cliente=self.cliente)
+            conversar_economico(**{**self.kw, 'linha': 'LR-02'}, cliente=self.cliente)
         self.assertEqual(self.cliente.calls, [])
 
     def test_sem_kpis_sem_api(self):

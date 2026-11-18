@@ -1,44 +1,44 @@
 equipment_id,name,cost_center
-LT3,Linha LT3,SINT-CC-LT3
-LT3-RB01,Robô de reagrupagem LT3,SINT-CC-LT3
-LT3-RB01-EIX,Eixos e redutores do robô LT3,SINT-CC-LT3
-LT3-RB01-FER,Ferramenta/garra do robô LT3,SINT-CC-LT3
-LT3-RB01-CTL,Controlador do robô LT3,SINT-CC-LT3
-LT3-TR01,Transportador de entrada LT3,SINT-CC-LT3
-LT3-TR01-COR,Correia do transportador de entrada LT3,SINT-CC-LT3
-LT3-TR01-SEN,Sensores do transportador de entrada LT3,SINT-CC-LT3
-LT3-TR02,Transportador de saída LT3,SINT-CC-LT3
-LT3-TR02-COR,Correia do transportador de saída LT3,SINT-CC-LT3
-LT3-DS01,Dispenser de pó LT3,SINT-CC-LT3
-LT3-DS01-BIC,Bico dosador LT3,SINT-CC-LT3
-LT3-VI01,Sistema de visão LT3,SINT-CC-LT3
-LT3-VI01-CAM,Câmera e iluminação LT3,SINT-CC-LT3
-LT3-CL01,CLP da linha LT3,SINT-CC-LT3
-LT3-CL01-IO,Cartões de E/S do CLP LT3,SINT-CC-LT3
-LT3-CL01-RED,Rede de campo LT3,SINT-CC-LT3
-LT3-MS01,Mesa de ventosas LT3,SINT-CC-LT3
-LT3-MS01-VEN,Ventosas da mesa LT3,SINT-CC-LT3
-LT3-MS01-VAC,Gerador de vácuo da mesa LT3,SINT-CC-LT3
-LT56,Linha LT56,SINT-CC-LT56
-LT56-RB01,Robô de reagrupagem LT56,SINT-CC-LT56
-LT56-RB01-EIX,Eixos e redutores do robô LT56,SINT-CC-LT56
-LT56-RB01-FER,Ferramenta/garra do robô LT56,SINT-CC-LT56
-LT56-RB01-CTL,Controlador do robô LT56,SINT-CC-LT56
-LT56-TR01,Transportador de entrada LT56,SINT-CC-LT56
-LT56-TR01-COR,Correia do transportador de entrada LT56,SINT-CC-LT56
-LT56-TR01-SEN,Sensores do transportador de entrada LT56,SINT-CC-LT56
-LT56-TR02,Transportador intermediário LT56,SINT-CC-LT56
-LT56-TR02-COR,Correia do transportador intermediário LT56,SINT-CC-LT56
-LT56-TR03,Transportador de saída LT56,SINT-CC-LT56
-LT56-TR03-COR,Correia do transportador de saída LT56,SINT-CC-LT56
-LT56-DS01,Dispenser de pó LT56,SINT-CC-LT56
-LT56-DS01-BIC,Bico dosador LT56,SINT-CC-LT56
-LT56-DS01-ROS,Rosca dosadora LT56,SINT-CC-LT56
-LT56-VI01,Sistema de visão LT56,SINT-CC-LT56
-LT56-VI01-CAM,Câmera e iluminação LT56,SINT-CC-LT56
-LT56-CL01,CLP da linha LT56,SINT-CC-LT56
-LT56-CL01-IO,Cartões de E/S do CLP LT56,SINT-CC-LT56
-LT56-CL01-RED,Rede de campo LT56,SINT-CC-LT56
-LT56-MS01,Mesa de ventosas LT56,SINT-CC-LT56
-LT56-MS01-VEN,Ventosas da mesa LT56,SINT-CC-LT56
-LT56-MS01-VAC,Gerador de vácuo da mesa LT56,SINT-CC-LT56
+LR-01,Linha Robotizada_1,SINT-CC-LR-01
+LR-01-RB01,Robô de reagrupagem LR-01,SINT-CC-LR-01
+LR-01-RB01-EIX,Eixos e redutores do robô LR-01,SINT-CC-LR-01
+LR-01-RB01-FER,Ferramenta/garra do robô LR-01,SINT-CC-LR-01
+LR-01-RB01-CTL,Controlador do robô LR-01,SINT-CC-LR-01
+LR-01-TR01,Transportador de entrada LR-01,SINT-CC-LR-01
+LR-01-TR01-COR,Correia do transportador de entrada LR-01,SINT-CC-LR-01
+LR-01-TR01-SEN,Sensores do transportador de entrada LR-01,SINT-CC-LR-01
+LR-01-TR02,Transportador de saída LR-01,SINT-CC-LR-01
+LR-01-TR02-COR,Correia do transportador de saída LR-01,SINT-CC-LR-01
+LR-01-DS01,Dispenser de pó LR-01,SINT-CC-LR-01
+LR-01-DS01-BIC,Bico dosador LR-01,SINT-CC-LR-01
+LR-01-VI01,Sistema de visão LR-01,SINT-CC-LR-01
+LR-01-VI01-CAM,Câmera e iluminação LR-01,SINT-CC-LR-01
+LR-01-CL01,CLP da linha LR-01,SINT-CC-LR-01
+LR-01-CL01-IO,Cartões de E/S do CLP LR-01,SINT-CC-LR-01
+LR-01-CL01-RED,Rede de campo LR-01,SINT-CC-LR-01
+LR-01-MS01,Mesa de ventosas LR-01,SINT-CC-LR-01
+LR-01-MS01-VEN,Ventosas da mesa LR-01,SINT-CC-LR-01
+LR-01-MS01-VAC,Gerador de vácuo da mesa LR-01,SINT-CC-LR-01
+LR-02,Linha Robotizada_2,SINT-CC-LR-02
+LR-02-RB01,Robô de reagrupagem LR-02,SINT-CC-LR-02
+LR-02-RB01-EIX,Eixos e redutores do robô LR-02,SINT-CC-LR-02
+LR-02-RB01-FER,Ferramenta/garra do robô LR-02,SINT-CC-LR-02
+LR-02-RB01-CTL,Controlador do robô LR-02,SINT-CC-LR-02
+LR-02-TR01,Transportador de entrada LR-02,SINT-CC-LR-02
+LR-02-TR01-COR,Correia do transportador de entrada LR-02,SINT-CC-LR-02
+LR-02-TR01-SEN,Sensores do transportador de entrada LR-02,SINT-CC-LR-02
+LR-02-TR02,Transportador intermediário LR-02,SINT-CC-LR-02
+LR-02-TR02-COR,Correia do transportador intermediário LR-02,SINT-CC-LR-02
+LR-02-TR03,Transportador de saída LR-02,SINT-CC-LR-02
+LR-02-TR03-COR,Correia do transportador de saída LR-02,SINT-CC-LR-02
+LR-02-DS01,Dispenser de pó LR-02,SINT-CC-LR-02
+LR-02-DS01-BIC,Bico dosador LR-02,SINT-CC-LR-02
+LR-02-DS01-ROS,Rosca dosadora LR-02,SINT-CC-LR-02
+LR-02-VI01,Sistema de visão LR-02,SINT-CC-LR-02
+LR-02-VI01-CAM,Câmera e iluminação LR-02,SINT-CC-LR-02
+LR-02-CL01,CLP da linha LR-02,SINT-CC-LR-02
+LR-02-CL01-IO,Cartões de E/S do CLP LR-02,SINT-CC-LR-02
+LR-02-CL01-RED,Rede de campo LR-02,SINT-CC-LR-02
+LR-02-MS01,Mesa de ventosas LR-02,SINT-CC-LR-02
+LR-02-MS01-VEN,Ventosas da mesa LR-02,SINT-CC-LR-02
+LR-02-MS01-VAC,Gerador de vácuo da mesa LR-02,SINT-CC-LR-02

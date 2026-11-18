@@ -15,7 +15,7 @@ OUT = config.ROOT / "export" / "demo_dashboard.html"
 ECHARTS = config.ROOT / "vendor" / "echarts" / "echarts.min.js"
 FAIXA = "DADOS SINTÉTICOS — demonstração do monitor de OS e tarefas (nenhuma OS, pessoa, valor ou planta real)"
 TEMPLATE = Path(__file__).with_name("demo_template.html")
-ABAS = [("geral", "Visão geral"), ("linha", "Linha LT3 × LT56"), ("timeline", "Linha do tempo"), ("equipamento", "Equipamento"),
+ABAS = [("geral", "Visão geral"), ("linha", "Linha Robotizada_1 × LR-02"), ("timeline", "Linha do tempo"), ("equipamento", "Equipamento"),
         ("backlog", "Backlog & preventivas"), ("alertas", "Alertas de reincidência"), ("pareto", "Pareto")]
 
 

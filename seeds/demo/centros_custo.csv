@@ -1,3 +1,3 @@
 cost_center,descricao,custo_hora_parada
-SINT-CC-LT3,[SINTÉTICO] Centro de custo da linha LT3,300.00
-SINT-CC-LT56,[SINTÉTICO] Centro de custo da linha LT56,250.00
+SINT-CC-LR-01,[SINTÉTICO] Centro de custo da linha LR-01,300.00
+SINT-CC-LR-02,[SINTÉTICO] Centro de custo da linha LR-02,250.00

@@ -5,7 +5,7 @@ Nada aqui descreve uma planta real. Técnicos aparecem só como **função** (ex
 
 | Arquivo | O que é |
 |---|---|
-| `plantas.csv`, `linhas.csv` | planta e linhas (LT3, LT56), regime de operação e centro de custo |
+| `plantas.csv`, `linhas.csv` | planta e linhas (LR-01, LR-02), regime de operação e centro de custo |
 | `centros_custo.csv` | centro de custo sintético e custo/h de parada **fictício** |
 | `classes_equipamento.csv` | classes no estilo ISO 14224 (robô, transportador, dosador, visão, CLP, mesa de vácuo) |
 | `equipamentos.csv` | hierarquia linha > equipamento > subconjunto, criticidade A/B/C e especialidade |

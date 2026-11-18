@@ -32,11 +32,11 @@ py run.py all
 # Gera o conjunto sintético e o warehouse de demonstração
 py run.py simular demo demo-preview
 
-# Gera relatório da primeira análise para LT3
-py run.py igmi --linha LT3 --formato markdown --saida export/igmi_relatorio_LT3.md
+# Gera relatório da primeira análise para LR-01
+py run.py igmi --linha LR-01 --formato markdown --saida export/igmi_relatorio_LR-01.md
 
 # Consulta uma segunda linha em JSON
-py run.py igmi --linha LT56 --formato json --saida export/igmi_LT56.json
+py run.py igmi --linha LR-02 --formato json --saida export/igmi_LR-02.json
 
 # Executa a suíte original e as adições
 py run.py test
@@ -50,7 +50,7 @@ O dataset sintético atual representa **01/04/2026 a 30/09/2026**. A análise us
 
 ## Próximos passos de desenvolvimento
 
-**1. Validação local:** instalar dependências, executar `all`, `simular demo demo-preview`, `igmi` e `test`. Conferir os relatórios gerados para LT3 e LT56, e investigar qualquer erro antes de integrar IA.
+**1. Validação local:** instalar dependências, executar `all`, `simular demo demo-preview`, `igmi` e `test`. Conferir os relatórios gerados para LR-01 e LR-02, e investigar qualquer erro antes de integrar IA.
 
 **2. Testes adicionais e cobertura:** testar com banco realmente modificado (QD reprovado) e garantir bloqueio total. Conferir que nenhum valor da camada generativa poderá escapar do conjunto de ferramentas aprovadas.
 

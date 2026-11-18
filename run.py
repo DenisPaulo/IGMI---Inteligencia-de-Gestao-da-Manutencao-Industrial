@@ -8,8 +8,8 @@
   demo     pipeline DEMO (catálogos ISO 14224 + KPIs) -> warehouse/demo.duckdb + checks QD; exit != 0 se algum falhar
   demo-preview  dashboard DEMO -> export/demo_dashboard.html (roda depois de demo)
   test   pytest
-  igmi   analista de confiabilidade determinístico (demo): --linha LT3 [--formato markdown|json] [--saida arquivo]
-  igmi-ia analista de confiabilidade com IA (API opcional): --linha LT3 --pergunta "..." --autorizar-api
+  igmi   analista de confiabilidade determinístico (demo): --linha LR-01 [--formato markdown|json] [--saida arquivo]
+  igmi-ia analista de confiabilidade com IA (API opcional): --linha LR-01 --pergunta "..." --autorizar-api
   igmi-chat conversa de confiabilidade (consultas offline; IA opcional)
   clean  apaga o que é gerado (raw/, warehouse/, landing_parada/, export/, relatório)
 """

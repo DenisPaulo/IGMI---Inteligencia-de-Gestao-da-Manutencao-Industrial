@@ -60,27 +60,28 @@ flowchart LR
 
 Dois pipelines usam a **mesma ingestão** e o **mesmo contrato do conector**:
 - **principal** (`python run.py all`): base mínima sintética + parada v2 (contratos, QC01–QCV07);
-- **demo** (`python run.py demo`): dataset realista de ~6 meses para as linhas **LT3** e **LT56**, com catálogos ISO 14224, KPIs SMRP, Pareto, reincidência e dashboard. Warehouse separado (`warehouse/demo.duckdb`).
+- **demo** (`python run.py demo`): dataset realista de ~6 meses para as linhas **LR-01** e **LR-02**, com catálogos ISO 14224, KPIs SMRP, Pareto, reincidência e dashboard. Warehouse separado (`warehouse/demo.duckdb`).
+
+## Identidade das linhas sintéticas
+
+| ID técnico | Nome de exibição | Observação |
+|---|---|---|
+| `LR-01` | **Linha Robotizada_1** | Apenas dados fictícios |
+| `LR-02` | **Linha Robotizada_2** | Apenas dados fictícios |
+
+Identificadores de OS, equipamentos, planos preventivos e centros de custo usam os mesmos prefixos; o objetivo é apresentar uma planta de demonstração genérica.
 
 ## Dataset de demonstração
 
 Tudo é **sintético** (simulador determinístico em `pmb/simulador.py`, semente fixa em `seeds/demo/parametros_demo.csv`):
-- **Planta Demo** com 2 linhas (LT3, LT56). Cada linha tem robô de reagrupagem, transportadores, dispenser de pó, sistema de visão, CLP e mesa de ventosas, em hierarquia **linha > equipamento > subconjunto**, com criticidade **A/B/C** e especialidade (mecânica, eletrônica/elétrica).
+- **Planta Demo** com 2 linhas (LR-01, LR-02). Cada linha tem robô de reagrupagem, transportadores, dispenser de pó, sistema de visão, CLP e mesa de ventosas, em hierarquia **linha > equipamento > subconjunto**, com criticidade **A/B/C** e especialidade (mecânica, eletrônica/elétrica).
 - **~250 OS** (abr–set/2026): corretiva emergencial, corretiva planejada, preventiva, preditiva/inspeção e melhoria; abertas, em andamento, concluídas e canceladas; preventivas no prazo, atrasadas e vencidas; reincidências de propósito.
 - Técnicos aparecem só como **função** ("Técnico Mec 1", "Técnico Elet 2"), nunca por nome.
 - Classificação **ISO 14224** (modo/causa/mecanismo/ação) em tags; modos filtrados pela classe do equipamento.
 
 Dashboard (`python run.py demo-preview` → `export/demo_dashboard.html`, um HTML offline com navegação fixa por seções, cards de KPI e layout de cartões no celular abaixo de 720 px):
 
-| Visão geral | Linha LT3 × LT56 |
-|---|---|
-| ![](docs/img/demo_geral_desktop.png) | ![](docs/img/demo_linha_desktop.png) |
-| **Linha do tempo das OS (LT3)** | **Linha do tempo das OS (LT56)** |
-| ![](docs/img/demo_timeline_desktop.png) | ![](docs/img/demo_timeline-LT56_desktop.png) |
-| **Equipamento** | **Backlog & preventivas** |
-| ![](docs/img/demo_equipamento_desktop.png) | ![](docs/img/demo_backlog_desktop.png) |
-| **Alertas de reincidência** | **Pareto por modo** |
-| ![](docs/img/demo_alertas_desktop.png) | ![](docs/img/demo_pareto_desktop.png) |
+**Imagens da demonstração:** os screenshots da versão anterior não devem ser reutilizados, pois apresentam identificadores legados. Regere a demonstração e as capturas após a migração, conforme `docs/IGMI_0.3.3.md`. As imagens antigas devem ser removidas do Git antes da publicação.
 
 Prints de todas as seções em 1400 px e 390 px: `python tools/capturar_prints_demo.py <pasta>` (Chrome headless; `#so-<seção>` abre uma seção só).
 
@@ -171,10 +172,10 @@ python -m pytest -q tests_igmi
 python run.py test
 
 # Relatório determinístico, sem IA:
-python run.py igmi --linha LT3 --formato markdown --saida export/igmi_LT3.md
+python run.py igmi --linha LR-01 --formato markdown --saida export/igmi_LR-01.md
 
 # Copiloto offline, sem tokens:
-python run.py igmi-chat --linha LT3
+python run.py igmi-chat --linha LR-01
 ```
 
 **IA opcional (usa créditos):** crie a chave no projeto da API, configure-a apenas no ambiente local e verifique saldo e limites. No Git Bash, sem exibir a chave:
@@ -184,7 +185,7 @@ read -rs -p 'OPENAI_API_KEY: ' OPENAI_API_KEY; echo
 export OPENAI_API_KEY
 export IGMI_OPENAI_MODEL='gpt-4.1-mini'
 
-python run.py igmi-chat --linha LT3 --modelo "$IGMI_OPENAI_MODEL" \
+python run.py igmi-chat --linha LR-01 --modelo "$IGMI_OPENAI_MODEL" \
   --autorizar-api --max-chamadas 1
 ```
 
@@ -192,7 +193,7 @@ Exemplo de pergunta composta (cada comando em sua própria linha no copiloto):
 
 ```text
 /pergunta
-Quero priorizar melhorias na confiabilidade da LT3.
+Quero priorizar melhorias na confiabilidade da LR-01.
 Quais equipamentos mais impactaram as horas de parada?
 Quais reincidências merecem investigação prioritária?
 Como estão o MTTR e a disponibilidade da linha?
@@ -204,7 +205,7 @@ Separe fatos, hipóteses e recomendações.
 O copiloto apresenta as ferramentas planejadas e só usa a API depois de você digitar **`AUTORIZAR`**. Perguntas objetivas podem ser respondidas offline. Para gravar o histórico **antes de encerrar**:
 
 ```text
-/exportar export/igmi_chat_LT3_0321.md
+/exportar export/igmi_chat_LR-01_0321.md
 /sair
 ```
 

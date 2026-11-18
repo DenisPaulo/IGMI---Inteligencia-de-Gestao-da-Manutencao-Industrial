@@ -100,7 +100,7 @@ reincidência, aderência preventiva, criticidade e qualidade do dado.
 ### Agente Analista de Confiabilidade
 
 Analisa linhas e equipamentos, perdas, tendências, Pareto e
-recorrências. Exemplo: "Analise a confiabilidade da linha LT3 nos
+recorrências. Exemplo: "Analise a confiabilidade da linha LR-01 nos
 últimos seis meses". Deve consultar ferramentas, verificar qualidade e
 volume, apresentar indicadores, evidências, hipóteses e próximos passos.
 
@@ -298,7 +298,7 @@ conversa dedicada à implementação.
 > e período; integração com modelo por API; resposta estruturada com
 > evidências; testes automatizados; endpoint ou interface simples.
 >
-> **Pergunta de demonstração:** "Analise a confiabilidade da linha LT3
+> **Pergunta de demonstração:** "Analise a confiabilidade da linha LR-01
 > nos últimos seis meses." A resposta deve mostrar escopo, período,
 > qualidade e volume, indicadores, perdas, recorrências, hipóteses,
 > recomendações, OS relacionadas e limitações. Utilize dataset sintético
