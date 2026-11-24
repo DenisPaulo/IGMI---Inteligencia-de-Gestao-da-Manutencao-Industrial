@@ -54,7 +54,7 @@ O dataset sintético atual representa **01/04/2026 a 30/09/2026**. A análise us
 
 **2. Testes adicionais e cobertura:** testar com banco realmente modificado (QD reprovado) e garantir bloqueio total. Conferir que nenhum valor da camada generativa poderá escapar do conjunto de ferramentas aprovadas.
 
-**3. Analista de Confiabilidade com LLM (opcional e posterior):** definir provedor, modelo, orçamento e autorização para uso dos dados; enviar apenas agregados e evidências mínimas das ferramentas; exigir resposta estruturada com citações aos registros e validação da qualidade. Nenhum dado real será enviado antes de controles, aprovação e política de dados.
+**3. Analista de Confiabilidade com modelo de linguagem (opcional):** o copiloto (`igmi-chat`) e o comando `igmi-ia` oferecem interpretação qualitativa sobre fatos calculados em Python, com confirmação `AUTORIZAR` e no máximo uma chamada por turno. O uso com dados reais permanece condicionado a controles, aprovação e política de dados.
 
 **4. API e dashboard:** integrar FastAPI com autenticação, permissões e rate limit; adicionar interface no dashboard sem remover a versão offline.
 

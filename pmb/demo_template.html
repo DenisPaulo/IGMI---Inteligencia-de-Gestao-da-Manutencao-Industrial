@@ -120,7 +120,7 @@ footer{color:var(--muted);font-size:12px;padding:6px 0 28px}
 </section>
 
 <section id="linha" aria-labelledby="h-linha">
-  <h2 id="h-linha"><span class="n">2</span>Linha Robotizada_1 × Linha Robotizada_2</h2>
+  <h2 id="h-linha"><span class="n">2</span>LR-01 × LR-02</h2>
   <p class="lead">Mesmas fórmulas nas duas linhas; a planta é a soma das linhas (check QD19).</p>
   <div class="grid two">
     <div class="card"><div class="tw"><table id="tb-linhas" class="rt"></table></div></div>
@@ -206,7 +206,7 @@ function tbl(id, heads, rows){
 const kpiHtml = k => k.map(x=>'<div class="card kpi '+(x[3]||'')+'"><div class="lb">'+x[0]+'</div><div class="v">'+x[1]+'</div><div class="nt">'+x[2]+'</div></div>').join('');
 const meses = [...new Set(D.mensal.map(r=>r.mes))];
 const mesLab = m => m.slice(5)+'/'+m.slice(2,4);
-const serie = (campo, mult, tipo) => ['LR-01','LR-02'].map(l=>({name:EXIBIR[l],type:tipo||'line',barMaxWidth:28,smooth:tipo?false:.3,symbolSize:7,itemStyle:{color:LC[l]},lineStyle:{width:2.5},
+const serie = (campo, mult, tipo) => ['LR-01','LR-02'].map(l=>({name:l,type:tipo||'line',barMaxWidth:28,smooth:tipo?false:.3,symbolSize:7,itemStyle:{color:LC[l]},lineStyle:{width:2.5},
   data:meses.map(m=>{const r=D.mensal.find(x=>x.mes===m&&x.linha_id===l); return r&&r[campo]!=null?+(r[campo]*mult).toFixed(2):null;})}));
 const base = id => ({aria:{enabled:true},animation:false,tooltip:{trigger:'axis',confine:true},legend:{top:0,right:0,textStyle:{fontSize:11}},
   grid:narrow(id)?{left:38,right:12,top:30,bottom:28}:{left:50,right:20,top:32,bottom:30}});
@@ -239,7 +239,7 @@ function linha(){
   const ks=[['os_total','OS no período',v=>v],['falhas','Falhas',v=>v],['parada_h','Parada (h)',v=>nf1.format(v)],['disponibilidade','Disponibilidade',v=>fp(v,2)],
     ['mtbf_h','MTBF (h)',v=>nf1.format(v)],['mttr_h','MTTR (h)',v=>nf2.format(v)],['pct_planejada','% planejada',fp],['pct_reativa','% reativa',fp],
     ['pm_compliance','PM compliance',fp],['aderencia','Aderência',fp],['custo_parada','Custo de parada',fr],['os_abertas','OS abertas',v=>v],['os_envelhecidas','OS envelhecidas',v=>v]];
-  tbl('tb-linhas',[['Indicador',''],[EXIBIR['LR-01'],'c-b','num'],[EXIBIR['LR-02'],'c-b','num'],['Planta','c-b','num']],ks.map(([k,t,f])=>[t,f(L['LR-01'][k]),f(L['LR-02'][k]),f(L.PLANTA[k])]));
+  tbl('tb-linhas',[['Indicador',''],['LR-01','c-b','num'],['LR-02','c-b','num'],['Planta','c-b','num']],ks.map(([k,t,f])=>[t,f(L['LR-01'][k]),f(L['LR-02'][k]),f(L.PLANTA[k])]));
   const r=Object.assign(base('ch-reativa'),{xAxis:eixoMes,yAxis:{type:'value',max:100,axisLabel:{formatter:'{value}%'}},series:serie('pct_reativa',100)});
   r.series[0].markLine=metaLine(20,'ref. 20 %'); chart('ch-reativa').setOption(r,true);
   chart('ch-disp').setOption(Object.assign(base('ch-disp'),{xAxis:eixoMes,yAxis:{type:'value',min:96,max:100,axisLabel:{formatter:'{value}%'}},series:serie('disponibilidade',100)}),true);
@@ -287,7 +287,7 @@ function equipamento(){
   chart('ch-eq-mtbf').setOption({aria:{enabled:true},animation:false,legend:{top:0,right:0},grid:{left:48,right:24,top:30,bottom:36},
     tooltip:{trigger:'item',confine:true,formatter:p=>esc(p.data[2])+'<br>MTBF '+nf1.format(p.data[0])+' h · MTTR '+nf2.format(p.data[1])+' h'},
     xAxis:{type:'log',name:'MTBF h (log)',nameLocation:'middle',nameGap:24},yAxis:{type:'value',name:'MTTR h'},
-    series:['LR-01','LR-02'].map(l=>({name:EXIBIR[l],type:'scatter',symbolSize:13,itemStyle:{color:LC[l],borderColor:'#fff',borderWidth:1},data:eq.filter(e=>e.linha_id===l&&e.mtbf_h!=null).map(e=>[e.mtbf_h,e.mttr_h,e.nome])}))},true);
+    series:['LR-01','LR-02'].map(l=>({name:l,type:'scatter',symbolSize:13,itemStyle:{color:LC[l],borderColor:'#fff',borderWidth:1},data:eq.filter(e=>e.linha_id===l&&e.mtbf_h!=null).map(e=>[e.mtbf_h,e.mttr_h,e.nome])}))},true);
   tbl('tb-equip',[['Equipamento',''],['Linha','c-ln'],['Crit.','c-ln'],['Falhas','c-n','num'],['Parada (h)','c-n','num'],['MTBF (h)','c-h','num'],['MTTR (h)','c-n','num'],['Disponib.','c-h','num'],['Custo','c-b','num']],
     eq.map(e=>[esc(e.nome),e.linha_id,'<span class="pill '+(e.criticidade==='A'?'bad':e.criticidade==='B'?'val':'gray')+'">'+e.criticidade+'</span>',e.falhas,nf1.format(e.parada_h),e.mtbf_h==null?'—':nf1.format(e.mtbf_h),e.mttr_h==null?'—':nf2.format(e.mttr_h),fp(e.disponibilidade,2),fr(e.custo_parada)]));
   eqOS();
@@ -306,7 +306,7 @@ function backlog(){
     .concat([['PM compliance',fp(p.pm_compliance),'ref. > 90 %',p.pm_compliance>.9?'ok':'bad'],['Aderência',fp(p.aderencia),'faixa saudável 40–90 %','ok']]));
   const pmMes=[...new Set(D.pm.map(r=>r.mes))];
   const pm=Object.assign(base('ch-pm'),{xAxis:{type:'category',data:pmMes.map(mesLab)},yAxis:{type:'value',max:100,axisLabel:{formatter:'{value}%'}},
-    series:['LR-01','LR-02'].map(l=>({name:EXIBIR[l],type:'bar',barMaxWidth:24,itemStyle:{color:LC[l]},data:pmMes.map(m=>{const r=D.pm.find(x=>x.mes===m&&x.escopo===l);return r&&r.pm_compliance!=null?+(r.pm_compliance*100).toFixed(1):null;})}))});
+    series:['LR-01','LR-02'].map(l=>({name:l,type:'bar',barMaxWidth:24,itemStyle:{color:LC[l]},data:pmMes.map(m=>{const r=D.pm.find(x=>x.mes===m&&x.escopo===l);return r&&r.pm_compliance!=null?+(r.pm_compliance*100).toFixed(1):null;})}))});
   pm.series[0].markLine=metaLine(90,'ref. 90 %'); chart('ch-pm').setOption(pm,true);
   const ad=D.aderencia.filter(a=>a.escopo==='PLANTA');
   chart('ch-ader').setOption(Object.assign(base('ch-ader'),{legend:{show:false},xAxis:{type:'category',data:ad.map(a=>dmy(a.semana).slice(0,5)),axisLabel:{fontSize:10}},yAxis:{type:'value',max:100,axisLabel:{formatter:'{value}%'}},
@@ -351,9 +351,9 @@ function init(){
   $('hd-sub').textContent='Linha Robotizada_1 e Linha Robotizada_2 · '+D.os.length+' OS · '+dmy(P.periodo_inicio)+'–'+dmy(P.periodo_fim)+' · taxonomia ISO 14224 · KPIs SMRP';
   D.equip.forEach(e=>$('sel-eq').insertAdjacentHTML('beforeend','<option value="'+e.equipment_id+'">'+esc(e.nome)+'</option>'));
   $('sel-eq').addEventListener('change',eqOS);
-  seg('seg-tl-linha',[['LR-01',EXIBIR['LR-01']],['LR-02',EXIBIR['LR-02']]],'tl',timeline);
+  seg('seg-tl-linha',[['LR-01','LR-01'],['LR-02','LR-02']],'tl',timeline);
   seg('seg-tl-cor',[['tipo','Tipo de OS'],['modo','Modo de falha']],'cor',timeline);
-  seg('seg-par',[['PLANTA','Planta'],['LR-01',EXIBIR['LR-01']],['LR-02',EXIBIR['LR-02']]],'par',pareto);
+  seg('seg-par',[['PLANTA','Planta'],['LR-01','LR-01'],['LR-02','LR-02']],'par',pareto);
   /* modo "uma seção" (prints e TV): #so-<seção>[-LR-02] mostra só aquela seção */
   const h=location.hash.slice(1), m=h.match(/^so-([a-z]+)(?:-(LR-01|LR-02))?$/);
   if(m){ document.body.classList.add('so'); const s=$(m[1]); if(s) s.classList.add('on'); if(m[2]) st.tl=m[2];

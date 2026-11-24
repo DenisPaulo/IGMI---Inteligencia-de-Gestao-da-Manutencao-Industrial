@@ -34,7 +34,7 @@
     "QCP06": "duracao_min não inteiro (fora de ^[0-9]{1,5}$) ou <= 0 = 0; rejeita 0,33 / 1.5 / 00:20 / vazio; senão rejeita o arquivo",
     "QCP07": "acao fora de {incluir, excluir} (quando a coluna existir) = 0; senão rejeita o arquivo",
     "QCP08": "mesmo id_lancamento com os_ref diferente da versão anterior: alerta (marca e segue, vai para revisão)",
-    "QCP09": "os_ref sem OS no Mobility: fila_parada_sem_os, sem custo (marca e segue)",
+    "QCP09": "os_ref sem OS no sistema de manutenção: fila_parada_sem_os, sem custo (marca e segue)",
     "QCP10": "hora_inicio depois de last_export_date (futuro): alerta",
     "QCP11": "lançamentos do mesmo os_ref com intervalos [hora_inicio, hora_inicio + duracao_min) sobrepostos: alerta",
     "QCP12": "exclusão (por qualquer via) de id_lancamento que nunca foi carregado: alerta",

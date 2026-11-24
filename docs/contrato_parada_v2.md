@@ -62,7 +62,7 @@ Rejeitam o arquivo inteiro:
 
 Marcam e seguem:
 - **QCP08:** mesmo `id_lancamento` com `os_ref` diferente da versão anterior: alerta e revisão.
-- **QCP09:** `os_ref` sem OS no Mobility: `fila_parada_sem_os`, sem custo.
+- **QCP09:** `os_ref` sem OS no sistema de manutenção: `fila_parada_sem_os`, sem custo.
 - **QCP10:** `hora_inicio` depois da `data_carga` do arquivo (futuro). O CSV de parada não traz `last_export_date`; na simulação vale a `data_carga` do manifesto.
 - **QCP11:** lançamentos da mesma OS com intervalos sobrepostos (`hora_inicio` + `duracao_min`).
 - **QCP12:** exclusão de `id_lancamento` que nunca foi carregado.

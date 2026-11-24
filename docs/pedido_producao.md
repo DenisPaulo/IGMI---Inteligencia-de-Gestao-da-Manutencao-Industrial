@@ -17,7 +17,7 @@ SINT-L0005,ffff0001,2026-10-01T09:45,30,incluir
 | Coluna (provisória) | O que é | Formato esperado |
 |---|---|---|
 | `id_lancamento` | número próprio do lançamento | texto; único em cada arquivo |
-| `os_ref` | ID de 8 caracteres da OS no Mobility | 8 caracteres `0-9a-f` |
+| `os_ref` | ID de 8 caracteres da OS no sistema de manutenção | 8 caracteres `0-9a-f` |
 | `hora_inicio` | início da parada, hora local da fábrica | `AAAA-MM-DDTHH:MM` |
 | `duracao_min` | duração da parada | minutos inteiros > 0 |
 | `acao` | `incluir` ou `excluir` | só se o sistema tiver status/ação |

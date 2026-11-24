@@ -17,7 +17,7 @@ SELECT t.task_id, t.task_short_id, t.equipment_id, e.name equipamento, e.cost_ce
        CASE WHEN p.origem_parada = 'csv_producao' AND t.status = 'completed'
             THEN CAST(round(p.hora_parada_min / 60.0 * c.custo_hora, 2) AS DECIMAL(12,2)) END custo_parada,
        t.scheduled_from abertura_programada, a.ini inicio_atendimento, t.done_date fechamento,
-       'https://app.mobility-work.com/work-orders/tasks/detail/' || t.task_id link,
+       CAST(NULL AS VARCHAR) link,
        left(t.description, 120) descricao, left(a.exec_txt, 120) execucao, t.data_carga
 FROM silver.tasks t
 LEFT JOIN silver.equipments e USING (equipment_id)

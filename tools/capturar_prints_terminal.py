@@ -26,7 +26,7 @@ def arvore():
         d = tree
         for p in f.split("/"):
             d = d.setdefault(p, {})
-    out = ["p-mobility-bi/"]
+    out = ["IGMI/"]
 
     def walk(d, pre):
         ks = sorted(d, key=lambda k: (not d[k], k))
@@ -44,7 +44,7 @@ def main():
     caps = {"run_all.png": ("python run.py all", run("run.py", "all")),
             "run_parada.png": ("python run.py parada", run("run.py", "parada"))}
     pyt = run("-m", "pytest", "-p", "no:cacheprovider")
-    pyt = "\n".join("rootdir: p-mobility-bi" if l.startswith("rootdir:") else l for l in pyt.splitlines()) + "\n"
+    pyt = "\n".join("rootdir: IGMI" if l.startswith("rootdir:") else l for l in pyt.splitlines()) + "\n"
     caps["pytest.png"] = ("python run.py test", pyt)
     run("run.py", "clean")
     shutil.rmtree(ROOT / "export", ignore_errors=True)

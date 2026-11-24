@@ -11,7 +11,7 @@ CONTRATO = ROOT / "contrato"
 ENTRADA_CSV = Path(os.environ.get("PMB_ENTRADA_CSV", ROOT / "dados_sinteticos" / "entrada_csv"))
 RAW = Path(os.environ.get("PMB_RAW", ROOT / "raw"))
 LANDING_PARADA = Path(os.environ.get("PMB_LANDING_PARADA", ROOT / "landing_parada"))
-WAREHOUSE = Path(os.environ.get("PMB_WAREHOUSE", ROOT / "warehouse" / "p_mobility.duckdb"))
+WAREHOUSE = Path(os.environ.get("PMB_WAREHOUSE", ROOT / "warehouse" / "igmi.duckdb"))
 REPORT = ROOT / "data_quality_report.md"
 
 

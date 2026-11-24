@@ -81,8 +81,13 @@ def test_referencias_ativas_nao_usam_ids_antigos():
 
 def test_dashboard_javascript_usa_chaves_entre_aspas_e_rotulos_publicos():
     html = (RAIZ / "pmb/demo_template.html").read_text(encoding="utf-8")
+    preview = (RAIZ / "pmb/demo_preview.py").read_text(encoding="utf-8")
     assert "const LC = {'LR-01':" in html
     assert "L['LR-01'][k]" in html
     assert "L['LR-02'][k]" in html
     assert "Linha Robotizada_1" in html and "Linha Robotizada_2" in html
     assert "e.equipment_id.split('-').slice(2).join('-')" in html
+    assert "LR-01 × LR-02" in html
+    assert '("linha", "LR-01 × LR-02")' in preview
+    assert "Linha Robotizada_1 × LR-02" not in html + preview
+    assert "Linha Robotizada_1 × Linha Robotizada_2" not in html

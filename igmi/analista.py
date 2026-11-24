@@ -1,6 +1,7 @@
 """Primeiro Analista de Confiabilidade: relatório determinístico e rastreável.
 
-Esta entrega ainda não faz nenhuma chamada a um modelo generativo.
+Este módulo calcula indicadores em Python, sem chamada a modelo de linguagem.
+A interpretação com IA é opcional no copiloto (`igmi-chat`) e em `igmi-ia`, com confirmação AUTORIZAR.
 """
 
 def analisar_confiabilidade(consultas, linha):
@@ -41,7 +42,7 @@ def analisar_confiabilidade(consultas, linha):
             'Dados exclusivamente sintéticos: não representam a planta real.',
             'KPIs agregados abrangem o período fechado do dataset, não uma janela móvel.',
             'As hipóteses não constituem diagnóstico de causa raiz.',
-            'Ainda não há modelo de IA, interface conversacional ou acesso a sistemas reais.',
+            'A interpretação com modelo de linguagem é opcional no copiloto (`igmi-chat`) e em `igmi-ia`, com confirmação AUTORIZAR, sobre o warehouse sintético local.',
             'Ordenação de equipamentos por horas de parada não recalcula a criticidade A/B/C.',
         ],
     }

@@ -28,6 +28,6 @@ O cabeçalho tem de ser exatamente `os_ref,hora_lancada,data_parada`.
 
 ## Perguntas para a produção
 
-1. Qual código da OS vocês lançam (o de 8 caracteres da OS no Mobility)? Ele vem sempre?
+1. Qual código da OS vocês lançam (o de 8 caracteres da OS no sistema de manutenção)? Ele vem sempre?
 2. A hora vem em horas decimais, minutos ou hh:mm?
 3. Cada arquivo traz tudo desde o início ou só o período novo? Correção vem como linha nova ou substitui a antiga?
