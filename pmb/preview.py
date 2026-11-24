@@ -81,7 +81,7 @@ def gerar(con=None, out: Path | None = None) -> Path:
     return out
 
 
-TEMPLATE = """<!doctype html><html lang=pt-BR><head><meta charset=utf-8><title>P_Mobility_BI — prévia do dashboard</title>
+TEMPLATE = """<!doctype html><html lang=pt-BR><head><meta charset=utf-8><title>IGMI — prévia do dashboard</title>
 <style>
 body{{margin:0;font-family:"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:#f4f6f8;color:#1f2328}}
 .faixa{{background:#9a3412;color:#fff;font-weight:700;padding:12px 24px;font-size:15px;letter-spacing:.2px}}
@@ -104,7 +104,7 @@ table{{border-collapse:collapse;width:100%;background:#fff;border-radius:8px;ove
 footer{{color:#59636e;font-size:12px;padding:0 24px 18px}}
 </style></head><body>
 <div class=faixa id=faixa>{faixa}</div>
-<header><h1>P_Mobility_BI — camada gold</h1><small>data_carga do conector (sintético) {data_carga}</small></header>
+<header><h1>IGMI — camada gold</h1><small>data_carga do conector (sintético) {data_carga}</small></header>
 <nav><button data-aba=geral class=on>1 · Visão geral</button><button data-aba=maquina>2 · Máquina</button><button data-aba=linha>3 · Linha</button></nav>
 <main>
 <div class="aba on" id=aba-geral>

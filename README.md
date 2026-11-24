@@ -81,9 +81,7 @@ Tudo é **sintético** (simulador determinístico em `pmb/simulador.py`, semente
 
 Dashboard (`python run.py demo-preview` → `export/demo_dashboard.html`, um HTML offline com navegação fixa por seções, cards de KPI e layout de cartões no celular abaixo de 720 px):
 
-**Imagens da demonstração:** os screenshots da versão anterior não devem ser reutilizados, pois apresentam identificadores legados. Regere a demonstração e as capturas após a migração, conforme `docs/IGMI_0.3.3.md`. As imagens antigas devem ser removidas do Git antes da publicação.
-
-Prints de todas as seções em 1400 px e 390 px: `python tools/capturar_prints_demo.py <pasta>` (Chrome headless; `#so-<seção>` abre uma seção só).
+As capturas atuais do dashboard de demonstração, com as linhas **LR-01** e **LR-02**, estão em [`docs/img/`](docs/img/). Para gerá-las de novo (sem API): `python run.py simular demo demo-preview && python tools/capturar_prints_demo.py` (Chrome headless; `#so-<seção>` abre uma seção só). Prints de todas as seções em 1400 px e 390 px: `python tools/capturar_prints_demo.py <pasta>`.
 
 Documentação: [dicionário de KPIs (fórmulas e fontes)](docs/demo/dicionario_kpis.md) · [modelo de dados](docs/demo/modelo_dados.md) · [glossário](docs/demo/glossario.md) · [seeds](seeds/demo/LEIAME.md).
 
@@ -138,7 +136,7 @@ O copiloto não executa SQL criado pela IA nem altera ordens de serviço. A API 
 | 4 | Estados e alarmes do CLP/robô (OPC UA) para OEE e microparadas | futuro |
 | 5 | Reincidência por similaridade de texto; sugestão de modo/causa a partir do texto da OS (o técnico confirma); ajuste dos planos com MTBF real | futuro |
 
-## IGMI — Analista e Copiloto de Confiabilidade (0.3.2.1)
+## IGMI — Analista e Copiloto de Confiabilidade (0.3.3.1)
 
 O IGMI acrescenta à GOLD da demonstração uma camada de **consultas auditáveis, planejamento local de perguntas e IA opcional**, sem alterar os pipelines de dados. A identidade pública é **IGMI — Inteligência de Gestão da Manutenção Industrial**. O pacote interno legado `pmb/` é preservado por compatibilidade; não o renomeie sem testes e migração planejada.
 
@@ -226,7 +224,7 @@ Dados sintéticos -> RAW/SILVER/GOLD -> 27 verificações QD
                                             -> Terminal / Markdown
 ```
 
-Os arquivos `docs/IGMI_0.2.0.md`, `docs/IGMI_0.2.1.md`, `docs/IGMI_0.3.0.md`, `docs/IGMI_0.3.1.md`, `docs/IGMI_0.3.2.md` e **[IGMI 0.3.2.1](docs/IGMI_0.3.2.1.md)** documentam as entregas incrementais. `docs/igmi/PROMPT_MESTRE.md` registra a visão original do projeto.
+As entregas incrementais estão em [`docs/IGMI_0.2.0.md`](docs/IGMI_0.2.0.md), [`docs/IGMI_0.2.1.md`](docs/IGMI_0.2.1.md), [`docs/IGMI_0.3.0.md`](docs/IGMI_0.3.0.md), [`docs/IGMI_0.3.2.1.md`](docs/IGMI_0.3.2.1.md), [`docs/IGMI_0.3.3.md`](docs/IGMI_0.3.3.md) e **[IGMI 0.3.3.1](docs/IGMI_0.3.3.1.md)**. `docs/igmi/PROMPT_MESTRE.md` registra a visão original do projeto.
 
 ### Evolução e colaboração
 
@@ -237,8 +235,10 @@ Os arquivos `docs/IGMI_0.2.0.md`, `docs/IGMI_0.2.1.md`, `docs/IGMI_0.3.0.md`, `d
 | 0.2.1 | Formatação segura e baixo consumo de tokens | Validada em uso local |
 | 0.3.0 | Copiloto CLI offline/IA opcional | Validado em uso local |
 | 0.3.1 | Entrada multilinha e múltiplos equipamentos | Validada em uso local |
-| 0.3.2 | Planejamento de consultas e matriz de cobertura | Validada parcialmente; bloqueio da IA observado |
-| **0.3.2.1** | Disponibilidade, hipóteses, reincidências e README | **Patch preparado; validar no Windows antes de integrar à `main`** |
+| 0.3.2 | Planejamento de consultas e matriz de cobertura | Validada em uso local |
+| 0.3.2.1 | Disponibilidade, hipóteses, reincidências e README | Integrada à `main` |
+| 0.3.3 | Identificadores `LR-01` / `LR-02` e nomes de apresentação | Integrada à `main` |
+| **0.3.3.1** | README, rótulos da comparação e nomenclatura pública | Em revisão (este patch) |
 | Futuro | Interface web e outros agentes | Planejado |
 
 Desenvolva em branches `feature/…`, execute os testes e revise `git diff` antes de abrir Pull Request para `main`. Consulte o [CHANGELOG](CHANGELOG.md) para as alterações por versão.

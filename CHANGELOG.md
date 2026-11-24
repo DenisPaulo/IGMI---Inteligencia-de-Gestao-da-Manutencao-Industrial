@@ -1,3 +1,13 @@
+## 0.3.3.1 — Documentação e nomenclatura pública (2026-11-24)
+
+- README atualizado para a versão 0.3.3.1, com tabela de versões até esta entrega e links para os guias existentes em `docs/`.
+- Capturas do dashboard de demonstração descritas a partir dos arquivos atuais em `docs/img/`.
+- Aba de comparação do dashboard demo unificada nos identificadores `LR-01` e `LR-02` (navegação, título, colunas e legendas).
+- Títulos da prévia HTML e da árvore nos prints de terminal passam a usar o nome IGMI; o warehouse padrão do pipeline principal fica em `warehouse/igmi.duckdb`.
+- A coluna `link` de `gold.fato_os` permanece no contrato, sem URL de fornecedor.
+- Relatório determinístico descreve a IA opcional do copiloto e de `igmi-ia` (confirmação `AUTORIZAR`, warehouse sintético local).
+- Nenhuma alteração em regras de KPIs, Quality Checks, custos ou consulta somente leitura.
+
 ## 0.3.3 — Nomenclatura fictícia e portfólio (2026-11-17)
 
 - Identificadores técnicos migrados para `LR-01` e `LR-02`; nomes públicos `Linha Robotizada_1` e `Linha Robotizada_2`.

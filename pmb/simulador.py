@@ -1,4 +1,4 @@
-"""Simulador DETERMINÍSTICO de OS de manutenção (dados 100% SINTÉTICOS) no schema do Mobility Data Connector.
+"""Simulador DETERMINÍSTICO de OS de manutenção (dados 100% SINTÉTICOS) no schema do conector de manutenção.
 
 Gera ~250 OS em ~6 meses para as linhas LR-01 e LR-02 (seeds/demo/): corretivas emergenciais e planejadas,
 preventivas e preditivas por plano (no prazo, atrasadas, vencidas), melhorias, backlog aberto e reincidências
